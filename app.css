@@ -1,0 +1,12 @@
+#mainMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    width: 99vw;
+}
+
+section{
+    display: none;
+}
