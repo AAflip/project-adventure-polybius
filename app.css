@@ -34,6 +34,6 @@ body {
     font-weight: 001;
 }
 
-p{
+p, h2, h3, h4{
     color: white;
 }
