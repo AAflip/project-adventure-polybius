@@ -8,15 +8,10 @@
     <script src="/app.js"></script>
 </head>
 <body>
-    <h2></h2>
     <section class="page" id="mainMenu">
-        <button onclick="">Start Game</button>
+        <button onclick="init()">Start Game</button>
         <button onclick="movePage('options')">Options</button>
         <button onclick="movePage('credits')">Credits</button>
-    </section>
-    <!-- this page is for the dialog stuff, nothing else -->
-    <section id="dialogBox">
-
     </section>
     <section class="page" id="battle">
 
@@ -24,17 +19,23 @@
     <section class="page" id="inventory">
 
     </section>
-    <!-- this page is for the background stuff -->
+    <!-- this page is mainly for the background stuff -->
     <section id="mainView">
-        
+        <p>weeee</p>
+    </section>
+    <!-- this page is for the dialog stuff, nothing else -->
+    <section id="dialogBox">
+        <p>Arg</p>
     </section>
     <section class="page" id="options">
+        <button onclick="movePage('mainMenu')">Return</button>
     </section>
     <section class="page" id="credits">
         <h2>Made by:</h2>
         <h3>Tristan Antuna</h3>
         <h4>and</h4>
         <h3>David Madden</h3>
+        <button onclick="movePage('mainMenu')">Return</button>
     </section>
 </body>
 </html>
