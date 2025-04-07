@@ -49,8 +49,10 @@ p, h2, h3, h4{
     bottom: 2%;
     left: 15%;
     min-height: 12em;
+    overflow-wrap: break-word;
 }
 
 #dialogBox p{
     margin: 1em;
+    width: 97.5%;
 }
