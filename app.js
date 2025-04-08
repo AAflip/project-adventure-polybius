@@ -1,15 +1,17 @@
 //variables
 let storyObj = {
     story: {
-        text: ['The brown fox jumps over the lazy dog'],
+        text: ['123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890hjbfgkhjdsbkhjfdbhjbfdhjkgbhdsbjghfdsbjghfdjhsbgjhsdbfgjhdfsbgjkshdfgjkhdfsbgjkshdfbgjksdhfbgjhkdfsbgkjsdhfgbjsdkhbgjhdsfbgjhsdfbgjkhsdfgshjdkfbgsjdhkbfghjkdfbgjhskdfgbjhdfsbgjhdsfbgjdsfhgbksdfhjgbskdjhfgbsdkjhfgbsdjkfhbgkdjsfhgbsdjkhfgbsdkfjhgbsdkfhjgbsdkjhfgbsjdkhfgbskdjhfbgskdfjhbgskdfhgbsdfkjgbsdfkjhbgsdfjkhbgsdjfhgbdfgshkbgyukdsfhjdfgshbjdfshbjfgdsbhdfgbhjfghbjfgdfdgsbhjfdgsbhjdfbhjdfbhfdbhkbhdfbhjdfsgbhjfsjbhfgdsbjifgdjfgdsjkbdfgjksbjkgfdbhdfsgbhgfdbhfdgbhjfgdbhjfgdhjbfgdbhjfgdhjfdgbjfgdhjbhjdfgbhjgdfhbjgdrbhdgfbhjdfghjdfrhjbdgfjh'],
         backImages: [],
-        images: [[]]
+        images: [['download', 'test image']]
     },
     choices: {
 
     },
     choicesMade: []
 }
+let nextText = ['',''];
+let clickable = false;
 
 //initial function, all functions that should be run on start go in here
 function init() {
@@ -55,23 +57,52 @@ async function updateDialog(dialogData, imgData) {
 
     if (typeof imgData == 'object') {
         boxImage.setAttribute('alt', imgData[1]);
-        boxImage.setAttribute('src', imgData[0]);
+        boxImage.setAttribute('src', '/images/'+imgData[0]+'.png');
     } else {
         boxImage.remove();
     }
-    if(dialogData.length<90){
+
+    let displayedText = '';
+    nextText = ['',''];
+    clickable = false;
     for (let letter of dialogData) {
-        if(letter){
-            boxText.innerText += letter;
+        let setHeight = Math.trunc(boxText.offsetHeight/box.offsetHeight * 10);
+        if (setHeight < 8) {
+            if (letter != ' ') {
+                boxText.innerText += letter;
+                displayedText += letter;
+            } else {
+                boxText.append(' ');
+            }
+            await sleep(1);
         }else{
-            boxText.innerText.append(' ');
+            boxText.style.height = '160px';
+            displayedText = displayedText.split('');
+            displayedText.pop();
+            for(let i=0;i<dialogData.length;i++){
+                if(displayedText[i] !== dialogData[i]){
+                    nextText[0] += dialogData[i];
+                }
+            }
+            clickable = true;
+            nextText[1] = imgData;
+            let boxArrow = document.createElement('img');
+            box.appendChild(boxArrow);
+            boxArrow.setAttribute('src', '/images/arrow-down.gif');
+            boxImage.setAttribute('alt', 'Clicking Indicator');
         }
-        await sleep(25);
     }
-}
 }
 
 //pauses functions
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms || DEF_DELAY));
 }
+
+
+//event listeners
+document.addEventListener('click', event => {
+    if(clickable){
+        updateDialog(nextText[0], nextText[1]);
+    }
+});
