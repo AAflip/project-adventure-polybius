@@ -61,3 +61,15 @@ p, h2, h3, h4{
     max-height: 100%;
     overflow-y: hidden;
 }
+
+@media screen and (max-width: 450px){
+    section{
+        display: none;
+    }
+    body{
+        content: url("/images/rotate.gif");
+        width: 100%;
+        height: fit-content;
+        padding-top: 50%;
+    }
+}
