@@ -70,6 +70,5 @@ p, h2, h3, h4{
         content: url("/images/rotate.gif");
         width: 100%;
         height: fit-content;
-        padding-top: 50%;
     }
 }
