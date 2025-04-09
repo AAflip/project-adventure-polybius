@@ -51,8 +51,26 @@ p, h2, h3, h4{
     bottom: 2%;
     left: 15%;
     min-height: 12em;
+    max-height: 12em;
+    overflow-wrap: break-word;
 }
 
 #dialogBox p{
     margin: 1em;
+    width: 97.5%;
+    line-height: 2em;
+    height: fit-content;
+    max-height: 100%;
+    overflow-y: hidden;
+}
+
+@media screen and (max-width: 450px){
+    section{
+        display: none;
+    }
+    body{
+        content: url("/images/rotate.gif");
+        width: 100%;
+        height: fit-content;
+    }
 }
