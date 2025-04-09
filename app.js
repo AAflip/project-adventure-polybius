@@ -88,8 +88,10 @@ async function updateDialog(dialogData, imgData) {
             nextText[1] = imgData;
             let boxArrow = document.createElement('img');
             box.appendChild(boxArrow);
+            console.log(displayedText.join(''));
             boxArrow.setAttribute('src', '/images/arrow-down.gif');
-            boxImage.setAttribute('alt', 'Clicking Indicator');
+            boxArrow.setAttribute('alt', 'Clicking Indicator');
+            boxArrow.setAttribute('id', 'boxArrow');
         }
     }
 }
