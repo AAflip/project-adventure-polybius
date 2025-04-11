@@ -11,7 +11,14 @@ let storyObj = {
     choicesMade: []
 }
 class items {
-    constructor(type, health, healthAdd, damage) {
+    constructor(type, health, damage, effects) {
+        this.type = type;
+
+        if (type == 'consumable') {
+            if (this.health) {
+
+            }
+        }
 }
 }
 
