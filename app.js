@@ -8,11 +8,30 @@ let storyObj = {
     choices: {
 
     },
-    choicesMade: []
 }
 let nextText = ['',''];
 let clickable = false;
 
+//classes
+//this class handles all the enemies
+class enemy{
+    constructor(name, health, damage, defense, attacks, special){
+        for(let property of arguments){
+            this[property] = property;
+        }
+    }
+}
+
+//this class handles the player and all stats related to them
+class player{
+    constructor(health, defense, damage, specials, effects, choicesMade, items){
+        for(let property of arguments){
+            this[property] = property;
+        }
+    }
+}
+
+//functions
 //initial function, all functions that should be run on start go in here
 function init() {
     movePage('mainView');
@@ -45,6 +64,21 @@ function playSound(name, volume = 1) {
     sound.play();
 }
 
+//this function is the loading animation as well as the loading page cancel
+//haven't coded the cancel yet, will soon
+async function loadingAnimation(){
+    let loadingText = document.createElement('h2');
+    loadingText.innerText = 'Loading';
+    document.getElementById('loading').appendChild(loadingText);
+    let loadingInterval = setInterval(interval => {
+        if(loadingText.innerText != 'Loading...'){
+            loadingText.innerText += '.';
+        }else{
+            loadingText.innerText = 'Loading';
+        }
+    }, 1000);
+}
+
 // updateDialog function, updates the dialog in the dialog box
 async function updateDialog(dialogData, imgData) {
     let box = document.getElementById('dialogBox');
@@ -58,6 +92,7 @@ async function updateDialog(dialogData, imgData) {
     if (typeof imgData == 'object') {
         boxImage.setAttribute('alt', imgData[1]);
         boxImage.setAttribute('src', '/images/'+imgData[0]+'.png');
+        boxImage.setAttribute('id', 'boxImage');
     } else {
         boxImage.remove();
     }
@@ -101,10 +136,12 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms || DEF_DELAY));
 }
 
-
 //event listeners
+//this listener looks for all clicks done on the page and updates dialog if it's done loading
 document.addEventListener('click', event => {
     if(clickable){
         updateDialog(nextText[0], nextText[1]);
     }
 });
+
+document.addEventListener('DOMContentLoaded', loadingAnimation);
