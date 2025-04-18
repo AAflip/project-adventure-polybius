@@ -6,11 +6,13 @@ let storyObj = {
         images: [['download', 'test image']]
     },
     choices: {
-
+        1:[1,2,3],
     },
 }
 let nextText = ['',''];
 let clickable = false;
+let imagesLoaded = false;
+let loadingInterval;
 
 //classes
 //this class handles all the enemies
@@ -33,7 +35,7 @@ class player{
 
 //functions
 //initial function, all functions that should be run on start go in here
-function init() {
+function startGame() {
     movePage('mainView');
     summonDialog('on');
 }
@@ -66,17 +68,30 @@ function playSound(name, volume = 1) {
 
 //this function is the loading animation as well as the loading page cancel
 //haven't coded the cancel yet, will soon
-async function loadingAnimation(){
+function loadingAnimation(){
     let loadingText = document.createElement('h2');
     loadingText.innerText = 'Loading';
     document.getElementById('loading').appendChild(loadingText);
-    let loadingInterval = setInterval(interval => {
+    loadingInterval = setInterval(interval => {
         if(loadingText.innerText != 'Loading...'){
             loadingText.innerText += '.';
         }else{
             loadingText.innerText = 'Loading';
         }
     }, 1000);
+}
+
+//clears intervals and sets new pages
+//only works with loading for now, dont know if expansion needed
+function killInterval(){
+    clearInterval(loadingInterval);
+    movePage('mainMenu');
+}
+
+//testing function
+function setNone(){
+    killInterval();
+    startGame();
 }
 
 // updateDialog function, updates the dialog in the dialog box
@@ -131,6 +146,24 @@ async function updateDialog(dialogData, imgData) {
     }
 }
 
+//this function creates the options for a choice
+//doesnt work :)
+function createChoice(options){
+    summonDialog('off');
+    let optionsDiv = document.createElement('div');
+    optionsDiv.setAttribute('id', 'optionsDiv');
+    for(let option of options){
+        let optButton = document.createElement('button');
+        optButton.innerText = option;
+        optionsDiv.appendChild(optButton);
+    }
+}
+
+//creates puzzle elements
+function createPuzzle(){
+    
+}
+
 //pauses functions
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms || DEF_DELAY));
@@ -144,4 +177,7 @@ document.addEventListener('click', event => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', loadingAnimation);
+document.addEventListener('DOMContentLoaded', () => {
+    loadingAnimation();
+    setNone();
+});
