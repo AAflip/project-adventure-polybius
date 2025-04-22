@@ -3,14 +3,20 @@
     src: url(Web437_IBM_BIOS.woff2);
 }
 
-#mainMenu{
+#loading{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+}
+
+#mainMenu{
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-    background-image: url(/backgrounds/main-menu.png);
+    background-image: url(/backgrounds/main-menu.avif);
     background-size: 100% 100%
 }
 
@@ -33,6 +39,7 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    margin: 0;
 }
 
 * {
@@ -68,8 +75,34 @@ p, h2, h3, h4{
     max-width: 100px;
     height: fit-content;
     align-self: flex-end;
+    right: -8em;
+    position: absolute;
 }
 
+#boxImage{
+    max-width: 11em;
+    max-height: 100%;
+}
+
+#optionsDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* media query for phone screen size */
+/* max-width is temporary, replace with better number */
+@media screen and (max-width: 700px){
+    #dialogBox{
+        left: 2%;
+        width: 95%;
+    }
+    #boxArrow{
+        right: -1em;
+        top: -67vh;
+    }
+}
+
+/* media query for upright phone */
 @media screen and (max-width: 450px){
     section{
         display: none;

@@ -9,7 +9,7 @@
 </head>
 <body>
     <section class="page" id="mainMenu">
-        <button onclick="init()">Start Game</button>
+        <button onclick="startGame()">Start Game</button>
         <button onclick="movePage('options')">Options</button>
         <button onclick="movePage('credits')">Credits</button>
     </section>
@@ -22,6 +22,7 @@
     <!-- this page is mainly for the background stuff -->
     <section id="mainView">
         <button onclick="updateDialog(storyObj.story.text[0], storyObj.story.images[0])">test</button>
+        <button onclick="createChoice(storyObj.choices[1])">test2</button>
     </section>
     <!-- this page is for the dialog stuff, nothing else -->
     <section id="dialogBox">
@@ -35,6 +36,8 @@
         <h4>and</h4>
         <h3>David Madden</h3>
         <button onclick="movePage('mainMenu')">Return</button>
+    </section>
+    <section class="page" id="loading">
     </section>
 </body>
 </html>

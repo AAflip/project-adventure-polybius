@@ -3,18 +3,51 @@ let storyObj = {
     story: {
         text: ['123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890hjbfgkhjdsbkhjfdbhjbfdhjkgbhdsbjghfdsbjghfdjhsbgjhsdbfgjhdfsbgjkshdfgjkhdfsbgjkshdfbgjksdhfbgjhkdfsbgkjsdhfgbjsdkhbgjhdsfbgjhsdfbgjkhsdfgshjdkfbgsjdhkbfghjkdfbgjhskdfgbjhdfsbgjhdsfbgjdsfhgbksdfhjgbskdjhfgbsdkjhfgbsdjkfhbgkdjsfhgbsdjkhfgbsdkfjhgbsdkfhjgbsdkjhfgbsjdkhfgbskdjhfbgskdfjhbgskdfhgbsdfkjgbsdfkjhbgsdfjkhbgsdjfhgbdfgshkbgyukdsfhjdfgshbjdfshbjfgdsbhdfgbhjfghbjfgdfdgsbhjfdgsbhjdfbhjdfbhfdbhkbhdfbhjdfsgbhjfsjbhfgdsbjifgdjfgdsjkbdfgjksbjkgfdbhdfsgbhgfdbhfdgbhjfgdbhjfgdhjbfgdbhjfgdhjfdgbjfgdhjbhjdfgbhjgdfhbjgdrbhdgfbhjdfghjdfrhjbdgfjh'],
         backImages: [],
-        images: [['download', 'test image']]
+        images: [['download', 'test image']],
     },
     choices: {
-
+        1:[1,2,3],
     },
-    choicesMade: []
 }
+class items {
+    constructor(type, health, damage, effects) {
+        this.type = type;
+
+        if (type == 'consumable') {
+            if (this.health) {
+
+            }
+        }
+}
+}
+
 let nextText = ['',''];
 let clickable = false;
+let imagesLoaded = false;
+let loadingInterval;
 
+//classes
+//this class handles all the enemies
+class enemy{
+    constructor(name, health, damage, defense, attacks, special){
+        for(let property of arguments){
+            this[property] = property;
+        }
+    }
+}
+
+//this class handles the player and all stats related to them
+class player{
+    constructor(health, defense, damage, specials, effects, choicesMade, items){
+        for(let property of arguments){
+            this[property] = property;
+        }
+    }
+}
+
+//functions
 //initial function, all functions that should be run on start go in here
-function init() {
+function startGame() {
     movePage('mainView');
     summonDialog('on');
 }
@@ -45,6 +78,34 @@ function playSound(name, volume = 1) {
     sound.play();
 }
 
+//this function is the loading animation as well as the loading page cancel
+//haven't coded the cancel yet, will soon
+function loadingAnimation(){
+    let loadingText = document.createElement('h2');
+    loadingText.innerText = 'Loading';
+    document.getElementById('loading').appendChild(loadingText);
+    loadingInterval = setInterval(interval => {
+        if(loadingText.innerText != 'Loading...'){
+            loadingText.innerText += '.';
+        }else{
+            loadingText.innerText = 'Loading';
+        }
+    }, 1000);
+}
+
+//clears intervals and sets new pages
+//only works with loading for now, dont know if expansion needed
+function killInterval(){
+    clearInterval(loadingInterval);
+    movePage('mainMenu');
+}
+
+//testing function
+function setNone(){
+    killInterval();
+    startGame();
+}
+
 // updateDialog function, updates the dialog in the dialog box
 async function updateDialog(dialogData, imgData) {
     let box = document.getElementById('dialogBox');
@@ -58,6 +119,7 @@ async function updateDialog(dialogData, imgData) {
     if (typeof imgData == 'object') {
         boxImage.setAttribute('alt', imgData[1]);
         boxImage.setAttribute('src', '/images/'+imgData[0]+'.png');
+        boxImage.setAttribute('id', 'boxImage');
     } else {
         boxImage.remove();
     }
@@ -96,15 +158,38 @@ async function updateDialog(dialogData, imgData) {
     }
 }
 
+//this function creates the options for a choice
+//doesnt work :)
+function createChoice(options){
+    summonDialog('off');
+    let optionsDiv = document.createElement('div');
+    optionsDiv.setAttribute('id', 'optionsDiv');
+    for(let option of options){
+        let optButton = document.createElement('button');
+        optButton.innerText = option;
+        optionsDiv.appendChild(optButton);
+    }
+}
+
+//creates puzzle elements
+function createPuzzle(){
+    
+}
+
 //pauses functions
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms || DEF_DELAY));
 }
 
-
 //event listeners
+//this listener looks for all clicks done on the page and updates dialog if it's done loading
 document.addEventListener('click', event => {
     if(clickable){
         updateDialog(nextText[0], nextText[1]);
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadingAnimation();
+    setNone();
 });
