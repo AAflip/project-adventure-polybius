@@ -159,16 +159,17 @@ async function updateDialog(dialogData, imgData) {
 }
 
 //this function creates the options for a choice
-//doesnt work :)
 function createChoice(options){
     summonDialog('off');
     let optionsDiv = document.createElement('div');
     optionsDiv.setAttribute('id', 'optionsDiv');
     for(let option of options){
         let optButton = document.createElement('button');
-        optButton.innerText = option;
+        optButton.innerText = `${option}`;
         optionsDiv.appendChild(optButton);
     }
+    let optionsBox = document.getElementById('mainView');
+    optionsBox.appendChild(optionsDiv);
 }
 
 //creates puzzle elements
