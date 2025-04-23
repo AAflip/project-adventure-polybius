@@ -21,7 +21,8 @@ let nextText = ['', ''];
 let clickable = false;
 let imagesLoaded = false;
 let loadingInterval;
-
+let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
+let images = [];
 //classes
 //this class handles all the enemies
 class enemy {
@@ -76,7 +77,7 @@ function playSound(name, volume = 1) {
 
 //this function is the loading animation as well as the loading page cancel
 //haven't coded the cancel yet, will soon
-function loadingAnimation() {
+async function loadingAnimation() {
     let loadingText = document.createElement('h2');
     loadingText.innerText = 'Loading';
     document.getElementById('loading').appendChild(loadingText);
@@ -87,6 +88,8 @@ function loadingAnimation() {
             loadingText.innerText = 'Loading';
         }
     }, 1000);
+    await preloadImage();
+    killInterval();
 }
 
 //clears intervals and sets new pages
@@ -171,13 +174,23 @@ function createChoice(options) {
 function createPuzzle() {
 
 }
-let preload = []
-let images = [];
+
+function combatSys() {
+    
+}
+
+async function preloadImage() {
 for (i = 0; i < preload.length; i++) {
     images[i] = new Image();
     images[i].src = preload[i];
 }
-
+return new Promise(resolve => {
+    setTimeout(function () {
+        resolve("\t\t This is second promise");
+        console.log("Returned second promise");
+    }, 4000);
+});
+}
 
 //pauses functions
 function sleep(ms) {
@@ -193,6 +206,5 @@ document.addEventListener('click', event => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    movePage('mainMenu')
-    preloadImage()
+    loadingAnimation()    
 });
