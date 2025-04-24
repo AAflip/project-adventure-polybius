@@ -6,40 +6,38 @@ let storyObj = {
         images: [['download', 'test image']],
     },
     choices: {
-        1:[1,2,3],
+        1: [1, 2, 3],
     },
 }
-class items {
-    constructor(type, health, damage, effects) {
-        this.type = type;
-
-        if (type == 'consumable') {
-            if (this.health) {
-
-            }
-        }
-}
-}
-
-let nextText = ['',''];
+let nextText = ['', ''];
 let clickable = false;
 let imagesLoaded = false;
 let loadingInterval;
-
+let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
+let images = [];
 //classes
+//
+class items {
+    constructor(type, health, damage, effects) {
+        for (let property of arguments) {
+            this[property] = property;
+        }
+    }
+}
+
 //this class handles all the enemies
-class enemy{
-    constructor(name, health, damage, defense, attacks, special){
-        for(let property of arguments){
+class enemy {
+    constructor(name, health, damage, defense, attacks, special) {
+        for (let property of arguments) {
             this[property] = property;
         }
     }
 }
 
 //this class handles the player and all stats related to them
-class player{
-    constructor(health, defense, damage, specials, effects, choicesMade, items){
-        for(let property of arguments){
+class player {
+    constructor(health, defense, damage, specials, effects, choicesMade, items) {
+        for (let property of arguments) {
             this[property] = property;
         }
     }
@@ -80,28 +78,30 @@ function playSound(name, volume = 1) {
 
 //this function is the loading animation as well as the loading page cancel
 //haven't coded the cancel yet, will soon
-function loadingAnimation(){
+async function loadingAnimation() {
     let loadingText = document.createElement('h2');
     loadingText.innerText = 'Loading';
     document.getElementById('loading').appendChild(loadingText);
     loadingInterval = setInterval(interval => {
-        if(loadingText.innerText != 'Loading...'){
+        if (loadingText.innerText != 'Loading...') {
             loadingText.innerText += '.';
-        }else{
+        } else {
             loadingText.innerText = 'Loading';
         }
     }, 1000);
+    await preloadImage();
+    killInterval();
 }
 
 //clears intervals and sets new pages
 //only works with loading for now, dont know if expansion needed
-function killInterval(){
+function killInterval() {
     clearInterval(loadingInterval);
     movePage('mainMenu');
 }
 
 //testing function
-function setNone(){
+function setNone() {
     killInterval();
     startGame();
 }
@@ -118,17 +118,17 @@ async function updateDialog(dialogData, imgData) {
 
     if (typeof imgData == 'object') {
         boxImage.setAttribute('alt', imgData[1]);
-        boxImage.setAttribute('src', '/images/'+imgData[0]+'.png');
+        boxImage.setAttribute('src', '/images/' + imgData[0] + '.png');
         boxImage.setAttribute('id', 'boxImage');
     } else {
         boxImage.remove();
     }
 
     let displayedText = '';
-    nextText = ['',''];
+    nextText = ['', ''];
     clickable = false;
     for (let letter of dialogData) {
-        let setHeight = Math.trunc(boxText.offsetHeight/box.offsetHeight * 10);
+        let setHeight = Math.trunc(boxText.offsetHeight / box.offsetHeight * 10);
         if (setHeight < 8) {
             if (letter != ' ') {
                 boxText.innerText += letter;
@@ -137,12 +137,12 @@ async function updateDialog(dialogData, imgData) {
                 boxText.append(' ');
             }
             await sleep(1);
-        }else{
+        } else {
             boxText.style.height = '160px';
             displayedText = displayedText.split('');
             displayedText.pop();
-            for(let i=0;i<dialogData.length;i++){
-                if(displayedText[i] !== dialogData[i]){
+            for (let i = 0; i < dialogData.length; i++) {
+                if (displayedText[i] !== dialogData[i]) {
                     nextText[0] += dialogData[i];
                 }
             }
@@ -163,7 +163,7 @@ function createChoice(options){
     summonDialog('off');
     let optionsDiv = document.createElement('div');
     optionsDiv.setAttribute('id', 'optionsDiv');
-    for(let option of options){
+    for (let option of options) {
         let optButton = document.createElement('button');
         optButton.innerText = `${option}`;
         optionsDiv.appendChild(optButton);
@@ -173,8 +173,25 @@ function createChoice(options){
 }
 
 //creates puzzle elements
-function createPuzzle(){
+function createPuzzle() {
+
+}
+
+function combatSys() {
     
+}
+
+async function preloadImage() {
+for (i = 0; i < preload.length; i++) {
+    images[i] = new Image();
+    images[i].src = preload[i];
+}
+return new Promise(resolve => {
+    setTimeout(function () {
+        resolve("\t\t This is second promise");
+        console.log("Returned second promise");
+    }, 4000);
+});
 }
 
 //pauses functions
@@ -185,13 +202,11 @@ function sleep(ms) {
 //event listeners
 //this listener looks for all clicks done on the page and updates dialog if it's done loading
 document.addEventListener('click', event => {
-    if(clickable){
+    if (clickable) {
         updateDialog(nextText[0], nextText[1]);
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // loadingAnimation();
-    // setNone();
-    movePage('mainMenu');
+    loadingAnimation();
 });
