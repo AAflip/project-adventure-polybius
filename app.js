@@ -191,6 +191,7 @@ document.addEventListener('click', event => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadingAnimation();
-    setNone();
+    // loadingAnimation();
+    // setNone();
+    movePage('mainMenu');
 });

@@ -327,7 +327,7 @@
         },
     };
 
-    WebAssembly.instantiateStreaming(fetch("src/routes/doom.wasm"), importObject).then(
+    WebAssembly.instantiateStreaming(fetch("/doom.wasm"), importObject).then(
         (obj) => {
 
             obj.instance.exports.main();

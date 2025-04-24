@@ -51,6 +51,14 @@ p, h2, h3, h4{
     color: white;
 }
 
+#egg{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: default;
+}
+
 #dialogBox{
     border: 5px solid white;
     position: absolute;
