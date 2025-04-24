@@ -6,7 +6,7 @@ let storyObj = {
         images: [['download', 'test image']],
     },
     choices: {
-        1: [1, 2, 3],
+        1: ['hello', 2],
     },
 }
 let nextText = ['', ''];
@@ -48,6 +48,7 @@ class player {
 function startGame() {
     movePage('mainView');
     summonDialog('on');
+    // updateDialog(storyObj.story.text);
 }
 
 //movePage function, shifts display of the sections, not the content
@@ -76,8 +77,28 @@ function playSound(name, volume = 1) {
     sound.play();
 }
 
+//
+function playVideo(){
+    movePage('mainView');
+    summonDialog('off');
+    let background = document.getElementById('body');
+    let mainView = document.getElementById('mainView');
+    let backImage = background.style.backgroundImage;
+    mainView.style.display = 'none';
+    background.style.background = 'black';
+    let video = document.createElement('video');
+    video.id = 'introVideo';
+    video.autoplay = true;
+    let videoSource = document.createElement('source');
+    videoSource.src = '/introVideo.mp4';
+    videoSource.type = 'video/mp4';
+    video.style.height = '100%';
+    video.style.filter = 'brightness(2)';
+    video.appendChild(videoSource);
+    document.getElementById('body').appendChild(video);
+}
+
 //this function is the loading animation as well as the loading page cancel
-//haven't coded the cancel yet, will soon
 async function loadingAnimation() {
     let loadingText = document.createElement('h2');
     loadingText.innerText = 'Loading';
@@ -104,6 +125,15 @@ function killInterval() {
 function setNone() {
     killInterval();
     startGame();
+}
+
+//
+async function updateBackground(imageUrl){
+    if(imageUrl){
+        document.getElementById('body').style.backgroundImage = `url(backgrounds/${imageUrl})`
+    }else{
+        document.getElementById('body').style.background = 'black';
+    }
 }
 
 // updateDialog function, updates the dialog in the dialog box
@@ -158,6 +188,13 @@ async function updateDialog(dialogData, imgData) {
     }
 }
 
+//
+function chooseOption(choice){
+    document.getElementById('body').style.backdropFilter = ``;
+    document.getElementById('optionsDiv').remove();
+    summonDialog('on');
+}
+
 //this function creates the options for a choice
 function createChoice(options){
     summonDialog('off');
@@ -166,10 +203,12 @@ function createChoice(options){
     for (let option of options) {
         let optButton = document.createElement('button');
         optButton.innerText = `${option}`;
+        optButton.setAttribute('onclick', 'chooseOption(this.innerText)');
         optionsDiv.appendChild(optButton);
     }
     let optionsBox = document.getElementById('mainView');
     optionsBox.appendChild(optionsDiv);
+    document.getElementById('body').style.backdropFilter = `blur(5px) brightness(0.5)`;
 }
 
 //creates puzzle elements
@@ -177,6 +216,13 @@ function createPuzzle() {
 
 }
 
+//
+function startBattle(){
+    movePage('battle');
+    updateBackground('main.avif');
+}
+
+//
 function combatSys() {
     
 }
@@ -208,5 +254,6 @@ document.addEventListener('click', event => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadingAnimation();
+    // loadingAnimation();
+    setNone();
 });

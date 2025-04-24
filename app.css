@@ -34,12 +34,15 @@ section{
 body {
     background-image: url();
     background-color: black;
-    height: 97vh;
-    width: 99vw;
+    height: 99.5vh;
+    width: 99.5vw;
     display: flex;
     flex-direction: column;
     position: relative;
     margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 * {
@@ -59,6 +62,17 @@ p, h2, h3, h4{
     cursor: default;
 }
 
+#optionsDiv{
+    position: absolute;
+    left: 44%;
+    top: 45%;
+    gap: 2em;
+}
+
+#optionsDiv > button{
+    padding: 2em;
+}
+
 #dialogBox{
     border: 5px solid white;
     position: absolute;
@@ -68,6 +82,7 @@ p, h2, h3, h4{
     min-height: 12em;
     max-height: 12em;
     overflow-wrap: break-word;
+    background: rgb(0, 0, 0, 0.8);
 }
 
 #dialogBox p{
