@@ -11,7 +11,7 @@ let storyObj = {
             introWTW: "I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.",
             introBuilding: "I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.",
             introEnter: "I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.",
-            
+
         },
         backImages: [],
         images: [['download', 'test image']],
@@ -26,6 +26,7 @@ let imagesLoaded = false;
 let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
 let images = [];
+let video = document.createElement('video')
 //classes
 //
 class items {
@@ -90,24 +91,23 @@ function playSound(name, volume = 1) {
 }
 
 //
+async function preloadVideo(){
+    video.id = 'introVideo';
+    video.autoplay = true;
+    video.src = '/cutscenes/introVideo.mp4';
+    video.style.height = '100%';
+    video.style.filter = 'brightness(2)';
+}
+
 function playVideo(){
     movePage('mainView');
     summonDialog('off');
-    let background = document.getElementById('body');
     let mainView = document.getElementById('mainView');
+    let background = document.getElementById('body');
     let backImage = background.style.backgroundImage;
-    mainView.style.display = 'none';
     background.style.background = 'black';
-    let video = document.createElement('video');
-    video.id = 'introVideo';
-    video.autoplay = true;
-    let videoSource = document.createElement('source');
-    videoSource.src = '/introVideo.mp4';
-    videoSource.type = 'video/mp4';
-    video.style.height = '100%';
-    video.style.filter = 'brightness(2)';
-    video.appendChild(videoSource);
-    document.getElementById('body').appendChild(video);
+    mainView.style.display = 'none';
+    background.appendChild(video);
 }
 
 //this function is the loading animation as well as the loading page cancel
@@ -240,6 +240,7 @@ function combatSys() {
 }
 
 async function preloadImage() {
+
 for (i = 0; i < preload.length; i++) {
     images[i] = new Image();
     images[i].src = preload[i];
@@ -268,4 +269,6 @@ document.addEventListener('click', event => {
 document.addEventListener('DOMContentLoaded', () => {
     // loadingAnimation();
     movePage('mainMenu');
+    preloadImage(); 
+    preloadVideo();
 });
