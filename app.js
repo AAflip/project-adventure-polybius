@@ -1,8 +1,8 @@
 //variables
 let storyObj = {
     story: {
-        text:{ 
-            prologue:'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting but now as I look at this burning city I can’t help but think that there is no future left for us.',
+        text: {
+            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting but now as I look at this burning city I can’t help but think that there is no future left for us.',
             intro: 'The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.',
             introExplore: "I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.",
             introShower: "I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.",
@@ -11,7 +11,7 @@ let storyObj = {
             introWTW: "I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.",
             introBuilding: "I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.",
             introEnter: "I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.",
-            
+
         },
         backImages: [],
         images: [['download', 'test image']],
@@ -89,7 +89,7 @@ function playSound(name, volume = 1) {
 }
 
 //
-function playVideo(){
+function playVideo() {
     movePage('mainView');
     summonDialog('off');
     let background = document.getElementById('body');
@@ -97,9 +97,9 @@ function playVideo(){
     let backImage = background.style.backgroundImage;
     let imgName = [];
     backImage = backImage.split('');
-    if(backImage){
-        for(let i=17;i<backImage.length;i++){
-            if(i<26){
+    if (backImage) {
+        for (let i = 17; i < backImage.length; i++) {
+            if (i < 26) {
                 imgName.push(backImage[i]);
             }
         }
@@ -152,12 +152,12 @@ function setNone() {
 }
 
 //
-async function updateBackground(imageUrl){
+async function updateBackground(imageUrl) {
     document.getElementById('body').style.backgroundImage = '';
     document.getElementById('body').style.background = '';
-    if(imageUrl){
+    if (imageUrl) {
         document.getElementById('body').style.backgroundImage = `url(backgrounds/${imageUrl})`
-    }else{
+    } else {
         document.getElementById('body').style.background = 'black';
     }
 }
@@ -183,20 +183,20 @@ async function updateDialog(dialogData, imgData) {
     let displayedText = '';
     nextText = ['', ''];
     clickable = false;
+    let rune = true;
     for (let letter of dialogData) {
         let setHeight = Math.trunc(boxText.offsetHeight / box.offsetHeight * 10);
         if (setHeight < 8) {
-            if (letter != ' ') {
-                boxText.innerText += letter;
-                displayedText += letter;
-            } else {
-                boxText.append(' ');
-            }
+            boxText.innerHTML += letter;
+            displayedText += letter;
             await sleep(1);
         } else {
-            boxText.style.height = '160px';
+            // boxText.style.height = '160px';
+            console.log(displayedText);
             displayedText = displayedText.split('');
             displayedText.pop();
+            displayedText = displayedText.join('');
+            boxText.innerHTML = displayedText;
             for (let i = 0; i < dialogData.length; i++) {
                 if (displayedText[i] !== dialogData[i]) {
                     nextText[0] += dialogData[i];
@@ -206,23 +206,24 @@ async function updateDialog(dialogData, imgData) {
             nextText[1] = imgData;
             let boxArrow = document.createElement('img');
             box.appendChild(boxArrow);
-            console.log(displayedText.join(''));
             boxArrow.setAttribute('src', '/images/arrow-down.gif');
             boxArrow.setAttribute('alt', 'Clicking Indicator');
             boxArrow.setAttribute('id', 'boxArrow');
+            rune == false;
+
         }
     }
 }
 
 //
-function chooseOption(choice){
+function chooseOption(choice) {
     document.getElementById('body').style.backdropFilter = ``;
     document.getElementById('optionsDiv').remove();
     summonDialog('on');
 }
 
 //this function creates the options for a choice
-function createChoice(options){
+function createChoice(options) {
     summonDialog('off');
     let optionsDiv = document.createElement('div');
     optionsDiv.setAttribute('id', 'optionsDiv');
@@ -243,27 +244,27 @@ function createPuzzle() {
 }
 
 //
-function startBattle(){
+function startBattle() {
     movePage('battle');
     updateBackground('main.avif');
 }
 
 //
 function combatSys() {
-    
+
 }
 
 async function preloadImage() {
-for (i = 0; i < preload.length; i++) {
-    images[i] = new Image();
-    images[i].src = preload[i];
-}
-return new Promise(resolve => {
-    setTimeout(function () {
-        resolve("\t\t This is second promise");
-        console.log("Returned second promise");
-    }, 4000);
-});
+    for (i = 0; i < preload.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload[i];
+    }
+    return new Promise(resolve => {
+        setTimeout(function () {
+            resolve("\t\t This is second promise");
+            console.log("Returned second promise");
+        }, 4000);
+    });
 }
 
 //pauses functions
