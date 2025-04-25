@@ -119,12 +119,6 @@ function playVideo(){
     }
     mainView.style.display = 'none';
     background.style.background = 'black';
-    let video = document.createElement('video');
-    video.id = 'introVideo';
-    video.autoplay = true;
-    video.src = '/cutscenes/introVideo.mp4';
-    video.style.height = '100%';
-    video.style.filter = 'brightness(2)';
     document.getElementById('body').appendChild(video);
     video.addEventListener('ended', () => {
         video.remove();
