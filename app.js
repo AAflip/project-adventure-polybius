@@ -63,7 +63,6 @@ function movePage(to) {
 //summonDialog function, makes the dialog box visible/not visible
 function summonDialog(state) {
     let box = document.getElementById('dialogBox');
-    //hi
     if (state == 'on') {
         box.style.display = 'flex';
     } else {
@@ -85,18 +84,31 @@ function playVideo(){
     let background = document.getElementById('body');
     let mainView = document.getElementById('mainView');
     let backImage = background.style.backgroundImage;
+    let imgName = [];
+    backImage = backImage.split('');
+    if(backImage){
+        for(let i=17;i<backImage.length;i++){
+            if(i<26){
+                imgName.push(backImage[i]);
+            }
+        }
+        imgName = imgName.join('');
+    }
     mainView.style.display = 'none';
     background.style.background = 'black';
     let video = document.createElement('video');
     video.id = 'introVideo';
     video.autoplay = true;
-    let videoSource = document.createElement('source');
-    videoSource.src = '/introVideo.mp4';
-    videoSource.type = 'video/mp4';
+    video.src = '/cutscenes/introVideo.mp4';
     video.style.height = '100%';
     video.style.filter = 'brightness(2)';
-    video.appendChild(videoSource);
     document.getElementById('body').appendChild(video);
+    video.addEventListener('ended', () => {
+        video.remove();
+        movePage('mainView');
+        summonDialog('on');
+        updateBackground(imgName);
+    });
 }
 
 //this function is the loading animation as well as the loading page cancel
@@ -104,7 +116,7 @@ async function loadingAnimation() {
     let loadingText = document.createElement('h2');
     loadingText.innerText = 'Loading';
     document.getElementById('loading').appendChild(loadingText);
-    loadingInterval = setInterval(interval => {
+    loadingInterval = setInterval(() => {
         if (loadingText.innerText != 'Loading...') {
             loadingText.innerText += '.';
         } else {
@@ -130,6 +142,8 @@ function setNone() {
 
 //
 async function updateBackground(imageUrl){
+    document.getElementById('body').style.backgroundImage = '';
+    document.getElementById('body').style.background = '';
     if(imageUrl){
         document.getElementById('body').style.backgroundImage = `url(backgrounds/${imageUrl})`
     }else{
