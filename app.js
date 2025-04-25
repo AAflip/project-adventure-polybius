@@ -1,7 +1,18 @@
 //variables
 let storyObj = {
     story: {
-        text: ['123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890hjbfgkhjdsbkhjfdbhjbfdhjkgbhdsbjghfdsbjghfdjhsbgjhsdbfgjhdfsbgjkshdfgjkhdfsbgjkshdfbgjksdhfbgjhkdfsbgkjsdhfgbjsdkhbgjhdsfbgjhsdfbgjkhsdfgshjdkfbgsjdhkbfghjkdfbgjhskdfgbjhdfsbgjhdsfbgjdsfhgbksdfhjgbskdjhfgbsdkjhfgbsdjkfhbgkdjsfhgbsdjkhfgbsdkfjhgbsdkfhjgbsdkjhfgbsjdkhfgbskdjhfbgskdfjhbgskdfhgbsdfkjgbsdfkjhbgsdfjkhbgsdjfhgbdfgshkbgyukdsfhjdfgshbjdfshbjfgdsbhdfgbhjfghbjfgdfdgsbhjfdgsbhjdfbhjdfbhfdbhkbhdfbhjdfsgbhjfsjbhfgdsbjifgdjfgdsjkbdfgjksbjkgfdbhdfsgbhgfdbhfdgbhjfgdbhjfgdhjbfgdbhjfgdhjfdgbjfgdhjbhjdfgbhjgdfhbjgdrbhdgfbhjdfghjdfrhjbdgfjh'],
+        text:{ 
+            prologue:'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting but now as I look at this burning city I can’t help but think that there is no future left for us.',
+            intro: 'The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.',
+            introExplore: "I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.",
+            introShower: "I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.",
+            introEnterance: "I look for the thousandth time at the shabby place I call home. It’s a two room apartment that, if I stretch out my hands, can touch from end to end. Thankfully I lucked out on the government housing and at the very least have my own separate bathroom, every other poor soul has to go all the way down to the foyer.",
+            introLeave: "After making sure I have everything I put on a mask so as to not irritate my lungs with the pollutants in the outside air.",
+            introWTW: "I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.",
+            introBuilding: "I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.",
+            introEnter: "I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.",
+            
+        },
         backImages: [],
         images: [['download', 'test image']],
     },
@@ -270,5 +281,5 @@ document.addEventListener('click', event => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // loadingAnimation();
-    setNone();
+    movePage('mainMenu');
 });
