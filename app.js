@@ -74,6 +74,7 @@ function movePage(to) {
 //summonDialog function, makes the dialog box visible/not visible
 function summonDialog(state) {
     let box = document.getElementById('dialogBox');
+    //hi
     if (state == 'on') {
         box.style.display = 'flex';
     } else {
