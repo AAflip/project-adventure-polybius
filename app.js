@@ -26,7 +26,6 @@ let imagesLoaded = false;
 let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
 let images = [];
-let video = document.createElement('video')
 //classes
 //
 class items {
@@ -96,9 +95,11 @@ function playVideo() {
     let mainView = document.getElementById('mainView');
     let background = document.getElementById('body');
     let backImage = background.style.backgroundImage;
+    let video = document.getElementById('introVideo');
     background.style.background = 'black';
     mainView.style.display = 'none';
-    background.appendChild(video);
+    video.style.left = '50%';
+    video.play();
     let imgName = [];
     backImage = backImage.split('');
     if (backImage) {
@@ -109,9 +110,6 @@ function playVideo() {
         }
         imgName = imgName.join('');
     }
-    mainView.style.display = 'none';
-    background.style.background = 'black';
-    document.getElementById('body').appendChild(video);
     video.addEventListener('ended', () => {
         video.remove();
         movePage('mainView');
@@ -181,7 +179,7 @@ async function updateDialog(dialogData, imgData) {
     let displayedText = '';
     nextText = ['', ''];
     clickable = false;
-    let rune = true;
+    let moreText = false;
     for (let letter of dialogData) {
         let setHeight = Math.trunc(boxText.offsetHeight / box.offsetHeight * 10);
         if (setHeight < 8) {
@@ -189,27 +187,26 @@ async function updateDialog(dialogData, imgData) {
             displayedText += letter;
             await sleep(1);
         } else {
-            // boxText.style.height = '160px';
-            console.log(displayedText);
-            displayedText = displayedText.split('');
-            displayedText.pop();
-            displayedText = displayedText.join('');
-            boxText.innerHTML = displayedText;
-            for (let i = 0; i < dialogData.length; i++) {
-                if (displayedText[i] !== dialogData[i]) {
-                    nextText[0] += dialogData[i];
-                }
-            }
-            clickable = true;
-            nextText[1] = imgData;
-            let boxArrow = document.createElement('img');
-            box.appendChild(boxArrow);
-            boxArrow.setAttribute('src', '/images/arrow-down.gif');
-            boxArrow.setAttribute('alt', 'Clicking Indicator');
-            boxArrow.setAttribute('id', 'boxArrow');
-            rune == false;
-
+            moreText = true;
         }
+    }
+    for (let i = 0; i < dialogData.length; i++) {
+        if (displayedText[i] !== dialogData[i]) {
+            nextText[0] += dialogData[i];
+        }
+    }
+    if (moreText) {
+        displayedText = displayedText.split('');
+        displayedText.pop();
+        displayedText = displayedText.join('');
+        boxText.innerHTML = displayedText;
+        clickable = true;
+        nextText[1] = imgData;
+        let boxArrow = document.createElement('img');
+        box.appendChild(boxArrow);
+        boxArrow.setAttribute('src', '/images/arrow-down.gif');
+        boxArrow.setAttribute('alt', 'Clicking Indicator');
+        boxArrow.setAttribute('id', 'boxArrow');
     }
 }
 
@@ -281,6 +278,5 @@ document.addEventListener('click', event => {
 document.addEventListener('DOMContentLoaded', () => {
     // loadingAnimation();
     movePage('mainMenu');
-    preloadImage(); 
-    preloadVideo();
+    preloadImage();
 });

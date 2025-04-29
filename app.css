@@ -10,6 +10,15 @@
     height: 98vh;
 }
 
+#introVideo{
+    height: 100%;
+    filter: brightness(2);
+    position: absolute;
+    top: 50%;
+    left: -9999px;
+    transform: translate(-50%, -50%);
+}
+
 #mainMenu{
     flex-direction: column;
     justify-content: center;
