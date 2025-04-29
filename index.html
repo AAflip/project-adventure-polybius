@@ -32,9 +32,17 @@
     <!-- this page is for the dialog stuff, nothing else -->
     <section id="dialogBox">
     </section>
-    <section id="puzzles">
+    <section class="page" id="puzzles">
     </section>
     <section class="page" id="options">
+        <div id="volumeGroup">
+            <input id="volumeNum" type="number" min="0" max="100" value="100">
+            <input id="volumeSlide" type="range">
+        </div>
+        <div id="textSpeedGroup">
+            <input id="textSpeedNum" type="number" max="50" min="1" value="1">
+            <input id="textSpeedSlide" type="range" min="1" max="50">
+        </div>
         <button onclick="movePage('mainMenu')">Return</button>
     </section>
     <section class="page" id="credits">

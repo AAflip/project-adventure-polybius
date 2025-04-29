@@ -185,7 +185,7 @@ async function updateDialog(dialogData, imgData) {
         if (setHeight < 8) {
             boxText.innerHTML += letter;
             displayedText += letter;
-            await sleep(1);
+            await sleep(25);
         } else {
             moreText = true;
         }
@@ -238,7 +238,7 @@ function createPuzzle(puzzleNo) {
     let puzzleBox = document.getElementById('puzzles');
     switch (puzzleNo) {
         case 1:
-            
+
     }
 }
 
@@ -273,7 +273,7 @@ function sleep(ms) {
 
 //event listeners
 //this listener looks for all clicks done on the page and updates dialog if it's done loading
-document.addEventListener('click', event => {
+document.addEventListener('click', () => {
     if (clickable) {
         updateDialog(nextText[0], nextText[1]);
     }
@@ -281,7 +281,24 @@ document.addEventListener('click', event => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // loadingAnimation();
-    // movePage('mainMenu');
+    movePage('options');
     // preloadImage();
-    startBattle();
+    // startBattle();
+});
+
+
+document.getElementById('volumeGroup').addEventListener("input", (e) => {  
+    if(e.target == 'volumeNum'){
+        document.getElementById('volumeSlide').value = e.target.value;
+    }else{
+        document.getElementById('volumeNum').value = e.target.value;
+    }
+});
+
+document.getElementById('textSpeedGroup').addEventListener("input", (e) => {  
+    if(e.target == 'textSpeedNum'){
+        document.getElementById('textSpeedSlide').value = e.target.value;
+    }else{
+        document.getElementById('textSpeedNum').value = e.target.value;
+    }
 });
