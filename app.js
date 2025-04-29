@@ -190,11 +190,6 @@ async function updateDialog(dialogData, imgData) {
             moreText = true;
         }
     }
-    for (let i = 0; i < dialogData.length; i++) {
-        if (displayedText[i] !== dialogData[i]) {
-            nextText[0] += dialogData[i];
-        }
-    }
     if (moreText) {
         displayedText = displayedText.split('');
         displayedText.pop();
@@ -207,6 +202,11 @@ async function updateDialog(dialogData, imgData) {
         boxArrow.setAttribute('src', '/images/arrow-down.gif');
         boxArrow.setAttribute('alt', 'Clicking Indicator');
         boxArrow.setAttribute('id', 'boxArrow');
+    }
+    for (let i = 0; i < dialogData.length; i++) {
+        if (displayedText[i] !== dialogData[i]) {
+            nextText[0] += dialogData[i];
+        }
     }
 }
 
@@ -234,8 +234,12 @@ function createChoice(options) {
 }
 
 //creates puzzle elements
-function createPuzzle() {
-
+function createPuzzle(puzzleNo) {
+    let puzzleBox = document.getElementById('puzzles');
+    switch (puzzleNo) {
+        case 1:
+            
+    }
 }
 
 //
@@ -277,6 +281,7 @@ document.addEventListener('click', event => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // loadingAnimation();
-    movePage('mainMenu');
-    preloadImage();
+    // movePage('mainMenu');
+    // preloadImage();
+    startBattle();
 });

@@ -76,9 +76,10 @@ p, h2, h3, h4{
 
 #optionsDiv{
     position: absolute;
-    left: 44%;
-    top: 45%;
+    left: 50%;
+    top: 50%;
     gap: 2em;
+    transform: translate(-50%, -50%);
 }
 
 #optionsDiv > button{
@@ -88,11 +89,11 @@ p, h2, h3, h4{
 #dialogBox{
     border: 5px solid white;
     position: absolute;
-    width: 70%;
+    width: 70vw;
     bottom: 2%;
     left: 15%;
-    min-height: 12em;
-    max-height: 12em;
+    min-height: 20vh;
+    max-height: 20vh;
     background: rgb(0, 0, 0, 0.8);
 }
 
