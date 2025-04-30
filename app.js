@@ -2,7 +2,7 @@
 let storyObj = {
     story: {
         text: {
-            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting but now as I look at this burning city I can’t help but think that there is no future left for us.',
+            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going. But now as I look at this burning city I can’t help but think that there is no future left for us.',
             intro: 'The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.',
             introExplore: "I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.",
             introShower: "I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.",
@@ -26,15 +26,38 @@ let imagesLoaded = false;
 let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
 let images = [];
+let volume = 100;
+let textSpeed = 25;
+let curPuzzleSize = 0;
+let openRoom;
 //classes
 //
-class items {
-    constructor(type, health, damage, effects) {
-        for (let property of arguments) {
-            this[property] = property;
-        }
+class item {
+    constructor(name, description, type, effects) {
+        this.name = name;
+        this.description = description;
+        this.type = type
+        this.effects = effects
     }
 }
+
+class weapon extends item {
+    constructor(name, description, type, effects, damage) {
+        super(name, description, type, effects);
+        this.damage = damage;
+    }
+}
+
+class healingItem extends item {
+    constructor(name, description, type, healingAmount) {
+        super(name, description, type);
+        this.healingAmount = healingAmount;
+    }
+}
+const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage +10', 30)
+const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'healing', 10)
+const roomKey = new item('Key', 'Opens up boss room', 'Item', openRoom)
+
 
 //this class handles all the enemies
 class enemy {
@@ -82,7 +105,7 @@ function summonDialog(state) {
 }
 
 //playSound function, plays inputted sound
-function playSound(name, volume = 1) {
+function playSound(name) {
     let sound = new Audio("sounds/" + name + ".mp3")
     sound.volume = (volume <= 1) ? volume : 1;
     sound.play();
@@ -99,6 +122,7 @@ function playVideo() {
     background.style.background = 'black';
     mainView.style.display = 'none';
     video.style.left = '50%';
+    video.volume = (volume / 100);
     video.play();
     let imgName = [];
     backImage = backImage.split('');
@@ -147,6 +171,15 @@ function setNone() {
     startGame();
 }
 
+function fullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    }
+    else if (document.exitFullscreen) {
+        document.exitFullscreen()
+    }
+}
+
 //
 async function updateBackground(imageUrl) {
     document.getElementById('body').style.backgroundImage = '';
@@ -185,7 +218,7 @@ async function updateDialog(dialogData, imgData) {
         if (setHeight < 8) {
             boxText.innerHTML += letter;
             displayedText += letter;
-            await sleep(1);
+            await sleep(textSpeed);
         } else {
             moreText = true;
         }
@@ -235,11 +268,48 @@ function createChoice(options) {
 
 //creates puzzle elements
 function createPuzzle(puzzleNo) {
-    let puzzleBox = document.getElementById('puzzles');
+    let puzzlePage = document.getElementById('puzzles');
+    let puzzleBox = document.createElement('div');
+    puzzleBox.id = 'puzzleBox';
+    let puzzleInfo = [];
     switch (puzzleNo) {
         case 1:
-            
+            puzzleInfo = [[{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}],[],[],[]];
+            curPuzzleSize = 4;
+            break
+        case 2:
+            puzzleInfo = [];
+            curPuzzleSize = 5;
+            break
+        case 3:
+            puzzleInfo = [];
+            curPuzzleSize = 5;
+            break
+        case 4:
+            puzzleInfo = [];
+            curPuzzleSize = 7;
+            break
     }
+
+    for(let row of puzzleInfo){
+        let index = 0;
+        for(let square of row){
+            let tile = document.createElement('button');
+            tile.id = `circuitButton${index}`;
+            // tile.onclick = rotateButton();
+            //need to write this function
+
+            let tileImg = document.createElement('img');
+            tileImg.src = `images/${square.image}`;
+            tileImg.style.rotate = `${square.posStart}deg`
+
+            tile.appendChild(tileImg);
+            puzzleBox.appendChild(tile);
+
+            index++;
+        }
+    }
+    puzzlePage.appendChild(puzzleBox);
 }
 
 //
@@ -273,15 +343,33 @@ function sleep(ms) {
 
 //event listeners
 //this listener looks for all clicks done on the page and updates dialog if it's done loading
-document.addEventListener('click', event => {
+document.addEventListener('click', () => {
     if (clickable) {
         updateDialog(nextText[0], nextText[1]);
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // loadingAnimation();
-    // movePage('mainMenu');
-    // preloadImage();
-    startBattle();
+    loadingAnimation();
+    preloadImage();
+    movePage('mainMenu');
+    // startBattle();
+
+    document.getElementById('volumeGroup').addEventListener("input", (e) => {
+        if (e.target.id == 'volumeNum') {
+            document.getElementById('volumeSlide').value = e.target.value;
+        } else {
+            document.getElementById('volumeNum').value = e.target.value;
+        }
+        volume = e.target.value;
+    });
+
+    document.getElementById('textSpeedGroup').addEventListener("input", (e) => {
+        if (e.target.id == 'textSpeedNum') {
+            document.getElementById('textSpeedSlide').value = e.target.value;
+        } else {
+            document.getElementById('textSpeedNum').value = e.target.value;
+        }
+        textSpeed = e.target.value;
+    });
 });

@@ -9,6 +9,7 @@
 </head>
 <body id="body">
     <section class="page" id="mainMenu">
+        <button onclick="fullScreen()" id="fullscreen">⛶</button>
         <h2>Beneath the Electric Sheep</h2>
         <button onclick="startGame()">Start Game</button>
         <button onclick="movePage('options')">Options</button>
@@ -32,9 +33,20 @@
     <!-- this page is for the dialog stuff, nothing else -->
     <section id="dialogBox">
     </section>
-    <section id="puzzles">
+    <section class="page" id="puzzles">
+        <button onclick="createPuzzle(1)">Create</button>
     </section>
     <section class="page" id="options">
+        <div id="volumeGroup">
+            <h4>Volume:</h4>
+            <input id="volumeNum" type="number" min="0" max="100" value="100">
+            <input id="volumeSlide" type="range" value="100">
+        </div>
+        <div id="textSpeedGroup">
+            <h4>Text Speed:</h4>
+            <input id="textSpeedNum" type="number" max="50" min="1" value="25">
+            <input id="textSpeedSlide" type="range" min="1" max="50" value="25">
+        </div>
         <button onclick="movePage('mainMenu')">Return</button>
     </section>
     <section class="page" id="credits">
