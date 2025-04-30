@@ -274,7 +274,10 @@ function createPuzzle(puzzleNo) {
     let puzzleInfo = [];
     switch (puzzleNo) {
         case 1:
-            puzzleInfo = [[{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}],[],[],[]];
+            puzzleInfo = [[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]
+            ,[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]
+            ,[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]
+            ,[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]];
             curPuzzleSize = 4;
             break
         case 2:
@@ -296,11 +299,11 @@ function createPuzzle(puzzleNo) {
         for(let square of row){
             let tile = document.createElement('button');
             tile.id = `circuitButton${index}`;
-            // tile.onclick = rotateButton();
-            //need to write this function
+            tile.setAttribute('onclick', `rotateButton(${index})`);
 
             let tileImg = document.createElement('img');
             tileImg.src = `images/${square.image}`;
+            tileImg.id = `circuitButtonImg${index}`;
             tileImg.style.rotate = `${square.posStart}deg`
 
             tile.appendChild(tileImg);
@@ -310,6 +313,13 @@ function createPuzzle(puzzleNo) {
         }
     }
     puzzlePage.appendChild(puzzleBox);
+}
+
+function rotateButton(number){
+    let rotation = document.getElementById(`circuitButtonImg${number}`);
+    let newRotation = parseInt(rotation.style.rotate.match(/\d+/g));
+    newRotation += 90;
+    rotation.style.rotate = `${newRotation}deg`;
 }
 
 //
@@ -350,9 +360,9 @@ document.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadingAnimation();
-    preloadImage();
-    movePage('mainMenu');
+    // loadingAnimation();
+    // preloadImage();
+    movePage('puzzles');
     // startBattle();
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
