@@ -21,7 +21,8 @@
 
 #mainMenu{
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-top: 1vh;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -133,6 +134,15 @@ p, h2, h3, h4{
 #credits button {
     width: 10%;
     align-self: center
+}
+
+button#fullscreen {
+    font-size: 30px;
+    width: 4rem;
+    height: 4rem;
+    align-self: flex-end;
+    margin-bottom: 30vh
+
 }
 
 /* media query for phone screen size */

@@ -2,7 +2,7 @@
 let storyObj = {
     story: {
         text: {
-            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting but now as I look at this burning city I can’t help but think that there is no future left for us.',
+            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going. But now as I look at this burning city I can’t help but think that there is no future left for us.',
             intro: 'The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.',
             introExplore: "I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.",
             introShower: "I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.",
@@ -29,15 +29,35 @@ let images = [];
 let volume = 100;
 let textSpeed = 25;
 let curPuzzleSize = 0;
+let openRoom;
 //classes
 //
-class items {
-    constructor(type, health, damage, effects) {
-        for (let property of arguments) {
-            this[property] = property;
-        }
+class item {
+    constructor(name, description, type, effects) {
+        this.name = name;
+        this.description = description;
+        this.type = type
+        this.effects = effects
     }
 }
+
+class weapon extends item {
+    constructor(name, description, type, effects, damage) {
+        super(name, description, type, effects);
+        this.damage = damage;
+    }
+}
+
+class healingItem extends item {
+    constructor(name, description, type, healingAmount) {
+        super(name, description, type);
+        this.healingAmount = healingAmount;
+    }
+}
+const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage +10', 30)
+const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'healing', 10)
+const roomKey = new item('Key', 'Opens up boss room', 'Item', openRoom)
+
 
 //this class handles all the enemies
 class enemy {
@@ -149,6 +169,15 @@ function killInterval() {
 function setNone() {
     killInterval();
     startGame();
+}
+
+function fullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    }
+    else if (document.exitFullscreen) {
+        document.exitFullscreen()
+    }
 }
 
 //
@@ -321,9 +350,9 @@ document.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // loadingAnimation();
-    movePage('puzzles');
-    // preloadImage();
+    loadingAnimation();
+    preloadImage();
+    movePage('mainMenu');
     // startBattle();
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
