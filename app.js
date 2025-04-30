@@ -32,6 +32,7 @@ let volume = 100;
 let textSpeed = 25;
 let curPuzzleSize = 0;
 let openRoom;
+// let savedChoices = [];
 //classes
 //
 class item {
@@ -78,14 +79,14 @@ class enemy {
 
 //this class handles the player and all stats related to them
 class player {
-    constructor(health, defense, damage, specials, effects, choicesMade, items) {
+    constructor(health, defense, damage, specials, effects, choicesMade = [], items = []) {
         for (let property of arguments) {
             this[property] = property;
         }
     }
 }
 
-let user = new player(100, 0, 10, '', '', storyObj.choices, )
+let user = new player(100, 0, 10, '', '', storyObj.choices)
 
 //functions
 //initial function, all functions that should be run on start go in here
@@ -262,6 +263,7 @@ async function updateDialog(dialogData, imgData) {
 //
 function chooseOption(choice) {
     document.getElementById('body').style.backdropFilter = ``;
+    user['choicesMade'].push(choice);
     document.getElementById('optionsDiv').remove();
     summonDialog('on');
 }
