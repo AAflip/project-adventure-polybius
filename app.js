@@ -2,7 +2,8 @@
 let storyObj = {
     story: {
         text: {
-            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going. But now as I look at this burning city I can’t help but think that there is no future left for us.',
+            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.',
+            prologueDramaticPause: 'But now as I look at this burning city I can’t help but think that there is no future left for us.',
             intro: 'The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.',
             introExplore: "I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.",
             introShower: "I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.",
@@ -11,13 +12,14 @@ let storyObj = {
             introWTW: "I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.",
             introBuilding: "I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.",
             introEnter: "I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.",
-
+            introWork: "I place my hands on the keyboards and begin to navigate the files, searching for any files or pieces of data that are no longer needed. A few minutes after I began, I stumbled upon a report made to one of the higher ups, ‘Laboratory report on the prevention of android sentience’.",
+            introReact: "I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt"
         },
         backImages: [],
         images: [['download', 'test image']],
     },
     choices: {
-        1: ['hello', 2],
+        1: ['Satisfaction', 2],
     },
 }
 let nextText = ['', ''];
@@ -30,14 +32,16 @@ let volume = 100;
 let textSpeed = 25;
 let curPuzzleSize = 0;
 let openRoom;
+// let savedChoices = [];
 //classes
 //
 class item {
-    constructor(name, description, type, effects) {
+    constructor(name, description, type, effects, value) {
         this.name = name;
         this.description = description;
         this.type = type
         this.effects = effects
+        this.value = value
     }
 }
 
@@ -49,14 +53,19 @@ class weapon extends item {
 }
 
 class healingItem extends item {
-    constructor(name, description, type, healingAmount) {
-        super(name, description, type);
+    constructor(name, description, type, healingAmount, effects) {
+        super(name, description, type, effects);
         this.healingAmount = healingAmount;
     }
 }
-const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage +10', 30)
+const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 70)
 const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'healing', 10)
-const roomKey = new item('Key', 'Opens up boss room', 'Item', openRoom)
+const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 30, 15 )
+const keyCard = new item('Key', 'Opens up boss room', 'Item', 'Opens Something', 1)
+const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 30 )
+const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15 )
+const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10 )
+const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 5)
 
 
 //this class handles all the enemies
@@ -70,12 +79,14 @@ class enemy {
 
 //this class handles the player and all stats related to them
 class player {
-    constructor(health, defense, damage, specials, effects, choicesMade, items) {
+    constructor(health, defense, damage, specials, effects, choicesMade = [], items = []) {
         for (let property of arguments) {
             this[property] = property;
         }
     }
 }
+
+let user = new player(100, 0, 10, '', '', storyObj.choices)
 
 //functions
 //initial function, all functions that should be run on start go in here
@@ -141,6 +152,12 @@ function playVideo() {
         updateBackground(imgName);
     });
 }
+
+
+function inventoryMake() {
+
+}
+
 
 //this function is the loading animation as well as the loading page cancel
 async function loadingAnimation() {
@@ -246,6 +263,7 @@ async function updateDialog(dialogData, imgData) {
 //
 function chooseOption(choice) {
     document.getElementById('body').style.backdropFilter = ``;
+    user['choicesMade'].push(choice);
     document.getElementById('optionsDiv').remove();
     summonDialog('on');
 }
@@ -264,6 +282,7 @@ function createChoice(options) {
     let optionsBox = document.getElementById('mainView');
     optionsBox.appendChild(optionsDiv);
     document.getElementById('body').style.backdropFilter = `blur(5px) brightness(0.5)`;
+    
 }
 
 //creates puzzle elements
@@ -360,9 +379,9 @@ document.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // loadingAnimation();
-    // preloadImage();
-    movePage('puzzles');
+    preloadImage();
+    loadingAnimation();
+    movePage('mainMenu');
     // startBattle();
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
