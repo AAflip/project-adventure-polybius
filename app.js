@@ -85,7 +85,7 @@ class player {
     }
 }
 
-let player = new player(100, 0, 10, '', '', storyObj.choices, )
+let user = new player(100, 0, 10, '', '', storyObj.choices, )
 
 //functions
 //initial function, all functions that should be run on start go in here
