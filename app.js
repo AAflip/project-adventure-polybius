@@ -26,6 +26,9 @@ let imagesLoaded = false;
 let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
 let images = [];
+let volume = 100;
+let textSpeed = 25;
+let curPuzzleSize = 0;
 //classes
 //
 class items {
@@ -82,7 +85,7 @@ function summonDialog(state) {
 }
 
 //playSound function, plays inputted sound
-function playSound(name, volume = 1) {
+function playSound(name) {
     let sound = new Audio("sounds/" + name + ".mp3")
     sound.volume = (volume <= 1) ? volume : 1;
     sound.play();
@@ -99,6 +102,7 @@ function playVideo() {
     background.style.background = 'black';
     mainView.style.display = 'none';
     video.style.left = '50%';
+    video.volume = (volume / 100);
     video.play();
     let imgName = [];
     backImage = backImage.split('');
@@ -185,7 +189,7 @@ async function updateDialog(dialogData, imgData) {
         if (setHeight < 8) {
             boxText.innerHTML += letter;
             displayedText += letter;
-            await sleep(25);
+            await sleep(textSpeed);
         } else {
             moreText = true;
         }
@@ -235,11 +239,48 @@ function createChoice(options) {
 
 //creates puzzle elements
 function createPuzzle(puzzleNo) {
-    let puzzleBox = document.getElementById('puzzles');
+    let puzzlePage = document.getElementById('puzzles');
+    let puzzleBox = document.createElement('div');
+    puzzleBox.id = 'puzzleBox';
+    let puzzleInfo = [];
     switch (puzzleNo) {
         case 1:
-
+            puzzleInfo = [[{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}],[],[],[]];
+            curPuzzleSize = 4;
+            break
+        case 2:
+            puzzleInfo = [];
+            curPuzzleSize = 5;
+            break
+        case 3:
+            puzzleInfo = [];
+            curPuzzleSize = 5;
+            break
+        case 4:
+            puzzleInfo = [];
+            curPuzzleSize = 7;
+            break
     }
+
+    for(let row of puzzleInfo){
+        let index = 0;
+        for(let square of row){
+            let tile = document.createElement('button');
+            tile.id = `circuitButton${index}`;
+            // tile.onclick = rotateButton();
+            //need to write this function
+
+            let tileImg = document.createElement('img');
+            tileImg.src = `images/${square.image}`;
+            tileImg.style.rotate = `${square.posStart}deg`
+
+            tile.appendChild(tileImg);
+            puzzleBox.appendChild(tile);
+
+            index++;
+        }
+    }
+    puzzlePage.appendChild(puzzleBox);
 }
 
 //
@@ -281,24 +322,25 @@ document.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     // loadingAnimation();
-    movePage('options');
+    movePage('puzzles');
     // preloadImage();
     // startBattle();
-});
 
+    document.getElementById('volumeGroup').addEventListener("input", (e) => {
+        if (e.target.id == 'volumeNum') {
+            document.getElementById('volumeSlide').value = e.target.value;
+        } else {
+            document.getElementById('volumeNum').value = e.target.value;
+        }
+        volume = e.target.value;
+    });
 
-document.getElementById('volumeGroup').addEventListener("input", (e) => {  
-    if(e.target == 'volumeNum'){
-        document.getElementById('volumeSlide').value = e.target.value;
-    }else{
-        document.getElementById('volumeNum').value = e.target.value;
-    }
-});
-
-document.getElementById('textSpeedGroup').addEventListener("input", (e) => {  
-    if(e.target == 'textSpeedNum'){
-        document.getElementById('textSpeedSlide').value = e.target.value;
-    }else{
-        document.getElementById('textSpeedNum').value = e.target.value;
-    }
+    document.getElementById('textSpeedGroup').addEventListener("input", (e) => {
+        if (e.target.id == 'textSpeedNum') {
+            document.getElementById('textSpeedSlide').value = e.target.value;
+        } else {
+            document.getElementById('textSpeedNum').value = e.target.value;
+        }
+        textSpeed = e.target.value;
+    });
 });
