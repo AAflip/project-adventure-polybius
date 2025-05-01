@@ -246,7 +246,7 @@ async function updateBackground(imageUrl) {
 }
 
 // updateDialog function, updates the dialog in the dialog box
-async function updateDialog(dialogData, imgData) {
+async function updateDialog(dialogData, imgData = "") {
     let box = document.getElementById('dialogBox');
     box.innerHTML = ``;
 
@@ -423,9 +423,12 @@ function checkPuzzle() {
 }
 
 //
-function startBattle() {
+function startBattle(enemy) {
     movePage('battle');
-    updateBackground('main.avif');
+    updateBackground('battleBackground.gif');
+    let enemyImg = document.createElement('img');
+    enemyImg.src = `images/${enemy.image}`;
+    document.getElementById('battle').appendChild(enemyImg);
 }
 
 //
@@ -460,10 +463,12 @@ document.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // preloadImage();
     // loadingAnimation();
-    movePage('inventory');
-    inventoryMake(2)
+    // preloadImage();
+    // movePage('mainMenu');
+    // inventoryMake(2)
+    let testEnemy = {stuff: 'e,', image: 'node.png'}
+    startBattle(testEnemy);
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {

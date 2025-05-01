@@ -17,7 +17,11 @@
         <a href="doom.html" id="egg">1</a>
     </section>
     <section class="page" id="battle">
-
+        <div id="battleButtons">
+            <button id="attackButton" onclick="">Attack</button>
+            <button id="itemsButton" onclick="">Items</button>
+        </div>
+        <div id="battleText"></div>
     </section>
     <section class="page" id="inventory">
         <h2>Inventory</h2>
@@ -26,18 +30,13 @@
     </section>
     <!-- this page is mainly for the background stuff -->
     <section id="mainView">
-        <button onclick="updateDialog(storyObj.story.text.prologue, storyObj.story.images[0])">Dialog Test</button>
-        <button onclick="createChoice(storyObj.choices[1])">Choice Test</button>
-        <button onclick="updateBackground('main.avif')">Background Test</button>
-        <button onclick="playVideo()">Video Test</button>
     </section>
     <video preload id="introVideo" src="/cutscenes/introVideo.mp4"></video>
     <!-- this page is for the dialog stuff, nothing else -->
     <section id="dialogBox">
     </section>
     <section class="page" id="puzzles">
-        <button onclick="createPuzzle(1)" style="position: absolute;">Create</button>
-        <button onclick="checkPuzzle()" style="position: absolute;margin-left: 20em;">Check</button>
+        <button onclick="checkPuzzle()" style="position: absolute">Check</button>
     </section>
     <section class="page" id="options">
         <div id="volumeGroup">
