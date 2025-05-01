@@ -488,3 +488,9 @@ document.addEventListener('DOMContentLoaded', () => {
         textSpeed = e.target.value;
     });
 });
+
+
+// Object.values(storyObj.story.text).forEach(value => {textArray.push(value)})
+// for (i = 1; i < textArray.length; i++ ) {
+//     updateDialog(textArray[i])
+// }
