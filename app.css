@@ -164,6 +164,23 @@ button#fullscreen {
 
 }
 
+#inventory {
+    display: flex;
+    flex-flow: column
+}
+
+#inv {
+    border: white 1px solid;
+    height: fit-content;
+    color: white
+}
+
+#inv p {
+    margin-left: 1vw;
+    margin-top: 2vh;
+    line-height: 2vh;
+}
+
 /* media query for phone screen size */
 /* max-width is temporary, replace with better number */
 @media screen and (max-width: 700px){

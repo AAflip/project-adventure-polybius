@@ -60,14 +60,15 @@ class healingItem extends item {
     }
 }
 const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 70)
-const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'healing', 10)
-const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 30, 15 )
+const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 10)
+const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 30, 15 )
 const keyCard = new item('Key', 'Opens up boss room', 'Item', 'Opens Something', 1)
 const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 30 )
 const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15 )
 const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10 )
 const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 5)
-
+let items = [TechnoBlade, stimBoost, nanites, keyCard, pistol, bat, knife, shiv]
+let itemsHave = JSON.stringify(items)
 
 //this class handles all the enemies
 class enemy {
@@ -87,7 +88,7 @@ class player {
     }
 }
 
-let user = new player(100, 0, 10, '', '', storyObj.choices)
+let user = new player(100, 0, 10, '', '', storyObj.choices, items)
 
 //functions
 //initial function, all functions that should be run on start go in here
@@ -156,6 +157,9 @@ function playVideo() {
 
 
 function inventoryMake() {
+    for (let i = 0; i < items.length; i++) {
+        document.getElementById('inv').insertAdjacentHTML('afterbegin', `<p>${items[i].name}: ${items[i].type} <br> ${items[i].description}</p> `)
+    }
 
 }
 
@@ -426,7 +430,8 @@ document.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // preloadImage();
     // loadingAnimation();
-    movePage('puzzles');
+    movePage('inventory');
+    inventoryMake()
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {
