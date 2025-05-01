@@ -177,8 +177,8 @@ function getName(name) {
         return Object.values(obj).includes(name)
     })
     if (itemUsing[0].type.includes('Weapon')) {
-        user.damage += itemUsing[0].damage
-        document.getElementById(itemUsing[0].name).outerHTML = `<button onclick="unEquip()">` + document.getElementById(itemUsing[0].name).innerHTML + '</button>'
+        user.damage = itemUsing[0].damage
+        document.getElementById(name).outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
         // Function isn't put in yet
     }
     if (itemUsing[0].type == 'Item') {
@@ -189,6 +189,10 @@ function getName(name) {
         console.log('true')
         // Healing will be used
     }
+}
+
+function unEquip(name) {
+    document.getElementById(name).outerHTML = `<button id="${name}" onclick="getName('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
 }
 
 
