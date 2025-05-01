@@ -32,6 +32,7 @@ let volume = 100;
 let textSpeed = 25;
 let curPuzzleSize = 0;
 let openRoom;
+let puzzleInfo = [];
 // let savedChoices = [];
 //classes
 //
@@ -290,7 +291,7 @@ function createPuzzle(puzzleNo) {
     let puzzlePage = document.getElementById('puzzles');
     let puzzleBox = document.createElement('div');
     puzzleBox.id = 'puzzleBox';
-    let puzzleInfo = [];
+    puzzleInfo = [];
     switch (puzzleNo) {
         case 1:
             puzzleInfo = [[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]
@@ -313,32 +314,76 @@ function createPuzzle(puzzleNo) {
             break
     }
 
+    let outterIndex = 0;
     for(let row of puzzleInfo){
         let index = 0;
+        let puzzleRow = document.createElement('div');
         for(let square of row){
             let tile = document.createElement('button');
-            tile.id = `circuitButton${index}`;
-            tile.setAttribute('onclick', `rotateButton(${index})`);
+            tile.id = `circuitButton${outterIndex}${index}`;
+            tile.setAttribute('onclick', `rotateButton(${outterIndex}, ${index})`);
 
             let tileImg = document.createElement('img');
             tileImg.src = `images/${square.image}`;
-            tileImg.id = `circuitButtonImg${index}`;
+            tileImg.id = `circuitButtonImg${outterIndex}${index}`;
             tileImg.style.rotate = `${square.posStart}deg`
 
             tile.appendChild(tileImg);
-            puzzleBox.appendChild(tile);
+            puzzleRow.appendChild(tile);
 
             index++;
         }
+        outterIndex++;
+        puzzleBox.appendChild(puzzleRow);
     }
     puzzlePage.appendChild(puzzleBox);
 }
 
-function rotateButton(number){
-    let rotation = document.getElementById(`circuitButtonImg${number}`);
+function rotateButton(num1, num2){
+    let rotation = document.getElementById(`circuitButtonImg${num1}${num2}`);
     let newRotation = parseInt(rotation.style.rotate.match(/\d+/g));
     newRotation += 90;
-    rotation.style.rotate = `${newRotation}deg`;
+    if(newRotation != 360){
+        rotation.style.rotate = `${newRotation}deg`;
+    }else{
+        rotation.style.rotate = `0deg`
+    }
+}
+
+function checkPuzzle(){
+    let puzzleBox = document.getElementById('puzzleBox');
+    let outterIndex = 0;
+    let counter = 0;
+    for (let rows of puzzleBox.childNodes){
+        let index = 0;
+        for(let tiles of rows.childNodes){
+            let tileImg = tiles.childNodes[0];
+            if(tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg`){
+                counter++;
+            }
+            index++;
+        }
+        outterIndex++;
+    }
+    if(counter == (curPuzzleSize**2)){
+        if(document.getElementById('notificationDiv')){
+            document.getElementById('notificationDiv').remove();
+        }
+        puzzleBox.remove();
+        movePage('mainView');
+        summonDialog('on');
+        // updateDialog(nextDialog);
+    }else{
+        let page = document.getElementById('puzzles');
+        let notifDiv;
+        if(document.getElementById('notificationDiv')){
+            notifDiv.remove();
+        }
+        notifDiv = document.createElement('div');
+        notifDiv.id = 'notificationDiv';
+        notifDiv.innerHTML = `<h2>Circuit has Failed</h2>`;
+        page.appendChild(notifDiv);
+    }
 }
 
 //
@@ -379,10 +424,9 @@ document.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    preloadImage();
-    loadingAnimation();
-    movePage('mainMenu');
-    // startBattle();
+    // preloadImage();
+    // loadingAnimation();
+    movePage('puzzles');
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {

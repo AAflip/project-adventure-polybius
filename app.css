@@ -92,10 +92,14 @@ p, h2, h3, h4{
 
 #puzzleBox{
     display: flex;
-    width: 15vw;
     height: fit-content;
+    flex-direction: column;
     flex-wrap: wrap;
     align-self: center;
+}
+
+#notificationDiv > h2{
+    color: red;
 }
 
 #optionsDiv > button{
