@@ -172,13 +172,27 @@ button#fullscreen {
 #inv {
     border: white 1px solid;
     height: fit-content;
-    color: white
+    color: white;
+    display: flex;
+    flex-flow: column;
 }
 
 #inv p {
     margin-left: 1vw;
     margin-top: 2vh;
     line-height: 2vh;
+}
+
+#inv button {
+    margin-left: 1vw;
+    margin-top: 2vh;
+    line-height: 2vh;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    font-size: 16px;
 }
 
 /* media query for phone screen size */

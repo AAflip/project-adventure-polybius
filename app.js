@@ -61,11 +61,11 @@ class healingItem extends item {
 }
 const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 70)
 const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 10)
-const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 30, 15 )
+const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 30, 15)
 const keyCard = new item('Key', 'Opens up boss room', 'Item', 'Opens Something', 1)
-const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 30 )
-const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15 )
-const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10 )
+const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 30)
+const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15)
+const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10)
 const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 5)
 let items = [TechnoBlade, stimBoost, nanites, keyCard, pistol, bat, knife, shiv]
 let itemsHave = JSON.stringify(items)
@@ -156,11 +156,39 @@ function playVideo() {
 }
 
 
-function inventoryMake() {
-    for (let i = 0; i < items.length; i++) {
-        document.getElementById('inv').insertAdjacentHTML('afterbegin', `<p>${items[i].name}: ${items[i].type} <br> ${items[i].description}</p> `)
+function inventoryMake(a) {
+    if (a == 1) {
+        for (let i = 0; i < items.length; i++) {
+            document.getElementById('inv').insertAdjacentHTML('afterbegin',
+                `<p>${items[i].name}: ${items[i].type} <br> ${items[i].description}</p> `)
+        }
     }
+    if (a == 2) {
+        for (let i = 0; i < items.length; i++) {
+            document.getElementById('inv').insertAdjacentHTML('afterbegin',
+                `<button id="${items[i].name}" onclick="getName('${items[i].name}')">${items[i].name}: ${items[i].type}</button>
+                 <p>Description: ${items[i].description}</p>`)
+        }
+    }
+}
 
+function getName(name) {
+    itemUsing = items.filter(obj => {
+        return Object.values(obj).includes(name)
+    })
+    if (itemUsing[0].type.includes('Weapon')) {
+        user.damage += itemUsing[0].damage
+        document.getElementById(itemUsing[0].name).outerHTML = `<button onclick="unEquip()">` + document.getElementById(itemUsing[0].name).innerHTML + '</button>'
+        // Function isn't put in yet
+    }
+    if (itemUsing[0].type == 'Item') {
+        console.log('true')
+        // Will have item be used
+    }
+    if (itemUsing[0].type == 'Healing') {
+        console.log('true')
+        // Healing will be used
+    }
 }
 
 
@@ -287,7 +315,7 @@ function createChoice(options) {
     let optionsBox = document.getElementById('mainView');
     optionsBox.appendChild(optionsDiv);
     document.getElementById('body').style.backdropFilter = `blur(5px) brightness(0.5)`;
-    
+
 }
 
 //creates puzzle elements
@@ -298,10 +326,10 @@ function createPuzzle(puzzleNo) {
     puzzleInfo = [];
     switch (puzzleNo) {
         case 1:
-            puzzleInfo = [[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]
-            ,[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]
-            ,[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]
-            ,[{image: 'corner.png', posStart: 90, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0},{image: 'corner.png', posStart: 0, posEnd: 0}]];
+            puzzleInfo = [[{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]];
             curPuzzleSize = 4;
             break
         case 2:
@@ -319,10 +347,10 @@ function createPuzzle(puzzleNo) {
     }
 
     let outterIndex = 0;
-    for(let row of puzzleInfo){
+    for (let row of puzzleInfo) {
         let index = 0;
         let puzzleRow = document.createElement('div');
-        for(let square of row){
+        for (let square of row) {
             let tile = document.createElement('button');
             tile.id = `circuitButton${outterIndex}${index}`;
             tile.setAttribute('onclick', `rotateButton(${outterIndex}, ${index})`);
@@ -343,44 +371,44 @@ function createPuzzle(puzzleNo) {
     puzzlePage.appendChild(puzzleBox);
 }
 
-function rotateButton(num1, num2){
+function rotateButton(num1, num2) {
     let rotation = document.getElementById(`circuitButtonImg${num1}${num2}`);
     let newRotation = parseInt(rotation.style.rotate.match(/\d+/g));
     newRotation += 90;
-    if(newRotation != 360){
+    if (newRotation != 360) {
         rotation.style.rotate = `${newRotation}deg`;
-    }else{
+    } else {
         rotation.style.rotate = `0deg`
     }
 }
 
-function checkPuzzle(){
+function checkPuzzle() {
     let puzzleBox = document.getElementById('puzzleBox');
     let outterIndex = 0;
     let counter = 0;
-    for (let rows of puzzleBox.childNodes){
+    for (let rows of puzzleBox.childNodes) {
         let index = 0;
-        for(let tiles of rows.childNodes){
+        for (let tiles of rows.childNodes) {
             let tileImg = tiles.childNodes[0];
-            if(tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg`){
+            if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg`) {
                 counter++;
             }
             index++;
         }
         outterIndex++;
     }
-    if(counter == (curPuzzleSize**2)){
-        if(document.getElementById('notificationDiv')){
+    if (counter == (curPuzzleSize ** 2)) {
+        if (document.getElementById('notificationDiv')) {
             document.getElementById('notificationDiv').remove();
         }
         puzzleBox.remove();
         movePage('mainView');
         summonDialog('on');
         // updateDialog(nextDialog);
-    }else{
+    } else {
         let page = document.getElementById('puzzles');
         let notifDiv;
-        if(document.getElementById('notificationDiv')){
+        if (document.getElementById('notificationDiv')) {
             notifDiv.remove();
         }
         notifDiv = document.createElement('div');
@@ -431,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // preloadImage();
     // loadingAnimation();
     movePage('inventory');
-    inventoryMake()
+    inventoryMake(2)
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {
