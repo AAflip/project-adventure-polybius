@@ -86,7 +86,6 @@ p, h2, h3, h4{
 #puzzles{
     width: 100%;
     height: 100%;
-    display: flex;
     justify-content: center;
 }
 
@@ -165,7 +164,6 @@ button#fullscreen {
 }
 
 #inventory {
-    display: flex;
     flex-flow: column
 }
 
@@ -198,7 +196,6 @@ button#fullscreen {
 #battle{
     width: 100%;
     height: 100%;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;

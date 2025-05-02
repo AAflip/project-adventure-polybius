@@ -2,22 +2,22 @@
 let storyObj = {
     story: {
         text: {
-            prologue: 'They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.',
-            prologueDramaticPause: 'But now as I look at this burning city I can’t help but think that there is no future left for us.',
-            intro: 'The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.',
-            introExplore: "I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.",
-            introShower: "I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.",
-            introEnterance: "I look for the thousandth time at the shabby place I call home. It’s a two room apartment that, if I stretch out my hands, can touch from end to end. Thankfully I lucked out on the government housing and at the very least have my own separate bathroom, every other poor soul has to go all the way down to the foyer.",
-            introLeave: "After making sure I have everything I put on a mask so as to not irritate my lungs with the pollutants in the outside air.",
-            introWTW: "I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.",
-            introBuilding: "I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.",
-            introEnter: "I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.",
-            introWork: "I place my hands on the keyboards and begin to navigate the files, searching for any files or pieces of data that are no longer needed. A few minutes after I began, I stumbled upon a report made to one of the higher ups, ‘Laboratory report on the prevention of android sentience’.",
-            introReact: "I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt",
-            corpDecision: "Satisfaction, these things were machines, made by our own hands, why should they have a need for sentience, they just need to do what they’re programmed to do.",
-            corpOutreach: "Regardless of how I feel, I still have a job to do, so I delete the file and continue on with my work. As I’m clocking out my boss grabs my shoulder, “Hey there, you’re the one we have cleaning up our servers right? I saw that you had a look at one of our more private files and we would like to offer you a job regarding it.” I almost stumbled from surprise, “This is an opportunity!” I think, and immediately agree to his offer. “Great! Let me take you upstairs to meet your new project lead and give you your first assignment.”",
-            corpMentor: "Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece, “A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps with your before you can get to him. You can interact with the puzzles by clicking on your screen, and use items by clicking on the item and then where you want to use it.” I nod, then kick down the door to begin my mission.",
-            corpBackOut: "As I see the target’s death I can't help but still feel unsure if I still want to do this. I take a moment to gather my thoughts away from the prying eyes of this organization and decide",
+            prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause'],
+            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', 'intro'],
+            intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore'],
+            introExplore: ["I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.", 'introShower'],
+            introShower: ["I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.", 'introEnterance'],
+            introEnterance: ["I look for the thousandth time at the shabby place I call home. It’s a two room apartment that, if I stretch out my hands, can touch from end to end. Thankfully I lucked out on the government housing and at the very least have my own separate bathroom, every other poor soul has to go all the way down to the foyer.", 'introLeave'],
+            introLeave: ["After making sure I have everything I put on a mask so as to not irritate my lungs with the pollutants in the outside air.", 'introWTW'],
+            introWTW: ["I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.", 'introBuilding'],
+            introBuilding: ["I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.", 'introEnter'],
+            introEnter: ["I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.", 'introWork'],
+            introWork: ["I place my hands on the keyboards and begin to navigate the files, searching for any files or pieces of data that are no longer needed. A few minutes after I began, I stumbled upon a report made to one of the higher ups, ‘Laboratory report on the prevention of android sentience’.", 'introReact'],
+            introReact: ["I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt", 'corpDecision'],
+            corpDecision: ["Satisfaction, these things were machines, made by our own hands, why should they have a need for sentience, they just need to do what they’re programmed to do.", 'corpOutreach'],
+            corpOutreach: ["Regardless of how I feel, I still have a job to do, so I delete the file and continue on with my work. As I’m clocking out my boss grabs my shoulder, “Hey there, you’re the one we have cleaning up our servers right? I saw that you had a look at one of our more private files and we would like to offer you a job regarding it.” I almost stumbled from surprise, “This is an opportunity!” I think, and immediately agree to his offer. “Great! Let me take you upstairs to meet your new project lead and give you your first assignment.”",'corpMentor'],
+            corpMentor: ["Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece, “A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps with your before you can get to him. You can interact with the puzzles by clicking on your screen, and use items by clicking on the item and then where you want to use it.” I nod, then kick down the door to begin my mission.",'corpBackOut'],
+            corpBackOut: ["As I see the target’s death I can't help but still feel unsure if I still want to do this. I take a moment to gather my thoughts away from the prying eyes of this organization and decide",'corpStay'],
             corpStay: "that this organization isn't for me, the thought of sentient beings being treated like this changes everything",
             corpProp: `You: “So what exactly is the goal of this organization Mentor: “It’s obvious isn’t it, why would I not get mad you read a document more confidential than the president’s launch codes? We want to keep these androids under our control. These things, they think they have memories, emotions, how cute. They are simply imitating humans. They are cold and unfeeling on the inside using a human appearance to disguise their intentions of rebelling”`,
             corpAllies: `Mentor: “In order to aid you in stopping these, walking computers, the company and I have decided to allot you a partner. They will assist you in understanding the company’s goals and reasoning, as well as help you in getting to your objective. Though you’ll have to defeat any enemies on your own. Ah, here they are now!” *Ally Walks in to the room* Mentor: “This is Darryl, they will be assisting you in all of your future missions. Speaking of which, you have another mission! This one will require you to eliminate an android that our sensors have perceived as being partially sentient. The GPS locator has determined that this particular bucket of bolts is in the sewers under Main Street.”`,
@@ -25,7 +25,7 @@ let storyObj = {
             corpMission2: `Robot: I decided that I would rather terminate the process of that robot. I turn to my new partner and ask them about their opinion, but they just shrug in response. 20 minutes later we’re wading through the city’s main sewer system, looking for a place where a newly sentient robot would hide. Eventually we stumble upon a small raised room, with muttering and electrical buzzing coming from the open doorway. Ally: “There he is!” Darryl barrels into the room in an attempt to capture the stray android and alerting it to our presence. The android easily dodges Darryl as he dives for our objective, and runs through the door at the opposite end of the room. The slamming of the door seems to have activated a kind of security system in the room, barring me from opening the door. Ally: “According to the map that path is a deadend, so all we need to do is open that door and we can finish our mission. Looks like you’ll have to disable the security system first.”`,
             corpAfterPuzzle1: `Ally: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Ally: “You’ve got nowhere to run now!”`,
             corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`
-        },
+        }, // Above arrays probably need to be redone
         backImages: [],
         images: [['download', 'test image']],
     },
@@ -35,8 +35,7 @@ let storyObj = {
         3: ['Recon Mission', 'Other Mission']
     },
 }
-let nextText = ['', ''];
-let clickable = false;
+let nextText = [['', ''], ''];
 let imagesLoaded = false;
 let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
@@ -109,7 +108,7 @@ class player {
     }
 }
 
-const user = new player(100, 0, 5, '', '', storyObj.choices, items)
+const user = new player(100, 0, 5, '', '', [], items)
 const rebelScum1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '')
 const rebelScum2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '')
 const rebelSolider1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '')
@@ -130,7 +129,7 @@ let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'r
 function startGame() {
     movePage('mainView');
     summonDialog('on');
-    // updateDialog(storyObj.story.text);
+    updateDialog(storyObj.story.text.prologue);
 }
 
 //movePage function, shifts display of the sections, not the content
@@ -308,6 +307,8 @@ async function updateDialog(dialogData, imgData = "") {
     let box = document.getElementById('dialogBox');
     box.innerHTML = ``;
 
+    let dialogText = `${dialogData[0]}`;
+
     let boxImage = document.createElement('img');
     box.appendChild(boxImage);
     let boxText = document.createElement('p');
@@ -322,10 +323,10 @@ async function updateDialog(dialogData, imgData = "") {
     }
 
     let displayedText = '';
-    nextText = ['', ''];
+    nextText = [['', ''], ''];
     clickable = false;
     let moreText = false;
-    for (let letter of dialogData) {
+    for (let letter of dialogText) {
         let setHeight = Math.trunc(boxText.offsetHeight / box.offsetHeight * 10);
         if (setHeight < 8) {
             boxText.innerHTML += letter;
@@ -340,27 +341,42 @@ async function updateDialog(dialogData, imgData = "") {
         displayedText.pop();
         displayedText = displayedText.join('');
         boxText.innerHTML = displayedText;
-        clickable = true;
         nextText[1] = imgData;
-        let boxArrow = document.createElement('img');
-        box.appendChild(boxArrow);
-        boxArrow.setAttribute('src', '/images/arrow-down.gif');
-        boxArrow.setAttribute('alt', 'Clicking Indicator');
-        boxArrow.setAttribute('id', 'boxArrow');
-    }
-    for (let i = 0; i < dialogData.length; i++) {
-        if (displayedText[i] !== dialogData[i]) {
-            nextText[0] += dialogData[i];
+        for (let i = 0; i < dialogText.length; i++) {
+            if (displayedText[i] !== dialogText[i]) {
+                nextText[0][0] += dialogText[i];
+            }
+        }
+        nextText[0][1] = dialogData[1];
+    } else {
+        if (dialogData[1][0] != '@' && dialogData[1][0] != '%' && dialogData[1][0] != '|') {
+            nextText[0][0] = storyObj.story.text[dialogData[1]][0];
+            nextText[0][1] = storyObj.story.text[dialogData[1]][1];
+        }else if(dialogData[1][0] == '|'){
+            nextText[0][0] = dialogData[1];
+            nextText[0][2] = dialogData[1].match('\|(.*?)\|').input;
+            nextText[0][1] = dialogData[1].match(/[a-zA-Z]+/).toString();
+            //fix damnit
+        }else{
+            nextText[0][0] = dialogData[1];
+            nextText[0][1] = dialogData[1].match(/[a-zA-Z]+/).toString();
         }
     }
+
+    clickable = true;
+    let boxArrow = document.createElement('img');
+    box.appendChild(boxArrow);
+    boxArrow.setAttribute('src', '/images/arrow-down.gif');
+    boxArrow.setAttribute('alt', 'Clicking Indicator');
+    boxArrow.setAttribute('id', 'boxArrow');
 }
 
 //
 function chooseOption(choice) {
     document.getElementById('body').style.backdropFilter = ``;
-    user['choicesMade'].push(choice);
     document.getElementById('optionsDiv').remove();
     summonDialog('on');
+    user.choicesMade.push(choice);
 }
 
 //this function creates the options for a choice
@@ -382,6 +398,8 @@ function createChoice(options) {
 
 //creates puzzle elements
 function createPuzzle(puzzleNo) {
+    movePage('puzzles');
+    summonDialog('off');
     let puzzlePage = document.getElementById('puzzles');
     let puzzleBox = document.createElement('div');
     puzzleBox.id = 'puzzleBox';
@@ -389,7 +407,7 @@ function createPuzzle(puzzleNo) {
     switch (puzzleNo) {
         case 1:
             puzzleInfo = [
-                  [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+                [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
                 , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
                 , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'battery2.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
                 , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
@@ -398,13 +416,13 @@ function createPuzzle(puzzleNo) {
             break
         case 2:
             puzzleInfo = [
-              [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'battery.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }]];
+                [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'battery.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }]];
             curPuzzleSize = 7;
             break
         case 3:
@@ -498,7 +516,7 @@ function checkPuzzle() {
         puzzleBox.remove();
         movePage('mainView');
         summonDialog('on');
-        // updateDialog(nextDialog);
+        updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
     } else {
         let page = document.getElementById('puzzles');
         let notifDiv;
@@ -564,7 +582,7 @@ async function combatSys(type, target, action) {
         await sleep(4000);
         endBattle();
     } else {
-        if(user.defense < 0 || typeof user.defense != (typeof 1)){user.defense = 0}
+        if (user.defense < 0 || typeof user.defense != (typeof 1)) { user.defense = 0 }
         let subtract = target2.damage - user.defense;
         user.health -= subtract;
         container.innerHTML = `<p>You have been attacked by ${target2.name} for ${subtract}hp, leaving you at ${user.health}hp</p>`;
@@ -599,7 +617,7 @@ function endBattle() {
     document.getElementById('enemyBattleImg').remove();
     movePage('mainView');
     // updateBackground(something);
-    // updateDialog(whatever);
+    updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
 }
 
 async function preloadImage() {
@@ -624,7 +642,17 @@ function sleep(ms) {
 //this listener looks for all clicks done on the page and updates dialog if it's done loading
 document.addEventListener('click', () => {
     if (clickable) {
-        updateDialog(nextText[0], nextText[1]);
+        clickable = false;
+        if(nextText[0][0][0] == '@'){
+            createChoice(storyObj.choices[nextText[0][0][1]]);
+            updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
+        }else if(nextText[0][0][0] == '%'){
+            createPuzzle(parseInt(nextText[0][0][1]));
+        }else if(nextText[0][0][0] == '|'){
+            startBattle(nextText[0][2]);
+        }else{
+            updateDialog(nextText[0], nextText[1]);
+        }
     }
 });
 
