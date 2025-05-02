@@ -73,7 +73,7 @@ class healingItem extends item {
     }
 }
 const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30)
-const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 10)
+const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20)
 const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15)
 const keyCard = new item('Key', 'Opens up boss room', 'Item', 'Opens Something', 1)
 const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25)
@@ -85,7 +85,7 @@ let itemsHave = JSON.stringify(items)
 
 //this class handles all the enemies
 class enemy {
-    constructor(name, health, damage, defense, attacks, special) {
+    constructor(name, health, damage, defense, attacks = [], special) {
         this.name = name
         this.health = health
         this.damage = damage
@@ -108,7 +108,12 @@ class player {
     }
 }
 
-let user = new player(100, 0, 5, '', '', storyObj.choices, items)
+const user = new player(100, 0, 5, '', '', storyObj.choices, items)
+const rebelScum1 = new enemy('Rebel Scum 1', 120, 10, 40, '', 'Slash', '' )
+const rebelScum2 = new enemy('Rebel Scum 2', 80, 10, 80, '', 'Slash', '' )
+const rebelScum3 = new enemy('Rebel Scum 3', 100, 30, 20, '', 'Slash', '' )
+const boss1 = new enemy('Boss 1', 200, 20, 40, '', 'Electric Whirl')
+
 
 //functions
 //initial function, all functions that should be run on start go in here
