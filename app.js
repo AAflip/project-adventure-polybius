@@ -68,8 +68,8 @@ class weapon extends item {
 }
 
 class healingItem extends item {
-    constructor(name, description, type, healingAmount, effects, amount) {
-        super(name, description, type, effects, amount);
+    constructor(name, description, type, healingAmount, defense, amount) {
+        super(name, description, type, defense, amount);
         this.healingAmount = healingAmount;
     }
 }
@@ -81,16 +81,18 @@ const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15, 1)
 const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10, 1)
 const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10, 1)
 let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv]
+let items2 = ['TechnoBlade', 'Stim-Boost', 'Nanites', 'Pistol', 'Bat', 'Knife', 'Shiv'];
 
 //this class handles all the enemies
 class enemy {
-    constructor(name, health, damage, defense, attacks = [], special) {
+    constructor(name, health, damage, defense, attacks = [], special, image = 'download.png') {
         this.name = name
         this.health = health
         this.damage = damage
         this.defense = defense
         this.attacks = attacks
         this.special = special
+        this.image = image
     }
 }
 
@@ -119,6 +121,8 @@ const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '')
 const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl')
 const boss4 = new enemy('Boss 4', 600, 40, 60, '', 'Electric Whirl')
 const finalBoss = new enemy('Final Boss', 1000, 60, 60, '', 'Electric Whirl')
+let enemies = [rebelScum1, rebelScum2, rebelSolider1, rebelSoldier2, rebelCommander1, rebelCommander2, boss1, boss2, boss3, boss4, finalBoss];
+let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'rebelCommander1', 'rebelCommander2', 'boss1', 'boss2', 'boss3', 'boss4', 'finalBoss'];
 
 
 //functions
@@ -208,8 +212,8 @@ function getName(name, pName) {
         return Object.values(obj).includes(name)
     })
     let notEquipped = true
-    nameID = document.getElementById(name)
-    pNameID = document.getElementById(pName)
+    let nameID = document.getElementById(name)
+    let pNameID = document.getElementById(pName)
     if (itemUsing[0].type.includes('Weapon')) {
         if (notEquipped) {
             let weaponDamage = itemUsing[0].damage
@@ -457,8 +461,20 @@ function checkPuzzle() {
         let index = 0;
         for (let tiles of rows.childNodes) {
             let tileImg = tiles.childNodes[0];
-            if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg`) {
-                counter++;
+            if (puzzleInfo[outterIndex][index].image != 'line.png') {
+                if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg`) {
+                    counter++;
+                }
+            } else {
+                let edgeCase = 0;
+                if ((parseInt(tileImg.style.rotate.match(/\d+/g)) + 180) > 360) {
+                    edgeCase == (parseInt(tileImg.style.rotate.match(/\d+/g)) + 180) - 360;
+                } else {
+                    edgeCase == parseInt(tileImg.style.rotate.match(/\d+/g)) + 180;
+                }
+                if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg` || tileImg.style.rotate == `${edgeCase}deg`) {
+                    counter++;
+                }
             }
             index++;
         }
@@ -476,7 +492,7 @@ function checkPuzzle() {
         let page = document.getElementById('puzzles');
         let notifDiv;
         if (document.getElementById('notificationDiv')) {
-            notifDiv.remove();
+            document.getElementById('notificationDiv').remove();
         }
         notifDiv = document.createElement('div');
         notifDiv.id = 'notificationDiv';
@@ -485,18 +501,94 @@ function checkPuzzle() {
     }
 }
 
-//
 function startBattle(enemy) {
     movePage('battle');
     updateBackground('battleBackground.gif');
     let enemyImg = document.createElement('img');
     enemyImg.src = `images/${enemy.image}`;
-    document.getElementById('battle').appendChild(enemyImg);
+    enemyImg.id = 'enemyBattleImg';
+    let container = document.getElementById('battle');
+    container.insertBefore(enemyImg, container.firstChild);
+    document.getElementById(`battleText`).innerHTML = `<p>${enemy.name} has decided to brawl!</p>`;
+    document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy.name}')`);
+    document.getElementById('itemsButton').setAttribute('onclick', `changeBattleScreen('items', '${enemy.name}')`);
 }
 
 //
-function combatSys() {
+async function combatSys(type, target, action) {
+    let container = document.getElementById('battleText');
+    let buttons = document.getElementById('battleButtons');
+    buttons.style.display = 'none';
+    container.style.display = 'unset';
+    let target2;
+    let target3;
+    for (let j = 0; j < enemies2.length; j++) {
+        if (target.match(enemies2[j])) {
+            target2 = enemies[j];
+        }
+    }
+    if (type == 'attack') {
+        target2.health -= (user.damage + 200);
+        container.innerHTML = `<p>You have attacked ${target2.name} for ${user.damage}hp, leaving them at ${target2.health}hp</p>`;
+        await sleep(4000);
+    } else {
+        for (let j = 0; j < items2.length; j++) {
+            if (action.match(items2[j])) {
+                target3 = items[j];
+            }
+        }
+        if (target3.type == 'Healing') {
+            user.health += target3.healingAmount;
+            user.defense += target3.defense;
+            container.innerHTML = `<p>You have healed yourself for ${target3.healingAmount}hp using ${target3.name}</p>`;
+        } else if (target3.type == 'Weapon/Melee') {
+            container.innerHTML = `<p>You have hit ${target2.name} for ${target3.damage}hp</p>`;
+        } else {
+            container.innerHTML = `<p>You shot ${target2.name} for ${target3.damage}hp, woah!</p>`;
+        }
+        await sleep(4000);
+    }
+    if (target2.health <= 0) {
+        container.innerHTML = `<p>You have defeated ${target2.name}</p>`;
+        await sleep(4000);
+        endBattle();
+    } else {
+        if(user.defense < 0 || typeof user.defense != (typeof 1)){user.defense = 0}
+        let subtract = target2.damage - user.defense;
+        user.health -= subtract;
+        container.innerHTML = `<p>You have been attacked by ${target2.name} for ${subtract}hp, leaving you at ${user.health}hp</p>`;
+        await sleep(4000);
+        container.innerHTML = `<p>${target2.name} is standing there, menacingly!`;
+        buttons.style.display = 'unset';
+    }
+}
 
+function changeBattleScreen(newPage, avalibleEnemies) {
+    let container = document.getElementById('battleText');
+    container.innerHTML = '';
+    container.style.display = 'flex';
+    container.style.justifyContent = 'space-evenly';
+    container.style.alignItems = 'center';
+
+    let avalibleEnemiesId = avalibleEnemies.split(' ');
+    avalibleEnemiesId[0] = avalibleEnemiesId[0].toLowerCase();
+    avalibleEnemiesId = avalibleEnemiesId.join('');
+    if (newPage == 'attack') {
+        for (let i = 0; i < 1; i++) {
+            container.innerHTML += `<button onclick='combatSys("attack", this.id)' id='${avalibleEnemiesId}'>${avalibleEnemies}</button>`;
+        }
+    } else {
+        for (let i = 0; i < user.items.length; i++) {
+            container.innerHTML += `<button onclick='combatSys("item", "${avalibleEnemiesId}", this.id)' id='${user.items[i].name}'>${user.items[i].name}</button>`;
+        }
+    }
+}
+
+function endBattle() {
+    document.getElementById('enemyBattleImg').remove();
+    movePage('mainView');
+    // updateBackground(something);
+    // updateDialog(whatever);
 }
 
 async function preloadImage() {
@@ -530,8 +622,6 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadImage();
     movePage('mainMenu')
     inventoryMake(2)
-    // let testEnemy = {stuff: 'e,', image: 'node.png'}
-    // startBattle(testEnemy);
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {

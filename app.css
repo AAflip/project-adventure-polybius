@@ -199,10 +199,10 @@ button#fullscreen {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    padding-top: 55vh;
+    padding-bottom: 16vh;
     background-position: center;
 }
 
