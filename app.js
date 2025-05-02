@@ -50,38 +50,38 @@ let puzzleInfo = [];
 //classes
 //
 class item {
-    constructor(name, description, type, effects, value) {
+    constructor(name, description, type, effects, value, amount) {
         this.name = name;
         this.description = description;
         this.type = type
         this.effects = effects
         this.value = value
+        this.amount = amount
     }
 }
 
 class weapon extends item {
-    constructor(name, description, type, effects, damage) {
-        super(name, description, type, effects);
+    constructor(name, description, type, effects, damage, amount) {
+        super(name, description, type, effects, amount);
         this.damage = damage;
     }
 }
 
 class healingItem extends item {
-    constructor(name, description, type, healingAmount, defense = 0) {
-        super(name, description, type, defense);
+    constructor(name, description, type, healingAmount, defense, amount) {
+        super(name, description, type, defense, amount);
         this.healingAmount = healingAmount;
     }
 }
-const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30)
-const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20)
-const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15)
-const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25)
-const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15)
-const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10)
-const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10)
-let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv];
+const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30, 1)
+const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20, 0, 5, 1)
+const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15, 5)
+const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25, 1)
+const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15, 1)
+const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10, 1)
+const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10, 1)
+let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv]
 let items2 = ['TechnoBlade', 'Stim-Boost', 'Nanites', 'Pistol', 'Bat', 'Knife', 'Shiv'];
-let itemsHave = JSON.stringify(items);
 
 //this class handles all the enemies
 class enemy {
@@ -110,12 +110,19 @@ class player {
 }
 
 const user = new player(100, 0, 5, '', '', storyObj.choices, items)
-const rebelScum1 = new enemy('Rebel Scum 1', 120, 10, 40, '', 'Slash', '')
-const rebelScum2 = new enemy('Rebel Scum 2', 80, 10, 80, '', 'Slash', '')
-const rebelScum3 = new enemy('Rebel Scum 3', 100, 30, 20, '', 'Slash', '')
-const boss1 = new enemy('Boss 1', 200, 20, 40, '', 'Electric Whirl')
-let enemies = [rebelScum1, rebelScum2, rebelScum3, boss1];
-let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelScum3', 'boss1'];
+const rebelScum1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '')
+const rebelScum2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '')
+const rebelSolider1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '')
+const rebelSoldier2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '')
+const rebelCommander1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '')
+const rebelCommander2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '')
+const boss1 = new enemy('Boss 1', 150, 20, 40, '', 'Electric Whirl')
+const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '')
+const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl')
+const boss4 = new enemy('Boss 4', 600, 40, 60, '', 'Electric Whirl')
+const finalBoss = new enemy('Final Boss', 1000, 60, 60, '', 'Electric Whirl')
+let enemies = [rebelScum1, rebelScum2, rebelSolider1, rebelSoldier2, rebelCommander1, rebelCommander2, boss1, boss2, boss3, boss4, finalBoss];
+let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'rebelCommander1', 'rebelCommander2', 'boss1', 'boss2', 'boss3', 'boss4', 'finalBoss'];
 
 
 //functions
@@ -194,7 +201,7 @@ function inventoryMake(a) {
     if (a == 2) {
         for (let i = 0; i < items.length; i++) {
             document.getElementById('inv').insertAdjacentHTML('afterbegin',
-                `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type}</button>
+                `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type} x${items[i].value}</button>
                  <p id="${items[i].name}1">Description: ${items[i].description}</p>`)
         }
     }
@@ -204,11 +211,21 @@ function getName(name, pName) {
     itemUsing = items.filter(obj => {
         return Object.values(obj).includes(name)
     })
+    let notEquipped = true
     let nameID = document.getElementById(name)
     let pNameID = document.getElementById(pName)
     if (itemUsing[0].type.includes('Weapon')) {
-        user.damage += itemUsing[0].damage
-        nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
+        if (notEquipped) {
+            let weaponDamage = itemUsing[0].damage
+            user.damage += weaponDamage
+            nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + ' Equiped' + '</button>'
+            notEquipped = false
+            return weaponDamage
+        }
+        else {
+            user.damage -= weaponDamage
+            nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
+        }
         // Function isn't put in yet
     }
     if (itemUsing[0].type == 'Item') {
@@ -220,8 +237,14 @@ function getName(name, pName) {
     if (itemUsing[0].type == 'Healing') {
         console.log(itemUsing[0])
         user.health = itemUsing[0].healingAmount
-        nameID.remove()
-        pNameID.remove()
+        if (itemUsing[0].value > 0) {
+            itemUsing[0].value -= 1
+            nameID.innerText
+        }
+        if (itemUsing[0].value < 1) {
+            nameID.remove()
+            pNameID.remove()
+        }
     }
 }
 
@@ -245,7 +268,7 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('puzzles');
+    movePage('inventory');
 }
 
 //clears intervals and sets new pages
@@ -587,11 +610,10 @@ document.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // loadingAnimation();
-    // preloadImage();
-    // movePage('mainMenu')
-    // inventoryMake(2)
-    startBattle(boss1);
+    loadingAnimation();
+    preloadImage();
+    movePage('mainMenu')
+    inventoryMake(2)
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {
