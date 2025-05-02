@@ -295,12 +295,20 @@ function fullScreen() {
 
 //
 async function updateBackground(imageUrl) {
-    document.getElementById('body').style.backgroundImage = '';
-    document.getElementById('body').style.background = '';
+    if(document.getElementById('backgroundImage')){
+        document.getElementById('backgroundImage').remove();
+    }
     if (imageUrl) {
-        document.getElementById('body').style.backgroundImage = `url(/backgrounds/${imageUrl})`
+        for(let i=0; i<preload.length;i++){
+            if(preload[i] == `./backgrounds/${imageUrl}`){
+                images[i].id = 'backgroundImage';
+                document.getElementById('body').appendChild(images[i]);
+            }
+        }
     } else {
-        document.getElementById('body').style.background = 'black';
+        if(document.getElementById('backgroundImage')){
+            document.getElementById('backgroundImage').remove();
+        }
     }
 }
 
