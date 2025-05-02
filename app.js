@@ -241,14 +241,13 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('inventory');
+    movePage('puzzles');
 }
 
 //clears intervals and sets new pages
 //only works with loading for now, dont know if expansion needed
 function killInterval() {
     clearInterval(loadingInterval);
-    movePage('mainMenu');
 }
 
 //testing function
@@ -362,23 +361,24 @@ function createPuzzle(puzzleNo) {
     puzzleInfo = [];
     switch (puzzleNo) {
         case 1:
-            puzzleInfo = [[{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]
-                , [{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]
-                , [{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]
-                , [{ image: 'corner.png', posStart: 90, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }]];
-            curPuzzleSize = 4;
+            puzzleInfo = [[{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'battery2.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]];
+            curPuzzleSize = 5;
             break
         case 2:
             puzzleInfo = [];
-            curPuzzleSize = 5;
+            curPuzzleSize = 7;
             break
         case 3:
             puzzleInfo = [];
-            curPuzzleSize = 5;
+            curPuzzleSize = 9;
             break
         case 4:
             puzzleInfo = [];
-            curPuzzleSize = 7;
+            curPuzzleSize = 11;
             break
     }
 
@@ -497,7 +497,8 @@ document.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadingAnimation();
     preloadImage();
-    inventoryMake(2)
+    movePage('mainMenu')
+    // inventoryMake(2)
     // let testEnemy = {stuff: 'e,', image: 'node.png'}
     // startBattle(testEnemy);
 
