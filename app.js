@@ -75,12 +75,11 @@ class healingItem extends item {
 const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30)
 const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20)
 const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15)
-const keyCard = new item('Key', 'Opens up boss room', 'Item', 'Opens Something', 1)
 const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25)
 const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15)
 const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10)
 const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10)
-let items = [TechnoBlade, stimBoost, nanites, keyCard, pistol, bat, knife, shiv]
+let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv]
 let itemsHave = JSON.stringify(items)
 
 //this class handles all the enemies
