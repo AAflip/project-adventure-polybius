@@ -325,7 +325,7 @@ async function updateDialog(dialogData) {
     updateBackground(textBackgroundImg);
 
     let displayedText = '';
-    nextText = [['', ''], ''];
+    nextText = ['','','', ['', '']];
     clickable = false;
     let moreText = false;
     for (let letter of dialogText) {
@@ -343,13 +343,14 @@ async function updateDialog(dialogData) {
         displayedText.pop();
         displayedText = displayedText.join('');
         boxText.innerHTML = displayedText;
-        nextText[1] = imgData;
+        nextText[3] = imgData;
+        nextText[2] = textBackgroundImg;
         for (let i = 0; i < dialogText.length; i++) {
             if (displayedText[i] !== dialogText[i]) {
-                nextText[0][0] += dialogText[i];
+                nextText[0] += dialogText[i];
             }
         }
-        nextText[0][1] = dialogData[1];
+        nextText[1] = dialogData[1];
     } else {
         if (dialogData[1][0] != '@' && dialogData[1][0] != '%' && dialogData[1][0] != '|' && dialogData[1][0] != '~') {
             nextText[0][0] = storyObj.story.text[dialogData[1]][0];
@@ -673,7 +674,7 @@ document.addEventListener('click', () => {
         }else if(nextText[0][0][0] == '~'){
             playVideo();
         }else{
-            updateDialog(nextText[0], nextText[1]);
+            updateDialog(nextText);
         }
     }
 });
