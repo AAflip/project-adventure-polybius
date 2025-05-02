@@ -24,14 +24,14 @@ let storyObj = {
             corpMissionChoice: `Mentor: “Well, there’s that mission, or you could take this other mission. It’s a recon mission, you will need to follow members of the resistance back to one of their bases, and then get information from them, although you may have a higher chance of running into some of the resistance. You can find the person in the xxSt Diner. Either way, report back to me once you’ve completed the mission”`,
             corpMission2: `Robot: I decided that I would rather terminate the process of that robot. I turn to my new partner and ask them about their opinion, but they just shrug in response. 20 minutes later we’re wading through the city’s main sewer system, looking for a place where a newly sentient robot would hide. Eventually we stumble upon a small raised room, with muttering and electrical buzzing coming from the open doorway. Ally: “There he is!” Darryl barrels into the room in an attempt to capture the stray android and alerting it to our presence. The android easily dodges Darryl as he dives for our objective, and runs through the door at the opposite end of the room. The slamming of the door seems to have activated a kind of security system in the room, barring me from opening the door. Ally: “According to the map that path is a deadend, so all we need to do is open that door and we can finish our mission. Looks like you’ll have to disable the security system first.”`,
             corpAfterPuzzle1: `Ally: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Ally: “You’ve got nowhere to run now!”`,
-            corpAfterBattle1:` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`
+            corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`
         },
         backImages: [],
         images: [['download', 'test image']],
     },
     choices: {
         1: ['Satisfaction', 'Disgust !DeadEnd!', 'Conflicted !DeadEnd!'],
-        2: ['Stay on Corporate Path', 'Seek out the Rebels !DeadEnd!', 'Go Solo !DeadEnd!' ],
+        2: ['Stay on Corporate Path', 'Seek out the Rebels !DeadEnd!', 'Go Solo !DeadEnd!'],
         3: ['Recon Mission', 'Other Mission']
     },
 }
@@ -50,37 +50,37 @@ let puzzleInfo = [];
 //classes
 //
 class item {
-    constructor(name, description, type, effects, value) {
+    constructor(name, description, type, effects, value, amount) {
         this.name = name;
         this.description = description;
         this.type = type
         this.effects = effects
         this.value = value
+        this.amount = amount
     }
 }
 
 class weapon extends item {
-    constructor(name, description, type, effects, damage) {
-        super(name, description, type, effects);
+    constructor(name, description, type, effects, damage, amount) {
+        super(name, description, type, effects, amount);
         this.damage = damage;
     }
 }
 
 class healingItem extends item {
-    constructor(name, description, type, healingAmount, effects) {
-        super(name, description, type, effects);
+    constructor(name, description, type, healingAmount, effects, amount) {
+        super(name, description, type, effects, amount);
         this.healingAmount = healingAmount;
     }
 }
-const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30)
-const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20)
-const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15)
-const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25)
-const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15)
-const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10)
-const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10)
+const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30, 1)
+const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20, 0, 5, 1)
+const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15, 5)
+const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25, 1)
+const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15, 1)
+const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10, 1)
+const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10, 1)
 let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv]
-let itemsHave = JSON.stringify(items)
 
 //this class handles all the enemies
 class enemy {
@@ -108,10 +108,17 @@ class player {
 }
 
 const user = new player(100, 0, 5, '', '', storyObj.choices, items)
-const rebelScum1 = new enemy('Rebel Scum 1', 120, 10, 40, '', 'Slash', '' )
-const rebelScum2 = new enemy('Rebel Scum 2', 80, 10, 80, '', 'Slash', '' )
-const rebelScum3 = new enemy('Rebel Scum 3', 100, 30, 20, '', 'Slash', '' )
-const boss1 = new enemy('Boss 1', 200, 20, 40, '', 'Electric Whirl')
+const rebelScum1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '')
+const rebelScum2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '')
+const rebelSolider1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '')
+const rebelSoldier2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '')
+const rebelCommander1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '')
+const rebelCommander2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '')
+const boss1 = new enemy('Boss 1', 150, 20, 40, '', 'Electric Whirl')
+const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '')
+const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl')
+const boss4 = new enemy('Boss 4', 600, 40, 60, '', 'Electric Whirl')
+const finalBoss = new enemy('Final Boss', 1000, 60, 60, '', 'Electric Whirl')
 
 
 //functions
@@ -190,7 +197,7 @@ function inventoryMake(a) {
     if (a == 2) {
         for (let i = 0; i < items.length; i++) {
             document.getElementById('inv').insertAdjacentHTML('afterbegin',
-                `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type}</button>
+                `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type} x${items[i].value}</button>
                  <p id="${items[i].name}1">Description: ${items[i].description}</p>`)
         }
     }
@@ -200,24 +207,40 @@ function getName(name, pName) {
     itemUsing = items.filter(obj => {
         return Object.values(obj).includes(name)
     })
+    let notEquipped = true
     nameID = document.getElementById(name)
     pNameID = document.getElementById(pName)
     if (itemUsing[0].type.includes('Weapon')) {
-        user.damage += itemUsing[0].damage
-        nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
+        if (notEquipped) {
+            let weaponDamage = itemUsing[0].damage
+            user.damage += weaponDamage
+            nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + ' Equiped' + '</button>'
+            notEquipped = false
+            return weaponDamage
+        }
+        else {
+            user.damage -= weaponDamage
+            nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
+        }
         // Function isn't put in yet
     }
     if (itemUsing[0].type == 'Item') {
         console.log('true')
-        
+
         nameID.remove()
         pNameID.remove()
     }
     if (itemUsing[0].type == 'Healing') {
         console.log(itemUsing[0])
         user.health = itemUsing[0].healingAmount
-        nameID.remove()
-        pNameID.remove()
+        if (itemUsing[0].value > 0) {
+            itemUsing[0].value -= 1
+            nameID.innerText
+        }
+        if (itemUsing[0].value < 1) {
+            nameID.remove()
+            pNameID.remove()
+        }
     }
 }
 
@@ -241,7 +264,7 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('puzzles');
+    movePage('inventory');
 }
 
 //clears intervals and sets new pages
@@ -498,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadingAnimation();
     preloadImage();
     movePage('mainMenu')
-    // inventoryMake(2)
+    inventoryMake(2)
     // let testEnemy = {stuff: 'e,', image: 'node.png'}
     // startBattle(testEnemy);
 
