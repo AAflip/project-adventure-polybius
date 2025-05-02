@@ -74,8 +74,8 @@ class healingItem extends item {
     }
 }
 const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30, 1)
-const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20, 0, 5, 1)
-const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15, 5)
+const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 20, 0, 3, 1)
+const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15, 2)
 const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25, 1)
 const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15, 1)
 const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10, 1)
@@ -264,7 +264,7 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('inventory');
+    movePage('puzzles');
 }
 
 //clears intervals and sets new pages
@@ -384,7 +384,8 @@ function createPuzzle(puzzleNo) {
     puzzleInfo = [];
     switch (puzzleNo) {
         case 1:
-            puzzleInfo = [[{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+            puzzleInfo = [
+                  [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
                 , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
                 , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'battery2.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
                 , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
@@ -392,7 +393,14 @@ function createPuzzle(puzzleNo) {
             curPuzzleSize = 5;
             break
         case 2:
-            puzzleInfo = [];
+            puzzleInfo = [
+              [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+            , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
+            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'battery.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }]
+            , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
+            , [{ image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }]];
             curPuzzleSize = 7;
             break
         case 3:
