@@ -30,7 +30,9 @@ let storyObj = {
         images: [['download', 'test image']],
     },
     choices: {
-        1: ['Satisfaction', 2],
+        1: ['Satisfaction', 'Disgust !DeadEnd!', 'Conflicted !DeadEnd!'],
+        2: ['Stay on Corporate Path', 'Seek out the Rebels !DeadEnd!', 'Go Solo !DeadEnd!' ],
+        3: ['Recon Mission', 'Other Mission']
     },
 }
 let nextText = ['', ''];
@@ -70,36 +72,43 @@ class healingItem extends item {
         this.healingAmount = healingAmount;
     }
 }
-const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 70)
+const TechnoBlade = new weapon('TechnoBlade', '', 'Weapon/Melee', 'Electric Damage/Slash Damage', 30)
 const stimBoost = new healingItem('Stim-Boost', 'Speeds up cell division to close wound', 'Healing', 10)
-const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 30, 15)
+const nanites = new healingItem('Nanites', `"Nanomachines, son. They harden in response to physical trauma."`, 'Healing', 40, 15)
 const keyCard = new item('Key', 'Opens up boss room', 'Item', 'Opens Something', 1)
-const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 30)
+const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25)
 const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15)
 const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10)
-const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 5)
+const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10)
 let items = [TechnoBlade, stimBoost, nanites, keyCard, pistol, bat, knife, shiv]
 let itemsHave = JSON.stringify(items)
 
 //this class handles all the enemies
 class enemy {
     constructor(name, health, damage, defense, attacks, special) {
-        for (let property of arguments) {
-            this[property] = property;
-        }
+        this.name = name
+        this.health = health
+        this.damage = damage
+        this.defense = defense
+        this.attacks = attacks
+        this.special = special
     }
 }
 
 //this class handles the player and all stats related to them
 class player {
     constructor(health, defense, damage, specials, effects, choicesMade = [], items = []) {
-        for (let property of arguments) {
-            this[property] = property;
-        }
+        this.health = health
+        this.damage = damage
+        this.defense = defense
+        this.specials = specials
+        this.effects = effects
+        this.choicesMade = choicesMade
+        this.items = items
     }
 }
 
-let user = new player(100, 0, 10, '', '', storyObj.choices, items)
+let user = new player(100, 0, 5, '', '', storyObj.choices, items)
 
 //functions
 //initial function, all functions that should be run on start go in here
@@ -177,33 +186,40 @@ function inventoryMake(a) {
     if (a == 2) {
         for (let i = 0; i < items.length; i++) {
             document.getElementById('inv').insertAdjacentHTML('afterbegin',
-                `<button id="${items[i].name}" onclick="getName('${items[i].name}')">${items[i].name}: ${items[i].type}</button>
-                 <p>Description: ${items[i].description}</p>`)
+                `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type}</button>
+                 <p id="${items[i].name}1">Description: ${items[i].description}</p>`)
         }
     }
 }
 
-function getName(name) {
+function getName(name, pName) {
     itemUsing = items.filter(obj => {
         return Object.values(obj).includes(name)
     })
+    nameID = document.getElementById(name)
+    pNameID = document.getElementById(pName)
     if (itemUsing[0].type.includes('Weapon')) {
-        user.damage = itemUsing[0].damage
-        document.getElementById(name).outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
+        user.damage += itemUsing[0].damage
+        nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
         // Function isn't put in yet
     }
     if (itemUsing[0].type == 'Item') {
         console.log('true')
-        // Will have item be used
+        
+        nameID.remove()
+        pNameID.remove()
     }
     if (itemUsing[0].type == 'Healing') {
-        console.log('true')
-        // Healing will be used
+        console.log(itemUsing[0])
+        user.health = itemUsing[0].healingAmount
+        nameID.remove()
+        pNameID.remove()
     }
 }
 
 function unEquip(name) {
-    document.getElementById(name).outerHTML = `<button id="${name}" onclick="getName('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
+    document.getElementById(name).outerHTML = `<button id="${name}" onclick="getName('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>';
+    user.damage -= itemUsing[0].damage;
 }
 
 
@@ -221,6 +237,7 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
+    movePage('inventory');
 }
 
 //clears intervals and sets new pages
@@ -456,7 +473,7 @@ async function preloadImage() {
         setTimeout(function () {
             resolve("\t\t This is second promise");
             console.log("Returned second promise");
-        }, 4000);
+        });
     });
 }
 
@@ -476,8 +493,7 @@ document.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadingAnimation();
     preloadImage();
-    movePage('mainMenu');
-    // inventoryMake(2)
+    inventoryMake(2)
     // let testEnemy = {stuff: 'e,', image: 'node.png'}
     // startBattle(testEnemy);
 
