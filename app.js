@@ -24,14 +24,14 @@ let storyObj = {
             corpMissionChoice: `Mentor: “Well, there’s that mission, or you could take this other mission. It’s a recon mission, you will need to follow members of the resistance back to one of their bases, and then get information from them, although you may have a higher chance of running into some of the resistance. You can find the person in the xxSt Diner. Either way, report back to me once you’ve completed the mission”`,
             corpMission2: `Robot: I decided that I would rather terminate the process of that robot. I turn to my new partner and ask them about their opinion, but they just shrug in response. 20 minutes later we’re wading through the city’s main sewer system, looking for a place where a newly sentient robot would hide. Eventually we stumble upon a small raised room, with muttering and electrical buzzing coming from the open doorway. Ally: “There he is!” Darryl barrels into the room in an attempt to capture the stray android and alerting it to our presence. The android easily dodges Darryl as he dives for our objective, and runs through the door at the opposite end of the room. The slamming of the door seems to have activated a kind of security system in the room, barring me from opening the door. Ally: “According to the map that path is a deadend, so all we need to do is open that door and we can finish our mission. Looks like you’ll have to disable the security system first.”`,
             corpAfterPuzzle1: `Ally: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Ally: “You’ve got nowhere to run now!”`,
-            corpAfterBattle1:` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`
+            corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`
         },
         backImages: [],
         images: [['download', 'test image']],
     },
     choices: {
         1: ['Satisfaction', 'Disgust !DeadEnd!', 'Conflicted !DeadEnd!'],
-        2: ['Stay on Corporate Path', 'Seek out the Rebels !DeadEnd!', 'Go Solo !DeadEnd!' ],
+        2: ['Stay on Corporate Path', 'Seek out the Rebels !DeadEnd!', 'Go Solo !DeadEnd!'],
         3: ['Recon Mission', 'Other Mission']
     },
 }
@@ -67,8 +67,8 @@ class weapon extends item {
 }
 
 class healingItem extends item {
-    constructor(name, description, type, healingAmount, effects) {
-        super(name, description, type, effects);
+    constructor(name, description, type, healingAmount, defense = 0) {
+        super(name, description, type, defense);
         this.healingAmount = healingAmount;
     }
 }
@@ -79,18 +79,20 @@ const pistol = new weapon('Pistol', '', "Weapon/Ranged", 'Piercing Damage', 25)
 const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15)
 const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10)
 const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10)
-let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv]
-let itemsHave = JSON.stringify(items)
+let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv];
+let items2 = ['TechnoBlade', 'Stim-Boost', 'Nanites', 'Pistol', 'Bat', 'Knife', 'Shiv'];
+let itemsHave = JSON.stringify(items);
 
 //this class handles all the enemies
 class enemy {
-    constructor(name, health, damage, defense, attacks = [], special) {
+    constructor(name, health, damage, defense, attacks = [], special, image = 'download.png') {
         this.name = name
         this.health = health
         this.damage = damage
         this.defense = defense
         this.attacks = attacks
         this.special = special
+        this.image = image
     }
 }
 
@@ -108,10 +110,12 @@ class player {
 }
 
 const user = new player(100, 0, 5, '', '', storyObj.choices, items)
-const rebelScum1 = new enemy('Rebel Scum 1', 120, 10, 40, '', 'Slash', '' )
-const rebelScum2 = new enemy('Rebel Scum 2', 80, 10, 80, '', 'Slash', '' )
-const rebelScum3 = new enemy('Rebel Scum 3', 100, 30, 20, '', 'Slash', '' )
+const rebelScum1 = new enemy('Rebel Scum 1', 120, 10, 40, '', 'Slash', '')
+const rebelScum2 = new enemy('Rebel Scum 2', 80, 10, 80, '', 'Slash', '')
+const rebelScum3 = new enemy('Rebel Scum 3', 100, 30, 20, '', 'Slash', '')
 const boss1 = new enemy('Boss 1', 200, 20, 40, '', 'Electric Whirl')
+let enemies = [rebelScum1, rebelScum2, rebelScum3, boss1];
+let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelScum3', 'boss1'];
 
 
 //functions
@@ -200,8 +204,8 @@ function getName(name, pName) {
     itemUsing = items.filter(obj => {
         return Object.values(obj).includes(name)
     })
-    nameID = document.getElementById(name)
-    pNameID = document.getElementById(pName)
+    let nameID = document.getElementById(name)
+    let pNameID = document.getElementById(pName)
     if (itemUsing[0].type.includes('Weapon')) {
         user.damage += itemUsing[0].damage
         nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
@@ -209,7 +213,7 @@ function getName(name, pName) {
     }
     if (itemUsing[0].type == 'Item') {
         console.log('true')
-        
+
         nameID.remove()
         pNameID.remove()
     }
@@ -426,8 +430,20 @@ function checkPuzzle() {
         let index = 0;
         for (let tiles of rows.childNodes) {
             let tileImg = tiles.childNodes[0];
-            if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg`) {
-                counter++;
+            if (puzzleInfo[outterIndex][index].image != 'line.png') {
+                if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg`) {
+                    counter++;
+                }
+            } else {
+                let edgeCase = 0;
+                if ((parseInt(tileImg.style.rotate.match(/\d+/g)) + 180) > 360) {
+                    edgeCase == (parseInt(tileImg.style.rotate.match(/\d+/g)) + 180) - 360;
+                } else {
+                    edgeCase == parseInt(tileImg.style.rotate.match(/\d+/g)) + 180;
+                }
+                if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg` || tileImg.style.rotate == `${edgeCase}deg`) {
+                    counter++;
+                }
             }
             index++;
         }
@@ -445,7 +461,7 @@ function checkPuzzle() {
         let page = document.getElementById('puzzles');
         let notifDiv;
         if (document.getElementById('notificationDiv')) {
-            notifDiv.remove();
+            document.getElementById('notificationDiv').remove();
         }
         notifDiv = document.createElement('div');
         notifDiv.id = 'notificationDiv';
@@ -454,18 +470,94 @@ function checkPuzzle() {
     }
 }
 
-//
 function startBattle(enemy) {
     movePage('battle');
     updateBackground('battleBackground.gif');
     let enemyImg = document.createElement('img');
     enemyImg.src = `images/${enemy.image}`;
-    document.getElementById('battle').appendChild(enemyImg);
+    enemyImg.id = 'enemyBattleImg';
+    let container = document.getElementById('battle');
+    container.insertBefore(enemyImg, container.firstChild);
+    document.getElementById(`battleText`).innerHTML = `<p>${enemy.name} has decided to brawl!</p>`;
+    document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy.name}')`);
+    document.getElementById('itemsButton').setAttribute('onclick', `changeBattleScreen('items', '${enemy.name}')`);
 }
 
 //
-function combatSys() {
+async function combatSys(type, target, action) {
+    let container = document.getElementById('battleText');
+    let buttons = document.getElementById('battleButtons');
+    buttons.style.display = 'none';
+    container.style.display = 'unset';
+    let target2;
+    let target3;
+    for (let j = 0; j < enemies2.length; j++) {
+        if (target.match(enemies2[j])) {
+            target2 = enemies[j];
+        }
+    }
+    if (type == 'attack') {
+        target2.health -= (user.damage + 200);
+        container.innerHTML = `<p>You have attacked ${target2.name} for ${user.damage}hp, leaving them at ${target2.health}hp</p>`;
+        await sleep(4000);
+    } else {
+        for (let j = 0; j < items2.length; j++) {
+            if (action.match(items2[j])) {
+                target3 = items[j];
+            }
+        }
+        if (target3.type == 'Healing') {
+            user.health += target3.healingAmount;
+            user.defense += target3.defense;
+            container.innerHTML = `<p>You have healed yourself for ${target3.healingAmount}hp using ${target3.name}</p>`;
+        } else if (target3.type == 'Weapon/Melee') {
+            container.innerHTML = `<p>You have hit ${target2.name} for ${target3.damage}hp</p>`;
+        } else {
+            container.innerHTML = `<p>You shot ${target2.name} for ${target3.damage}hp, woah!</p>`;
+        }
+        await sleep(4000);
+    }
+    if (target2.health <= 0) {
+        container.innerHTML = `<p>You have defeated ${target2.name}</p>`;
+        await sleep(4000);
+        endBattle();
+    } else {
+        if(user.defense < 0 || typeof user.defense != (typeof 1)){user.defense = 0}
+        let subtract = target2.damage - user.defense;
+        user.health -= subtract;
+        container.innerHTML = `<p>You have been attacked by ${target2.name} for ${subtract}hp, leaving you at ${user.health}hp</p>`;
+        await sleep(4000);
+        container.innerHTML = `<p>${target2.name} is standing there, menacingly!`;
+        buttons.style.display = 'unset';
+    }
+}
 
+function changeBattleScreen(newPage, avalibleEnemies) {
+    let container = document.getElementById('battleText');
+    container.innerHTML = '';
+    container.style.display = 'flex';
+    container.style.justifyContent = 'space-evenly';
+    container.style.alignItems = 'center';
+
+    let avalibleEnemiesId = avalibleEnemies.split(' ');
+    avalibleEnemiesId[0] = avalibleEnemiesId[0].toLowerCase();
+    avalibleEnemiesId = avalibleEnemiesId.join('');
+    if (newPage == 'attack') {
+        for (let i = 0; i < 1; i++) {
+            container.innerHTML += `<button onclick='combatSys("attack", this.id)' id='${avalibleEnemiesId}'>${avalibleEnemies}</button>`;
+        }
+    } else {
+        for (let i = 0; i < user.items.length; i++) {
+            container.innerHTML += `<button onclick='combatSys("item", "${avalibleEnemiesId}", this.id)' id='${user.items[i].name}'>${user.items[i].name}</button>`;
+        }
+    }
+}
+
+function endBattle() {
+    document.getElementById('enemyBattleImg').remove();
+    movePage('mainView');
+    // updateBackground(something);
+    // updateDialog(whatever);
 }
 
 async function preloadImage() {
@@ -495,12 +587,11 @@ document.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadingAnimation();
-    preloadImage();
-    movePage('mainMenu')
+    // loadingAnimation();
+    // preloadImage();
+    // movePage('mainMenu')
     // inventoryMake(2)
-    // let testEnemy = {stuff: 'e,', image: 'node.png'}
-    // startBattle(testEnemy);
+    startBattle(boss1);
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {
