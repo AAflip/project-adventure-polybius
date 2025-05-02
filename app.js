@@ -2,6 +2,7 @@
 let storyObj = {
     story: {
         text: {
+            lazy: ["e","|boss1|prolouge",'',['']],
             prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause', 'main.avif', ['download.png', 'help me']],
             prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', '~intro'],
             intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore', 'apartment_40.avif', []],
@@ -24,7 +25,8 @@ let storyObj = {
             corpMissionChoice: `Mentor: “Well, there’s that mission, or you could take this other mission. It’s a recon mission, you will need to follow members of the resistance back to one of their bases, and then get information from them, although you may have a higher chance of running into some of the resistance. You can find the person in the xxSt Diner. Either way, report back to me once you’ve completed the mission”`,
             corpMission2: `Robot: I decided that I would rather terminate the process of that robot. I turn to my new partner and ask them about their opinion, but they just shrug in response. 20 minutes later we’re wading through the city’s main sewer system, looking for a place where a newly sentient robot would hide. Eventually we stumble upon a small raised room, with muttering and electrical buzzing coming from the open doorway. Ally: “There he is!” Darryl barrels into the room in an attempt to capture the stray android and alerting it to our presence. The android easily dodges Darryl as he dives for our objective, and runs through the door at the opposite end of the room. The slamming of the door seems to have activated a kind of security system in the room, barring me from opening the door. Ally: “According to the map that path is a deadend, so all we need to do is open that door and we can finish our mission. Looks like you’ll have to disable the security system first.”`,
             corpAfterPuzzle1: `Ally: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Ally: “You’ve got nowhere to run now!”`,
-            corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`
+            corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`,
+            placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)','|finalBoss|theEnd', '', ['']]
         }, // Above arrays probably need to be redone
     },
     choices: {
@@ -33,7 +35,7 @@ let storyObj = {
         3: ['Recon Mission', 'Other Mission']
     },
 }
-let nextText = [['', ''], ''];
+let nextText = ['','','', ['','']];
 let imagesLoaded = false;
 let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif"]
@@ -127,7 +129,7 @@ let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'r
 function startGame() {
     movePage('mainView');
     summonDialog('on');
-    updateDialog(storyObj.story.text.prologue);
+    updateDialog(storyObj.story.text.lazy);
 }
 
 //movePage function, shifts display of the sections, not the content
@@ -183,7 +185,7 @@ function playVideo() {
         video.remove();
         movePage('mainView');
         summonDialog('on');
-        updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
+        updateDialog(storyObj.story.text[nextText[1]]);
         updateBackground(imgName);
     });
 }
@@ -353,11 +355,11 @@ async function updateDialog(dialogData) {
         nextText[1] = dialogData[1];
     } else {
         if (dialogData[1][0] != '@' && dialogData[1][0] != '%' && dialogData[1][0] != '|' && dialogData[1][0] != '~') {
-            nextText[0][0] = storyObj.story.text[dialogData[1]][0];
-            nextText[0][1] = storyObj.story.text[dialogData[1]][1];
+            nextText[0] = storyObj.story.text[dialogData[1]][0];
+            nextText[1] = storyObj.story.text[dialogData[1]][1];
         }else if(dialogData[1][0] == '|'){
-            nextText[0][0] = dialogData[1];
-            nextText[0][2] = dialogData[1].match('\|(.*?)\|').input;
+            nextText[0] = dialogData[1];
+            nextText[4] = dialogData[1].match('\|(.*?)\|').input;
             let notPipe = true;
             let nextStuff = [];
             let g = dialogData[1].length - 1;
@@ -369,10 +371,10 @@ async function updateDialog(dialogData) {
                 g--;
             }
             nextStuff = nextStuff.reverse().join('');
-            nextText[0][1] = nextStuff.toString();
+            nextText[1] = nextStuff.toString();
         }else{
-            nextText[0][0] = dialogData[1];
-            nextText[0][1] = dialogData[1].match(/[a-zA-Z]+/).toString();
+            nextText[0] = dialogData[1];
+            nextText[1] = dialogData[1].match(/[a-zA-Z]+/).toString();
         }
     }
 
@@ -529,7 +531,7 @@ function checkPuzzle() {
         puzzleBox.remove();
         movePage('mainView');
         summonDialog('on');
-        updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
+        updateDialog(storyObj.story.text[nextText[1]]);
     } else {
         let page = document.getElementById('puzzles');
         let notifDiv;
@@ -547,17 +549,17 @@ function startBattle(enemy) {
     movePage('battle');
     summonDialog('frickOff');
     updateBackground('battleBackground.gif');
-    let enemyImg = document.createElement('img');
-    enemyImg.src = `images/${enemy.image}`;
-    enemyImg.id = 'enemyBattleImg';
-    let container = document.getElementById('battle');
-    container.insertBefore(enemyImg, container.firstChild);
     let enemy2;
     for (let j = 0; j < enemies2.length; j++) {
         if (enemy.match(enemies2[j])) {
             enemy2 = enemies[j];
         }
     }
+    let enemyImg = document.createElement('img');
+    enemyImg.src = `images/${enemy2.image}`;
+    enemyImg.id = 'enemyBattleImg';
+    let container = document.getElementById('battle');
+    container.insertBefore(enemyImg, container.firstChild);
     document.getElementById(`battleText`).innerHTML = `<p>${enemy2.name} has decided to brawl!</p>`;
     document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy2.name}')`);
     document.getElementById('itemsButton').setAttribute('onclick', `changeBattleScreen('items', '${enemy2.name}')`);
@@ -638,7 +640,7 @@ function endBattle() {
     movePage('mainView');
     // updateBackground(something);
     summonDialog('on');
-    updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
+    updateDialog(storyObj.story.text[nextText[1]]);
 }
 
 async function preloadImage() {
@@ -664,14 +666,14 @@ function sleep(ms) {
 document.addEventListener('click', () => {
     if (clickable) {
         clickable = false;
-        if(nextText[0][0][0] == '@'){
-            createChoice(storyObj.choices[nextText[0][0][1]]);
-            updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
-        }else if(nextText[0][0][0] == '%'){
-            createPuzzle(parseInt(nextText[0][0][1]));
-        }else if(nextText[0][0][0] == '|'){
-            startBattle(nextText[0][2]);
-        }else if(nextText[0][0][0] == '~'){
+        if(nextText[0][0] == '@'){
+            createChoice(storyObj.choices[nextText[0][1]]);
+            updateDialog(storyObj.story.text[nextText[1]]);
+        }else if(nextText[0][0] == '%'){
+            createPuzzle(parseInt(nextText[0][1]));
+        }else if(nextText[0][0] == '|'){
+            startBattle(nextText[4]);
+        }else if(nextText[0][0] == '~'){
             playVideo();
         }else{
             updateDialog(nextText);
