@@ -2,8 +2,8 @@
 let storyObj = {
     story: {
         text: {
-            prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause'],
-            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', 'intro'],
+            prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause', 'main.avif', ['download.png', 'help me']],
+            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', '~intro'],
             intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore'],
             introExplore: ["I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.", 'introShower'],
             introShower: ["I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.", 'introEnterance'],
@@ -13,10 +13,10 @@ let storyObj = {
             introBuilding: ["I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.", 'introEnter'],
             introEnter: ["I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.", 'introWork'],
             introWork: ["I place my hands on the keyboards and begin to navigate the files, searching for any files or pieces of data that are no longer needed. A few minutes after I began, I stumbled upon a report made to one of the higher ups, ‘Laboratory report on the prevention of android sentience’.", 'introReact'],
-            introReact: ["I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt", 'corpDecision'],
+            introReact: ["I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt", '@1corpDecision'],
             corpDecision: ["Satisfaction, these things were machines, made by our own hands, why should they have a need for sentience, they just need to do what they’re programmed to do.", 'corpOutreach'],
             corpOutreach: ["Regardless of how I feel, I still have a job to do, so I delete the file and continue on with my work. As I’m clocking out my boss grabs my shoulder, “Hey there, you’re the one we have cleaning up our servers right? I saw that you had a look at one of our more private files and we would like to offer you a job regarding it.” I almost stumbled from surprise, “This is an opportunity!” I think, and immediately agree to his offer. “Great! Let me take you upstairs to meet your new project lead and give you your first assignment.”",'corpMentor'],
-            corpMentor: ["Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece, “A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps with your before you can get to him. You can interact with the puzzles by clicking on your screen, and use items by clicking on the item and then where you want to use it.” I nod, then kick down the door to begin my mission.",'corpBackOut'],
+            corpMentor: ["Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece, “A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps before you can get to him. You can interact with the puzzles by clicking on your screen.” I nod, then kick down the door to begin my mission.",'%1corpBackOut'],
             corpBackOut: ["As I see the target’s death I can't help but still feel unsure if I still want to do this. I take a moment to gather my thoughts away from the prying eyes of this organization and decide",'corpStay'],
             corpStay: "that this organization isn't for me, the thought of sentient beings being treated like this changes everything",
             corpProp: `You: “So what exactly is the goal of this organization Mentor: “It’s obvious isn’t it, why would I not get mad you read a document more confidential than the president’s launch codes? We want to keep these androids under our control. These things, they think they have memories, emotions, how cute. They are simply imitating humans. They are cold and unfeeling on the inside using a human appearance to disguise their intentions of rebelling”`,
@@ -26,8 +26,6 @@ let storyObj = {
             corpAfterPuzzle1: `Ally: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Ally: “You’ve got nowhere to run now!”`,
             corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`
         }, // Above arrays probably need to be redone
-        backImages: [],
-        images: [['download', 'test image']],
     },
     choices: {
         1: ['Satisfaction', 'Disgust !DeadEnd!', 'Conflicted !DeadEnd!'],
@@ -185,6 +183,7 @@ function playVideo() {
         video.remove();
         movePage('mainView');
         summonDialog('on');
+        updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
         updateBackground(imgName);
     });
 }
@@ -303,11 +302,13 @@ async function updateBackground(imageUrl) {
 }
 
 // updateDialog function, updates the dialog in the dialog box
-async function updateDialog(dialogData, imgData = "") {
+async function updateDialog(dialogData) {
     let box = document.getElementById('dialogBox');
     box.innerHTML = ``;
 
     let dialogText = `${dialogData[0]}`;
+    let imgData = dialogData[3];
+    let textBackgroundImg = dialogData[2];
 
     let boxImage = document.createElement('img');
     box.appendChild(boxImage);
@@ -316,11 +317,12 @@ async function updateDialog(dialogData, imgData = "") {
 
     if (typeof imgData == 'object') {
         boxImage.setAttribute('alt', imgData[1]);
-        boxImage.setAttribute('src', '/images/' + imgData[0] + '.png');
+        boxImage.setAttribute('src', '/images/' + imgData[0]);
         boxImage.setAttribute('id', 'boxImage');
     } else {
         boxImage.remove();
     }
+    updateBackground(textBackgroundImg);
 
     let displayedText = '';
     nextText = [['', ''], ''];
@@ -349,14 +351,24 @@ async function updateDialog(dialogData, imgData = "") {
         }
         nextText[0][1] = dialogData[1];
     } else {
-        if (dialogData[1][0] != '@' && dialogData[1][0] != '%' && dialogData[1][0] != '|') {
+        if (dialogData[1][0] != '@' && dialogData[1][0] != '%' && dialogData[1][0] != '|' && dialogData[1][0] != '~') {
             nextText[0][0] = storyObj.story.text[dialogData[1]][0];
             nextText[0][1] = storyObj.story.text[dialogData[1]][1];
         }else if(dialogData[1][0] == '|'){
             nextText[0][0] = dialogData[1];
             nextText[0][2] = dialogData[1].match('\|(.*?)\|').input;
-            nextText[0][1] = dialogData[1].match(/[a-zA-Z]+/).toString();
-            //fix damnit
+            let notPipe = true;
+            let nextStuff = [];
+            let g = dialogData[1].length - 1;
+            while(notPipe){
+                if(dialogData[1][g] != '|'){
+                    nextStuff.push(dialogData[1][g]);
+                    await sleep(1);
+                }else{notPipe = false}
+                g--;
+            }
+            nextStuff = nextStuff.reverse().join('');
+            nextText[0][1] = nextStuff.toString();
         }else{
             nextText[0][0] = dialogData[1];
             nextText[0][1] = dialogData[1].match(/[a-zA-Z]+/).toString();
@@ -496,12 +508,12 @@ function checkPuzzle() {
                 }
             } else {
                 let edgeCase = 0;
-                if ((parseInt(tileImg.style.rotate.match(/\d+/g)) + 180) > 360) {
-                    edgeCase == (parseInt(tileImg.style.rotate.match(/\d+/g)) + 180) - 360;
+                if ((parseInt(tileImg.style.rotate.match('[0-9]+'))) >= 180 ) {
+                    edgeCase = (parseInt(tileImg.style.rotate.match('[0-9]+')) - 180);
                 } else {
-                    edgeCase == parseInt(tileImg.style.rotate.match(/\d+/g)) + 180;
+                    edgeCase = parseInt(tileImg.style.rotate.match('[0-9]+'));
                 }
-                if (tileImg.style.rotate == `${puzzleInfo[outterIndex][index].posEnd}deg` || tileImg.style.rotate == `${edgeCase}deg`) {
+                if (edgeCase == puzzleInfo[outterIndex][index].posEnd) {
                     counter++;
                 }
             }
@@ -532,15 +544,22 @@ function checkPuzzle() {
 
 function startBattle(enemy) {
     movePage('battle');
+    summonDialog('frickOff');
     updateBackground('battleBackground.gif');
     let enemyImg = document.createElement('img');
     enemyImg.src = `images/${enemy.image}`;
     enemyImg.id = 'enemyBattleImg';
     let container = document.getElementById('battle');
     container.insertBefore(enemyImg, container.firstChild);
-    document.getElementById(`battleText`).innerHTML = `<p>${enemy.name} has decided to brawl!</p>`;
-    document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy.name}')`);
-    document.getElementById('itemsButton').setAttribute('onclick', `changeBattleScreen('items', '${enemy.name}')`);
+    let enemy2;
+    for (let j = 0; j < enemies2.length; j++) {
+        if (enemy.match(enemies2[j])) {
+            enemy2 = enemies[j];
+        }
+    }
+    document.getElementById(`battleText`).innerHTML = `<p>${enemy2.name} has decided to brawl!</p>`;
+    document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy2.name}')`);
+    document.getElementById('itemsButton').setAttribute('onclick', `changeBattleScreen('items', '${enemy2.name}')`);
 }
 
 //
@@ -617,6 +636,7 @@ function endBattle() {
     document.getElementById('enemyBattleImg').remove();
     movePage('mainView');
     // updateBackground(something);
+    summonDialog('on');
     updateDialog(storyObj.story.text[nextText[0][1]], nextText[1]);
 }
 
@@ -650,6 +670,8 @@ document.addEventListener('click', () => {
             createPuzzle(parseInt(nextText[0][0][1]));
         }else if(nextText[0][0][0] == '|'){
             startBattle(nextText[0][2]);
+        }else if(nextText[0][0][0] == '~'){
+            playVideo();
         }else{
             updateDialog(nextText[0], nextText[1]);
         }
