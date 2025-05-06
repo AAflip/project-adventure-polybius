@@ -270,7 +270,6 @@ async function loadingAnimation() {
     await preloadImage();
     killInterval();
     movePage('puzzles')
-    createPuzzle(3)
 }
 
 //clears intervals and sets new pages
