@@ -269,7 +269,7 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('puzzles')
+    movePage('mainMenu')
 }
 
 //clears intervals and sets new pages
