@@ -116,6 +116,12 @@ const rebelSolider1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '')
 const rebelSoldier2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '')
 const rebelCommander1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '')
 const rebelCommander2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '')
+const businessMan1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '')
+const businessMan2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '')
+const Lawyer1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '')
+const Lawyer2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '')
+const upperManagement1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '')
+const upperManagement2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '')
 const boss1 = new enemy('Boss 1', 150, 20, 40, '', 'Electric Whirl')
 const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '')
 const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl')
@@ -269,7 +275,7 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('puzzles')
+    movePage('inventory')
 }
 
 //clears intervals and sets new pages
@@ -705,7 +711,7 @@ document.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadingAnimation();
     preloadImage();
-    inventoryMake(2)
+    inventoryMake(1)
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {
