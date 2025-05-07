@@ -3,7 +3,7 @@ let storyObj = {
     story: {
         text: {
             prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause', '', ['', '']],
-            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', 'intro', '',['']],
+            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', 'intro', '', ['']],
             intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore', 'apartment_40.avif', ['']],
             introExplore: ["I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.", 'introShower', 'apartment_40.avif', ['']],
             introShower: ["I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.", 'introEnterance', 'apartment_40.avif', ['']],
@@ -11,23 +11,23 @@ let storyObj = {
             introLeave: ["After making sure I have everything I put on a mask so as to not irritate my lungs with the pollutants in the outside air.", 'introWTW', 'apartment_40.avif', ['']],
             introWTW: ["I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.", 'introBuilding', 'alley-6.avif', ['']],
             introBuilding: ["I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.", 'introEnter', 'building-outside-15_palette.avif', ['']],
-            introEnter: ["I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.", 'introWork', 'facility-24.avif', [''] ],
+            introEnter: ["I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.", 'introWork', 'facility-24.avif', ['']],
             introWork: ["I place my hands on the keyboards and begin to navigate the files, searching for any files or pieces of data that are no longer needed. A few minutes after I began, I stumbled upon a report made to one of the higher ups, ‘Laboratory report on the prevention of android sentience’.", 'introReact', 'facility-31.avif', ['']],
             introReact: ["I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt", '@1corpDecision', 'facility-31.avif', ['']],
             corpDecision: ["Satisfaction, these things were machines, made by our own hands, why should they have a need for sentience, they just need to do what they’re programmed to do.", 'corpOutreach', 'facility-31.avif', ['']],
-            corpOutreach: ["Regardless of how I feel, I still have a job to do, so I delete the file and continue on with my work. As I’m clocking out my boss grabs my shoulder, “Hey there, you’re the one we have cleaning up our servers right? I saw that you had a look at one of our more private files and we would like to offer you a job regarding it.” I almost stumbled from surprise, “This is an opportunity!” I think, and immediately agree to his offer. “Great! Let me take you upstairs to meet your new project lead and give you your first assignment.”",'corpMentor', 'facility-31.avif', ['']],
+            corpOutreach: ["Regardless of how I feel, I still have a job to do, so I delete the file and continue on with my work. As I’m clocking out my boss grabs my shoulder, “Hey there, you’re the one we have cleaning up our servers right? I saw that you had a look at one of our more private files and we would like to offer you a job regarding it.” I almost stumbled from surprise, “This is an opportunity!” I think, and immediately agree to his offer. “Great! Let me take you upstairs to meet your new project lead and give you your first assignment.”", 'corpMentor', 'facility-31.avif', ['']],
             corpMentor: [`Upstairs I am met with a man who introduces himself as Daniel, and brings me to a separate room filled with weapons and gear. “Welcome to the team, your new job will be that of a field agent. You’ll go around the city and complete various missions given to you, these will often be picking up an important item or ‘taking care’ of informants. That’s what your first mission is actually, when you’re done gearing up head out to ## apartments, 3rd room.”
-`,'corpMission', 'building-inside-16.avif', ['']],
-corpMission: [`Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece, “A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps with your before you can get to him. You can interact with the puzzles by clicking on your screen, and use items by clicking on the item and then where you want to use it.” I nod, then kick down the door to begin my mission.`, '%1corpBackaout', 'apartment_16.avif', ['']],
-            corpBackOut: ["As I see the target’s death I can't help but still feel unsure if I still want to do this. I take a moment to gather my thoughts away from the prying eyes of this organization and decide",'placeholder', 'apartment_16.avif', ['']],
-            corpStay: ["that this organization isn't for me, the thought of sentient beings being treated like this changes everything",'placeholder', 'apartment_16.avif', ['']],
+`, 'corpMission', 'building-inside-16.avif', ['']],
+            corpMission: [`Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece, “A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps with your before you can get to him. You can interact with the puzzles by clicking on your screen, and use items by clicking on the item and then where you want to use it.” I nod, then kick down the door to begin my mission.`, '%1corpBackaout', 'apartment_16.avif', ['']],
+            corpBackOut: ["As I see the target’s death I can't help but still feel unsure if I still want to do this. I take a moment to gather my thoughts away from the prying eyes of this organization and decide", 'placeholder', 'apartment_16.avif', ['']],
+            corpStay: ["that this organization isn't for me, the thought of sentient beings being treated like this changes everything", 'placeholder', 'apartment_16.avif', ['']],
             corpProp: `You: “So what exactly is the goal of this organization Mentor: “It’s obvious isn’t it, why would I not get mad you read a document more confidential than the president’s launch codes? We want to keep these androids under our control. These things, they think they have memories, emotions, how cute. They are simply imitating humans. They are cold and unfeeling on the inside using a human appearance to disguise their intentions of rebelling”`,
             corpAllies: `Mentor: “In order to aid you in stopping these, walking computers, the company and I have decided to allot you a partner. They will assist you in understanding the company’s goals and reasoning, as well as help you in getting to your objective. Though you’ll have to defeat any enemies on your own. Ah, here they are now!” *Ally Walks in to the room* Mentor: “This is Darryl, they will be assisting you in all of your future missions. Speaking of which, you have another mission! This one will require you to eliminate an android that our sensors have perceived as being partially sentient. The GPS locator has determined that this particular bucket of bolts is in the sewers under Main Street.”`,
             corpMissionChoice: `Mentor: “Well, there’s that mission, or you could take this other mission. It’s a recon mission, you will need to follow members of the resistance back to one of their bases, and then get information from them, although you may have a higher chance of running into some of the resistance. You can find the person in the xxSt Diner. Either way, report back to me once you’ve completed the mission”`,
             corpMission2: `Robot: I decided that I would rather terminate the process of that robot. I turn to my new partner and ask them about their opinion, but they just shrug in response. 20 minutes later we’re wading through the city’s main sewer system, looking for a place where a newly sentient robot would hide. Eventually we stumble upon a small raised room, with muttering and electrical buzzing coming from the open doorway. Ally: “There he is!” Darryl barrels into the room in an attempt to capture the stray android and alerting it to our presence. The android easily dodges Darryl as he dives for our objective, and runs through the door at the opposite end of the room. The slamming of the door seems to have activated a kind of security system in the room, barring me from opening the door. Ally: “According to the map that path is a deadend, so all we need to do is open that door and we can finish our mission. Looks like you’ll have to disable the security system first.”`,
             corpAfterPuzzle1: `Ally: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Ally: “You’ve got nowhere to run now!”`,
             corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`,
-            placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)','|finalBoss|theEnd', '', ['']]
+            placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)', '|finalBoss|theEnd', '', ['']]
         }, // Above arrays probably need to be redone
     },
     choices: {
@@ -36,7 +36,7 @@ corpMission: [`Nearly 30 minutes later, I arrive at the apartment building. I gr
         3: ['Recon Mission', 'Other Mission']
     },
 }
-let nextText = ['','','', ['','']];
+let nextText = ['', '', '', ['', '']];
 let imagesLoaded = false;
 let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif", "./backgrounds/alley-6.avif", "./backgrounds/apartment_40.avif", "./backgrounds/battleBackground.gif", "./backgrounds/facility-1.avif", "./backgrounds/building-outside-15.avif", "./backgrounds/facility-24.avif", "./backgrounds/facility-31.avif"]
@@ -46,6 +46,7 @@ let textSpeed = 25;
 let curPuzzleSize = 0;
 let openRoom;
 let puzzleInfo = [];
+let healthBar = '';
 // let savedChoices = [];
 //classes
 //
@@ -110,23 +111,23 @@ class player {
 }
 
 const user = new player(100, 0, 5, '', '', [], items)
-const rebelScum1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '')
-const rebelScum2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '')
-const rebelSolider1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '')
-const rebelSoldier2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '')
-const rebelCommander1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '')
-const rebelCommander2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '')
-const businessMan1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '')
-const businessMan2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '')
-const Lawyer1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '')
-const Lawyer2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '')
-const upperManagement1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '')
-const upperManagement2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '')
-const boss1 = new enemy('Boss 1', 150, 20, 40, '', 'Electric Whirl')
-const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '')
-const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl')
-const boss4 = new enemy('Boss 4', 600, 40, 60, '', 'Electric Whirl')
-const finalBoss = new enemy('Final Boss', 1000, 60, 60, '', 'Electric Whirl')
+const rebelScum1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
+const rebelScum2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
+const rebelSolider1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
+const rebelSoldier2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
+const rebelCommander1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
+const rebelCommander2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
+const businessMan1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
+const businessMan2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
+const Lawyer1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
+const Lawyer2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
+const upperManagement1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
+const upperManagement2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
+const boss1 = new enemy('Boss 1', 150, 20, 40, '', 'Electric Whirl');
+const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '');
+const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl');
+const boss4 = new enemy('Boss 4', 600, 40, 60, '', 'Electric Whirl');
+const finalBoss = new enemy('Final Boss', 1000, 60, 60, '', 'Electric Whirl');
 let enemies = [rebelScum1, rebelScum2, rebelSolider1, rebelSoldier2, rebelCommander1, rebelCommander2, boss1, boss2, boss3, boss4, finalBoss];
 let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'rebelCommander1', 'rebelCommander2', 'boss1', 'boss2', 'boss3', 'boss4', 'finalBoss'];
 
@@ -207,11 +208,27 @@ function inventoryMake(a) {
     }
     if (a == 2) {
         for (let i = 0; i < items.length; i++) {
-            document.getElementById('inv').insertAdjacentHTML('afterbegin',
-                `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type} x${items[i].value}</button>
+            itemUsing = items.filter(obj => {
+                return Object.values(obj).includes(items[i].name)
+            })
+            if (itemUsing[0].type.includes('Weapon')) {
+                document.getElementById('inv').insertAdjacentHTML('afterbegin',
+                    `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type} Equip</button>
+                     <p id="${items[i].name}1">Description: ${items[i].description}</p>`
+                )
+            }
+            else {
+                document.getElementById('inv').insertAdjacentHTML('afterbegin',
+                    `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type} x${items[i].value}</button>
                  <p id="${items[i].name}1">Description: ${items[i].description}</p>`)
+            }
         }
     }
+    let healthBarNum = user.health / 5
+    for (let i = 0; i < healthBarNum; i++) {
+        healthBar += '#' 
+    }
+    document.getElementById('health').innerHTML = '<p>' + `-|${healthBar}|-` + '</p>'
 }
 
 function getName(name, pName) {
@@ -225,7 +242,7 @@ function getName(name, pName) {
         if (notEquipped) {
             let weaponDamage = itemUsing[0].damage
             user.damage += weaponDamage
-            nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + ' Equiped' + '</button>'
+            nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + ' Equipped' + '</button>'
             notEquipped = false
             return weaponDamage
         }
@@ -243,20 +260,26 @@ function getName(name, pName) {
     }
     if (itemUsing[0].type == 'Healing') {
         console.log(itemUsing[0])
-        user.health = itemUsing[0].healingAmount
+        user.health += itemUsing[0].healingAmount
         if (itemUsing[0].value > 0) {
             itemUsing[0].value -= 1
-            nameID.innerText
+            nameID.innerText = `${name}: Healing x${itemUsing[0].value}`
+            healthBarNum = itemUsing[0].healingAmount / 5
+            for (let i = 0; i < healthBarNum; i++) {
+                healthBar += '#' 
+            }
+            document.getElementById('health').innerHTML = '<p>' + `-|${healthBar}|-` + '</p>'
         }
         if (itemUsing[0].value < 1) {
             nameID.remove()
             pNameID.remove()
         }
     }
+    console.log(user.health)
 }
 
 function unEquip(name) {
-    document.getElementById(name).outerHTML = `<button id="${name}" onclick="getName('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>';
+    document.getElementById(name).outerHTML = `<button id="${name}" onclick="getName('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + ' Equip' + '</button>';
     user.damage -= itemUsing[0].damage;
 }
 
@@ -301,18 +324,18 @@ function fullScreen() {
 
 //
 async function updateBackground(imageUrl) {
-    if(document.getElementById('backgroundImage')){
+    if (document.getElementById('backgroundImage')) {
         document.getElementById('backgroundImage').remove();
     }
     if (imageUrl) {
-        for(let i=0; i<preload.length;i++){
-            if(preload[i] == `./backgrounds/${imageUrl}`){
+        for (let i = 0; i < preload.length; i++) {
+            if (preload[i] == `./backgrounds/${imageUrl}`) {
                 images[i].id = 'backgroundImage';
                 document.getElementById('body').appendChild(images[i]);
             }
         }
     } else {
-        if(document.getElementById('backgroundImage')){
+        if (document.getElementById('backgroundImage')) {
             document.getElementById('backgroundImage').remove();
         }
     }
@@ -342,7 +365,7 @@ async function updateDialog(dialogData) {
     updateBackground(textBackgroundImg);
 
     let displayedText = '';
-    nextText = ['','','', ['', '']];
+    nextText = ['', '', '', ['', '']];
     clickable = false;
     let moreText = false;
     for (let letter of dialogText) {
@@ -372,22 +395,22 @@ async function updateDialog(dialogData) {
         if (dialogData[1][0] != '@' && dialogData[1][0] != '%' && dialogData[1][0] != '|' && dialogData[1][0] != '~') {
             nextText[0] = storyObj.story.text[dialogData[1]][0];
             nextText[1] = storyObj.story.text[dialogData[1]][1];
-        }else if(dialogData[1][0] == '|'){
+        } else if (dialogData[1][0] == '|') {
             nextText[0] = dialogData[1];
             nextText[4] = dialogData[1].match('\|(.*?)\|').input;
             let notPipe = true;
             let nextStuff = [];
             let g = dialogData[1].length - 1;
-            while(notPipe){
-                if(dialogData[1][g] != '|'){
+            while (notPipe) {
+                if (dialogData[1][g] != '|') {
                     nextStuff.push(dialogData[1][g]);
                     await sleep(1);
-                }else{notPipe = false}
+                } else { notPipe = false }
                 g--;
             }
             nextStuff = nextStuff.reverse().join('');
             nextText[1] = nextStuff.toString();
-        }else{
+        } else {
             nextText[0] = dialogData[1];
             nextText[1] = dialogData[1].match(/[a-zA-Z]+/).toString();
         }
@@ -457,32 +480,32 @@ function createPuzzle(puzzleNo) {
             break
         case 3:
             puzzleInfo = [
-              [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
-            , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'battery.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
-            , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
-            , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
-            , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
+                [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'battery.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
+                , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }]
             ];
             curPuzzleSize = 9;
             break
         case 4:
             puzzleInfo = [
-              [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
-            , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
-            , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 },{ image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
-            , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'battery.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
-            , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
-            , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }]
-            , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
-        ];
+                [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }]
+                , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'battery.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
+                , [{ image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 180 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'corner.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 180 }]
+                , [{ image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 't-shape.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 270 }, { image: 't-shape.png', posStart: 0, posEnd: 270 }, { image: 'node.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'line.png', posStart: 0, posEnd: 90 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'corner.png', posStart: 0, posEnd: 90 }]
+                , [{ image: 'node.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }, { image: 'corner.png', posStart: 0, posEnd: 270 }, { image: 'line.png', posStart: 0, posEnd: 0 }, { image: 't-shape.png', posStart: 0, posEnd: 0 }, { image: 'node.png', posStart: 0, posEnd: 90 }, { image: 'node.png', posStart: 0, posEnd: 180 }]
+            ];
             curPuzzleSize = 11;
             break
     }
@@ -538,7 +561,7 @@ function checkPuzzle() {
                 }
             } else {
                 let edgeCase = 0;
-                if ((parseInt(tileImg.style.rotate.match('[0-9]+'))) >= 180 ) {
+                if ((parseInt(tileImg.style.rotate.match('[0-9]+'))) >= 180) {
                     edgeCase = (parseInt(tileImg.style.rotate.match('[0-9]+')) - 180);
                 } else {
                     edgeCase = parseInt(tileImg.style.rotate.match('[0-9]+'));
@@ -693,16 +716,16 @@ function sleep(ms) {
 document.addEventListener('click', () => {
     if (clickable) {
         clickable = false;
-        if(nextText[0][0] == '@'){
+        if (nextText[0][0] == '@') {
             createChoice(storyObj.choices[nextText[0][1]]);
             updateDialog(storyObj.story.text[nextText[1]]);
-        }else if(nextText[0][0] == '%'){
+        } else if (nextText[0][0] == '%') {
             createPuzzle(parseInt(nextText[0][1]));
-        }else if(nextText[0][0] == '|'){
+        } else if (nextText[0][0] == '|') {
             startBattle(nextText[4]);
-        }else if(nextText[0][0] == '~'){
+        } else if (nextText[0][0] == '~') {
             playVideo();
-        }else{
+        } else {
             updateDialog(nextText);
         }
     }
@@ -711,7 +734,7 @@ document.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadingAnimation();
     preloadImage();
-    inventoryMake(1)
+    inventoryMake(2)
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
         if (e.target.id == 'volumeNum') {
