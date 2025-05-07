@@ -3,7 +3,7 @@ let storyObj = {
     story: {
         text: {
             prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause', '', ['', '']],
-            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', 'intro', '',['']],
+            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', '~intro', '',['']],
             intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore', 'apartment_40.avif', ['']],
             introExplore: ["I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.", 'introShower', 'apartment_40.avif', ['']],
             introShower: ["I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.", 'introEnterance', 'apartment_40.avif', ['']],
@@ -188,6 +188,13 @@ function playVideo() {
         }
         imgName = imgName.join('');
     }
+    video.addEventListener('click', (event) => {
+        if(video.currentTime > 10){
+            video.pause();
+            video.currentTime = 99999999999999;
+            video.play();
+        }
+    });
     video.addEventListener('ended', () => {
         video.remove();
         movePage('mainView');
