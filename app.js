@@ -3,7 +3,7 @@ let storyObj = {
     story: {
         text: {
             prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause', '', ['', '']],
-            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', '~intro', '',['']],
+            prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', '~intro', '', ['']],
             intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore', 'apartment_40.avif', ['']],
             introExplore: ["I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.", 'introShower', 'apartment_40.avif', ['']],
             introShower: ["I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.", 'introEnterance', 'apartment_40.avif', ['']],
@@ -42,7 +42,7 @@ let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif", "./backgrounds/alley-6.avif", "./backgrounds/apartment_40.avif", "./backgrounds/battleBackground.gif", "./backgrounds/facility-1.avif", "./backgrounds/building-outside-15.avif", "./backgrounds/facility-24.avif", "./backgrounds/facility-31.avif"]
 let images = [];
 let volume = 100;
-let textSpeed = 25;
+let textSpeed = 1;
 let curPuzzleSize = 0;
 let openRoom;
 let puzzleInfo = [];
@@ -87,7 +87,7 @@ let items2 = ['TechnoBlade', 'Stim-Boost', 'Nanites', 'Pistol', 'Bat', 'Knife', 
 
 //this class handles all the enemies
 class enemy {
-    constructor(name, health, damage, defense, attacks = [], special, image = 'download.png') {
+    constructor(name, health, damage, defense, attacks = [], special, image = 'download.png', regen = false) {
         this.name = name
         this.health = health
         this.damage = damage
@@ -95,6 +95,7 @@ class enemy {
         this.attacks = attacks
         this.special = special
         this.image = image
+        this.regen = regen
     }
 }
 
@@ -129,8 +130,9 @@ const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '');
 const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl');
 const boss4 = new enemy('Boss 4', 600, 40, 60, '', 'Electric Whirl');
 const finalBoss = new enemy('Final Boss', 1000, 60, 60, '', 'Electric Whirl');
-let enemies = [rebelScum1, rebelScum2, rebelSolider1, rebelSoldier2, rebelCommander1, rebelCommander2, boss1, boss2, boss3, boss4, finalBoss];
-let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'rebelCommander1', 'rebelCommander2', 'boss1', 'boss2', 'boss3', 'boss4', 'finalBoss'];
+const secretBoss = new enemy('Mr.Fast', 800, 80, 60, '', 'Failing Grade', 'download.png', true)
+let enemies = [rebelScum1, rebelScum2, rebelSolider1, rebelSoldier2, rebelCommander1, rebelCommander2, boss1, boss2, boss3, boss4, finalBoss, secretBoss];
+let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'rebelCommander1', 'rebelCommander2', 'boss1', 'boss2', 'boss3', 'boss4', 'finalBoss', 'secretBoss'];
 
 
 //functions
@@ -173,25 +175,14 @@ function playVideo() {
     summonDialog('off');
     let mainView = document.getElementById('mainView');
     let background = document.getElementById('body');
-    let backImage = background.style.backgroundImage;
     let video = document.getElementById('introVideo');
     background.style.background = 'black';
     mainView.style.display = 'none';
     video.style.left = '50%';
     video.volume = (volume / 100);
     video.play();
-    let imgName = [];
-    backImage = backImage.split('');
-    if (backImage) {
-        for (let i = 17; i < backImage.length; i++) {
-            if (i < 26) {
-                imgName.push(backImage[i]);
-            }
-        }
-        imgName = imgName.join('');
-    }
     video.addEventListener('click', (event) => {
-        if(video.currentTime > 10){
+        if (video.currentTime > 10) {
             video.pause();
             video.currentTime = 99999999999999;
             video.play();
@@ -202,7 +193,6 @@ function playVideo() {
         movePage('mainView');
         summonDialog('on');
         updateDialog(storyObj.story.text[nextText[1]]);
-        updateBackground(imgName);
     });
 }
 
@@ -234,7 +224,7 @@ function inventoryMake(a) {
     }
     let healthBarNum = user.health / 5
     for (let i = 0; i < healthBarNum; i++) {
-        healthBar += '#' 
+        healthBar += '#'
     }
     document.getElementById('health').innerHTML = '<p>' + `-|${healthBar}|-` + '</p>'
 }
@@ -274,7 +264,7 @@ function getName(name, pName) {
             nameID.innerText = `${name}: Healing x${itemUsing[0].value}`
             healthBarNum = itemUsing[0].healingAmount / 5
             for (let i = 0; i < healthBarNum; i++) {
-                healthBar += '#' 
+                healthBar += '#'
             }
             document.getElementById('health').innerHTML = '<p>' + `-|${healthBar}|-` + '</p>'
         }
@@ -306,7 +296,8 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('inventory')
+    movePage('mainMenu');
+    // startBattle('boss1');
 }
 
 //clears intervals and sets new pages
@@ -331,17 +322,19 @@ function fullScreen() {
 }
 
 //
-async function updateBackground(imageUrl) {
+async function updateBackground(imageUrl, place= 'mainView') {
     if (imageUrl) {
         for (let i = 0; i < preload.length; i++) {
             if (preload[i] == `./backgrounds/${imageUrl}`) {
-                if(document.getElementById('backgroundImage')){
-                    let storeImg = document.getElementById('backgroundImage');
-                    storeImg.id = Math.random();
-                    document.getElementById('storage').appendChild(storeImg);
-                }
-                images[i].id = 'backgroundImage';
-                document.getElementById('body').appendChild(images[i]);
+                //     if(document.getElementsByClassName('backgroundImage').length > 0){
+                //         let allBacks = document.getElementsByClassName('backgroundImage');
+                //         document.getElementById('storage').appendChild(allBacks);
+                //     }
+                //     console.log(document.getElementsByClassName('backgroundImage'))
+                // console.log(imageUrl);
+                // console.log(images[i]);
+                images[i].setAttribute('class', 'backgroundImage');
+                document.getElementById(place).appendChild(images[i]);
             }
         }
     }
@@ -368,6 +361,7 @@ async function updateDialog(dialogData) {
     } else {
         boxImage.remove();
     }
+    // console.log(dialogData[2]);
     updateBackground(textBackgroundImg);
 
     let displayedText = '';
@@ -419,6 +413,8 @@ async function updateDialog(dialogData) {
         } else {
             nextText[0] = dialogData[1];
             nextText[1] = dialogData[1].match(/[a-zA-Z]+/).toString();
+            nextText[3] = storyObj.story.text[dialogData[1]][3];//here
+            nextText[2] = storyObj.story.text[dialogData[1]][2];
         }
     }
 
@@ -604,7 +600,7 @@ function checkPuzzle() {
 function startBattle(enemy) {
     movePage('battle');
     summonDialog('frickOff');
-    updateBackground('battleBackground.gif');
+    updateBackground('battleBackground.gif', 'battle');
     let enemy2;
     for (let j = 0; j < enemies2.length; j++) {
         if (enemy.match(enemies2[j])) {
@@ -618,13 +614,14 @@ function startBattle(enemy) {
     container.insertBefore(enemyImg, container.firstChild);
     document.getElementById(`battleText`).innerHTML = `<p>${enemy2.name} has decided to brawl!</p>`;
     document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy2.name}')`);
-    document.getElementById('itemsButton').setAttribute('onclick', `changeBattleScreen('items', '${enemy2.name}')`);
+    document.getElementById('itemsButton').setAttribute('onclick', `movePage('inventory')`);
 }
 
 //
 async function combatSys(type, target, action) {
     let container = document.getElementById('battleText');
     let buttons = document.getElementById('battleButtons');
+    let timeOut = 3000;
     buttons.style.display = 'none';
     container.style.display = 'unset';
     let target2;
@@ -635,9 +632,9 @@ async function combatSys(type, target, action) {
         }
     }
     if (type == 'attack') {
-        target2.health -= (user.damage + 200);
+        target2.health -= (user.damage);
         container.innerHTML = `<p>You have attacked ${target2.name} for ${user.damage}hp, leaving them at ${target2.health}hp</p>`;
-        await sleep(4000);
+        await sleep(timeOut);
     } else {
         for (let j = 0; j < items2.length; j++) {
             if (action.match(items2[j])) {
@@ -653,20 +650,26 @@ async function combatSys(type, target, action) {
         } else {
             container.innerHTML = `<p>You shot ${target2.name} for ${target3.damage}hp, woah!</p>`;
         }
-        await sleep(4000);
+        await sleep(timeOut);
     }
     if (target2.health <= 0) {
         container.innerHTML = `<p>You have defeated ${target2.name}</p>`;
-        await sleep(4000);
-        endBattle();
+        await sleep(timeOut);
+        endBattle(false);
     } else {
         if (user.defense < 0 || typeof user.defense != (typeof 1)) { user.defense = 0 }
-        let subtract = target2.damage - user.defense;
+        let subtract = target2.damage - user.defense + 200;
         user.health -= subtract;
         container.innerHTML = `<p>You have been attacked by ${target2.name} for ${subtract}hp, leaving you at ${user.health}hp</p>`;
-        await sleep(4000);
+        await sleep(timeOut);
         container.innerHTML = `<p>${target2.name} is standing there, menacingly!`;
         buttons.style.display = 'unset';
+    }
+    if(user.health <=0) {
+        buttons.style.display = 'none';
+        container.innerHTML = `<p>${target2.name} has felled you!</p>`;
+        await sleep(timeOut);
+        endBattle(false);
     }
 }
 
@@ -691,12 +694,15 @@ function changeBattleScreen(newPage, avalibleEnemies) {
     }
 }
 
-function endBattle() {
+function endBattle(death) {
     document.getElementById('enemyBattleImg').remove();
-    movePage('mainView');
-    // updateBackground(something);
-    summonDialog('on');
-    updateDialog(storyObj.story.text[nextText[1]]);
+    if (!death) {
+        movePage('mainView');
+        summonDialog('on');
+        updateDialog(storyObj.story.text[nextText[1]]);
+    } else {
+        endGame('deadIdiot');
+    }
 }
 
 async function preloadImage() {
@@ -710,6 +716,24 @@ async function preloadImage() {
             console.log("Returned second promise");
         });
     });
+}
+
+function endGame(winState) {
+    let endScreen = document.createElement('section');
+    endScreen.setAttribute('class', 'page');
+    endScreen.id = 'endScreen';
+    document.getElementById('body').appendChild(endScreen);
+    if (winState == 'win') {
+        updateBackground('building-outside-15.avif','endScreen');
+    } else {
+        updateBackground('facility-1.avif', 'endScreen');
+    }
+    let retryButton = document.createElement('button');
+    retryButton.setAttribute('onclick', 'movePage("mainMenu")');
+    retryButton.id = 'retryButton';
+    retryButton.innerText = 'Restart?'
+    endScreen.appendChild(retryButton);
+    movePage('endScreen');
 }
 
 //pauses functions
@@ -732,6 +756,7 @@ document.addEventListener('click', () => {
         } else if (nextText[0][0] == '~') {
             playVideo();
         } else {
+            console.log(nextText);
             updateDialog(nextText);
         }
     }
@@ -739,7 +764,6 @@ document.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     loadingAnimation();
-    preloadImage();
     inventoryMake(2)
 
     document.getElementById('volumeGroup').addEventListener("input", (e) => {
