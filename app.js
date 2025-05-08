@@ -83,6 +83,7 @@ const bat = new weapon('Bat', '', 'Weapon/Melee', 'Blunt Damage', 15, 1)
 const knife = new weapon('Knife', '', 'Weapon/Melee', 'Slash Damage', 10, 1)
 const shiv = new weapon('Shiv', '', 'Weapon/Melee', 'None', 10, 1)
 let items = [TechnoBlade, stimBoost, nanites, pistol, bat, knife, shiv]
+let itemsHave = [];
 let items2 = ['TechnoBlade', 'Stim-Boost', 'Nanites', 'Pistol', 'Bat', 'Knife', 'Shiv'];
 
 //this class handles all the enemies
@@ -222,7 +223,11 @@ function inventoryMake(a) {
             }
         }
     }
-    let healthBarNum = user.health / 5
+    updateHealthBar((user.health / 5))
+}
+
+function updateHealthBar(a) {
+    healthBarNum = a
     for (let i = 0; i < healthBarNum; i++) {
         healthBar += '#'
     }
@@ -248,7 +253,6 @@ function getName(name, pName) {
             user.damage -= weaponDamage
             nameID.outerHTML = `<button id="${name}" onclick="unEquip('${name}')">` + `${itemUsing[0].name}:` + ` ${itemUsing[0].type}` + '</button>'
         }
-        // Function isn't put in yet
     }
     if (itemUsing[0].type == 'Item') {
         console.log('true')
@@ -262,11 +266,7 @@ function getName(name, pName) {
         if (itemUsing[0].value > 0) {
             itemUsing[0].value -= 1
             nameID.innerText = `${name}: Healing x${itemUsing[0].value}`
-            healthBarNum = itemUsing[0].healingAmount / 5
-            for (let i = 0; i < healthBarNum; i++) {
-                healthBar += '#'
-            }
-            document.getElementById('health').innerHTML = '<p>' + `-|${healthBar}|-` + '</p>'
+            updateHealthBar((itemUsing[0].healingAmount / 5))
         }
         if (itemUsing[0].value < 1) {
             nameID.remove()
