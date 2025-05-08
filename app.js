@@ -233,7 +233,7 @@ function inventoryMake(a) {
             }
         }
     }
-    updateHealthBar((healthBarNum = user.health / 5))
+    updateHealthBar((user.health / 5))
 }
 
 function updateHealthBar(a) {
@@ -276,7 +276,7 @@ function getName(name, pName) {
         if (itemUsing[0].value > 0) {
             itemUsing[0].value -= 1
             nameID.innerText = `${name}: Healing x${itemUsing[0].value}`
-            updateHealthBar((healthBarNum = itemUsing[0].healingAmount / 5))
+            updateHealthBar((itemUsing[0].healingAmount / 5))
         }
         if (itemUsing[0].value < 1) {
             nameID.remove()
