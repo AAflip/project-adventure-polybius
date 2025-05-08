@@ -47,6 +47,7 @@ let curPuzzleSize = 0;
 let openRoom;
 let puzzleInfo = [];
 let healthBar = '';
+let chaosCount = 0;
 // let savedChoices = [];
 //classes
 //
@@ -331,19 +332,17 @@ function fullScreen() {
 
 //
 async function updateBackground(imageUrl) {
-    if (document.getElementById('backgroundImage')) {
-        document.getElementById('backgroundImage').remove();
-    }
     if (imageUrl) {
         for (let i = 0; i < preload.length; i++) {
             if (preload[i] == `./backgrounds/${imageUrl}`) {
+                if(document.getElementById('backgroundImage')){
+                    let storeImg = document.getElementById('backgroundImage');
+                    storeImg.id = Math.random();
+                    document.getElementById('storage').appendChild(storeImg);
+                }
                 images[i].id = 'backgroundImage';
                 document.getElementById('body').appendChild(images[i]);
             }
-        }
-    } else {
-        if (document.getElementById('backgroundImage')) {
-            document.getElementById('backgroundImage').remove();
         }
     }
 }
@@ -362,7 +361,7 @@ async function updateDialog(dialogData) {
     let boxText = document.createElement('p');
     box.appendChild(boxText);
 
-    if (typeof imgData == 'object') {
+    if (typeof imgData == 'object' && imgData[0] != '') {
         boxImage.setAttribute('alt', imgData[1]);
         boxImage.setAttribute('src', '/images/' + imgData[0]);
         boxImage.setAttribute('id', 'boxImage');
