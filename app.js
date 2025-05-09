@@ -296,16 +296,13 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('battle');
-    // endGame('naope');
-    // createPuzzle(2);
-    startBattle('boss1');
 }
 
 //clears intervals and sets new pages
 //only works with loading for now, dont know if expansion needed
 function killInterval() {
     clearInterval(loadingInterval);
+    movePage('mainMenu');
 }
 
 //testing function
