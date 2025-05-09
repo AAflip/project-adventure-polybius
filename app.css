@@ -361,7 +361,7 @@ button#fullscreen {
 
 /* media query for phone screen size */
 /* max-width is temporary, replace with better number */
-@media screen and (max-width: 700px){
+@media screen and (max-width: 900px){
     #dialogBox{
         left: 2%;
         width: 95%;
@@ -369,6 +369,22 @@ button#fullscreen {
     #boxArrow{
         right: -1em;
         top: -67vh;
+    }
+    #puzzleBox div {
+        width: 100%;
+    }
+    #puzzleBox div button img {
+        height: 7vw;
+    }
+    #checkPuzzle {
+        position: unset;
+
+    }
+}
+
+@media screen and (max-width: 680px){
+    #puzzleBox div button img {
+        height: 6vw;
     }
 }
 
