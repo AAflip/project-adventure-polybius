@@ -88,7 +88,8 @@ let items2 = ['TechnoBlade', 'Stim-Boost', 'Nanites', 'Pistol', 'Bat', 'Knife', 
 
 //this class handles all the enemies
 class enemy {
-    constructor(name, health, damage, defense, attacks = [], special, image = 'download.png', regen = false) {
+    constructor(id, name, health, damage, defense, attacks = [], special, image = 'download.png', regen = false) {
+        this.id = id
         this.name = name
         this.health = health
         this.damage = damage
@@ -114,24 +115,24 @@ class player {
 }
 
 const user = new player(100, 0, 5, '', '', [], items)
-const rebelScum1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
-const rebelScum2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
-const rebelSolider1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
-const rebelSoldier2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
-const rebelCommander1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
-const rebelCommander2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
-const businessMan1 = new enemy('Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
-const businessMan2 = new enemy('Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
-const Lawyer1 = new enemy('Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
-const Lawyer2 = new enemy('Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
-const upperManagement1 = new enemy('Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
-const upperManagement2 = new enemy('Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
-const boss1 = new enemy('Boss 1', 150, 20, 40, '', 'Electric Whirl');
-const boss2 = new enemy('Boss 2', 200, 30, 30, '', 'QuickSilver', '');
-const boss3 = new enemy('Boss 3', 400, 40, 40, '', 'Electric Whirl');
-const boss4 = new enemy('Boss 4', 600, 40, 60, '', 'Electric Whirl');
-const finalBoss = new enemy('Final Boss', 1000, 60, 60, '', 'Electric Whirl');
-const secretBoss = new enemy('Mr.Fast', 800, 80, 60, '', 'Failing Grade', 'download.png', true)
+const rebelScum1 = new enemy('rebelScum1', 'Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
+const rebelScum2 = new enemy('rebelScum2', 'Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
+const rebelSolider1 = new enemy('rebelSolider1', 'Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
+const rebelSoldier2 = new enemy('rebelSoldier2', 'Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
+const rebelCommander1 = new enemy('rebelCommander1', 'Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
+const rebelCommander2 = new enemy('rebelCommander2', 'Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
+const businessMan1 = new enemy('businessMan1', 'Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
+const businessMan2 = new enemy('businessMan2', 'Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
+const Lawyer1 = new enemy('Lawyer1', 'Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
+const Lawyer2 = new enemy('Lawyer2', 'Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
+const upperManagement1 = new enemy('upperManagement1', 'Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
+const upperManagement2 = new enemy('upperManagement2', 'Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
+const boss1 = new enemy('boss1', 'H', 150, 20, 40, '', 'Electric Whirl');
+const boss2 = new enemy('boss2', 'Boss 2', 200, 30, 30, '', 'QuickSilver', '');
+const boss3 = new enemy('boss3', 'Boss 3', 400, 40, 40, '', 'Electric Whirl');
+const boss4 = new enemy('boss4', 'Boss 4', 600, 40, 60, '', 'Electric Whirl');
+const finalBoss = new enemy('finalBoss', 'Final Boss', 1000, 60, 60, '', 'Electric Whirl');
+const secretBoss = new enemy('secretBoss', 'Mr.Fast', 800, 80, 60, '', 'Failing Grade', 'download.png', true)
 let enemies = [rebelScum1, rebelScum2, rebelSolider1, rebelSoldier2, rebelCommander1, rebelCommander2, boss1, boss2, boss3, boss4, finalBoss, secretBoss];
 let enemies2 = ['rebelScum1', 'rebelScum2', 'rebelSolider1', 'rebelSoldier2', 'rebelCommander1', 'rebelCommander2', 'boss1', 'boss2', 'boss3', 'boss4', 'finalBoss', 'secretBoss'];
 
@@ -281,7 +282,6 @@ function unEquip(name) {
     user.damage -= itemUsing[0].damage;
 }
 
-
 //this function is the loading animation as well as the loading page cancel
 async function loadingAnimation() {
     let loadingText = document.createElement('h2');
@@ -297,6 +297,8 @@ async function loadingAnimation() {
     await preloadImage();
     killInterval();
     movePage('battle');
+    // endGame('naope');
+    // createPuzzle(2);
     startBattle('boss1');
 }
 
@@ -612,7 +614,7 @@ function startBattle(enemy) {
     let container = document.getElementById('battle');
     container.insertBefore(enemyImg, container.firstChild);
     document.getElementById(`battleText`).innerHTML = `<p>${enemy2.name} has decided to brawl!</p>`;
-    document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy2.name}')`);
+    document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy2.name}', '${enemy2.id}')`);
     document.getElementById('itemsButton').setAttribute('onclick', `movePage('inventory')`);
 }
 
@@ -631,7 +633,7 @@ async function combatSys(type, target, action) {
         }
     }
     if (type == 'attack') {
-        target2.health -= (user.damage);
+        target2.health -= (user.damage + 200);
         container.innerHTML = `<p>You have attacked ${target2.name} for ${user.damage}hp, leaving them at ${target2.health}hp</p>`;
         await sleep(timeOut);
     } else {
@@ -673,23 +675,19 @@ async function combatSys(type, target, action) {
     }
 }
 
-function changeBattleScreen(newPage, avalibleEnemies) {
+function changeBattleScreen(newPage, avalibleEnemies, enemyId) {
     let container = document.getElementById('battleText');
     container.innerHTML = '';
     container.style.display = 'flex';
     container.style.justifyContent = 'space-evenly';
     container.style.alignItems = 'center';
-
-    let avalibleEnemiesId = avalibleEnemies.split(' ');
-    avalibleEnemiesId[0] = avalibleEnemiesId[0].toLowerCase();
-    avalibleEnemiesId = avalibleEnemiesId.join('');
     if (newPage == 'attack') {
         for (let i = 0; i < 1; i++) {
-            container.innerHTML += `<button onclick='combatSys("attack", this.id)' id='${avalibleEnemiesId}'>${avalibleEnemies}</button>`;
+            container.innerHTML += `<button onclick='combatSys("attack", this.id)' id='${enemyId}'>${avalibleEnemies}</button>`;
         }
     } else {
         for (let i = 0; i < user.items.length; i++) {
-            container.innerHTML += `<button onclick='combatSys("item", "${avalibleEnemiesId}", this.id)' id='${user.items[i].name}'>${user.items[i].name}</button>`;
+            container.innerHTML += `<button onclick='combatSys("item", "${enemyId}", this.id)' id='${user.items[i].name}'>${user.items[i].name}</button>`;
         }
     }
 }
@@ -706,20 +704,54 @@ function endBattle(death) {
     }
 }
 
-function getRewards(){
-    let randNum = Math.trunc(Math.random*100);
+function getRewards() {
+    let randNum = Math.trunc(Math.random * 100);
     let itemGained = '';
-    let amountGained = 0;
-    if (randNum > 92){
+    let amountGained = 2;
+    if (randNum > 92) {
         itemGained = 'TechnoBlade';
+    } else {
+        itemGained = 'Stim-Boost';
     }
 
-    for(let userItem of user.items){
-        if(userItem.name == itemGained){
-            
+    for (let userItem of user.items) {
+        let hasItem = false;
+        if (userItem.name == itemGained) {
+            hasItem = true;
+        }
+
+        if (hasItem) {
+            if (userItem.type == 'Weapon/Melee' || userItem.type == 'Weapon/Ranged') {
+                //transform into stimboost
+                for (let j = 0; j < user.items.length; j++) {
+                    if (user.items[j].name == 'Stim-Boost') {
+                        user.items[j].value += amountGained;
+                    } else {
+                        for (let k = 0; k < items2.length; k++) {
+                            if (items2[k] == 'Stim-Boost') {
+                                user.items.push(items[k]);
+                                user.items[user.items.length - 1].value == amountGained;
+                            }
+                        }
+                    }
+                }
+            } else {
+                userItem.value += parseInt(amountGained);
+            }
+        } else {
+            for (let i = 0; i < items2.length; i++) {
+                if (itemGained == items2[i]) {
+                    user.items.push(items[i]);
+                    if (userItem.type == 'Healing') {
+                        user.items[user.items.length - 1].value = amountGained;
+                    }
+                }
+            }
         }
     }
+    //this is broken and im not exactly sure why
 }
+
 
 async function preloadImage() {
     for (i = 0; i < preload.length; i++) {
@@ -742,7 +774,7 @@ function endGame(winState) {
     if (winState == 'win') {
         updateBackground('building-outside-15.avif', 'endScreen');
     } else {
-        updateBackground('facility-1.avif', 'endScreen');
+        updateBackground('you-died.avif', 'endScreen');
     }
     let retryButton = document.createElement('button');
     retryButton.setAttribute('onclick', 'movePage("mainMenu")');
