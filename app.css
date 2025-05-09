@@ -388,6 +388,18 @@ button#fullscreen {
     #puzzleBox div button img {
         height: 6vw;
     }
+    #puzzleBox div {
+        width: 100%;
+    }
+    #puzzleBox div button img {
+        height: 7vw;
+    }
+}
+
+@media screen and (max-width: 680px){
+    #puzzleBox div button img {
+        height: 6vw;
+    }
 }
 
 /* media query for upright phone */
