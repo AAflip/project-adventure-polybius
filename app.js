@@ -31,7 +31,7 @@ let storyObj = {
         }, // Above arrays probably need to be redone
     },
     choices: {
-        1: [['Satisfaction', 3], ['Disgust', 5], ['Conflicted', 8]],
+        1: [['Satisfaction', 3, 'corpDecision'], ['Disgust', 5, ''], ['Conflicted', 8, '']],
         2: ['Stay on Corporate Path', 'Seek out the Rebels !DeadEnd!', 'Go Solo !DeadEnd!'],
         3: ['Recon Mission', 'Other Mission']
     },
@@ -432,7 +432,7 @@ function chooseOption(choice) {
     summonDialog('on');
     user.choicesMade.push(choice[0]);
     chaosCount += parseInt(choice[1]);
-    updateDialog(storyObj.story.text[nextText[1]]);
+    updateDialog(storyObj.story.text[choice[2]]);
 }
 
 //this function creates the options for a choice
