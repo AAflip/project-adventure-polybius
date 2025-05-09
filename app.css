@@ -367,8 +367,8 @@ button#fullscreen {
         width: 95%;
     }
     #boxArrow{
-        right: -1em;
-        top: -67vh;
+        right: -5vw;
+        top: -80vh;
     }
 }
 
