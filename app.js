@@ -322,20 +322,20 @@ function fullScreen() {
 }
 
 //
-async function updateBackground(imageUrl, place= 'mainView') {
+async function updateBackground(imageUrl, place = 'mainView') {
+    if (document.getElementById('backgroundImage')) {
+        document.getElementById('backgroundImage').remove();
+    }
     if (imageUrl) {
         for (let i = 0; i < preload.length; i++) {
             if (preload[i] == `./backgrounds/${imageUrl}`) {
-                //     if(document.getElementsByClassName('backgroundImage').length > 0){
-                //         let allBacks = document.getElementsByClassName('backgroundImage');
-                //         document.getElementById('storage').appendChild(allBacks);
-                //     }
-                //     console.log(document.getElementsByClassName('backgroundImage'))
-                // console.log(imageUrl);
-                // console.log(images[i]);
-                images[i].setAttribute('class', 'backgroundImage');
-                document.getElementById(place).appendChild(images[i]);
+                images[i].setAttribute('id', 'backgroundImage');
+                document.getElementById('body').appendChild(images[i]);
             }
+        }
+    } else {
+        if (document.getElementById('backgroundImage')) {
+            document.getElementById('backgroundImage').remove();
         }
     }
 }
@@ -361,7 +361,6 @@ async function updateDialog(dialogData) {
     } else {
         boxImage.remove();
     }
-    // console.log(dialogData[2]);
     updateBackground(textBackgroundImg);
 
     let displayedText = '';
@@ -395,6 +394,8 @@ async function updateDialog(dialogData) {
         if (dialogData[1][0] != '@' && dialogData[1][0] != '%' && dialogData[1][0] != '|' && dialogData[1][0] != '~') {
             nextText[0] = storyObj.story.text[dialogData[1]][0];
             nextText[1] = storyObj.story.text[dialogData[1]][1];
+            nextText[3] = storyObj.story.text[dialogData[1]][3];
+            nextText[2] = storyObj.story.text[dialogData[1]][2];
         } else if (dialogData[1][0] == '|') {
             nextText[0] = dialogData[1];
             nextText[4] = dialogData[1].match('\|(.*?)\|').input;
@@ -413,8 +414,6 @@ async function updateDialog(dialogData) {
         } else {
             nextText[0] = dialogData[1];
             nextText[1] = dialogData[1].match(/[a-zA-Z]+/).toString();
-            nextText[3] = storyObj.story.text[dialogData[1]][3];//here
-            nextText[2] = storyObj.story.text[dialogData[1]][2];
         }
     }
 
@@ -665,7 +664,7 @@ async function combatSys(type, target, action) {
         container.innerHTML = `<p>${target2.name} is standing there, menacingly!`;
         buttons.style.display = 'unset';
     }
-    if(user.health <=0) {
+    if (user.health <= 0) {
         buttons.style.display = 'none';
         container.innerHTML = `<p>${target2.name} has felled you!</p>`;
         await sleep(timeOut);
@@ -724,7 +723,7 @@ function endGame(winState) {
     endScreen.id = 'endScreen';
     document.getElementById('body').appendChild(endScreen);
     if (winState == 'win') {
-        updateBackground('building-outside-15.avif','endScreen');
+        updateBackground('building-outside-15.avif', 'endScreen');
     } else {
         updateBackground('facility-1.avif', 'endScreen');
     }
@@ -756,7 +755,6 @@ document.addEventListener('click', () => {
         } else if (nextText[0][0] == '~') {
             playVideo();
         } else {
-            console.log(nextText);
             updateDialog(nextText);
         }
     }
