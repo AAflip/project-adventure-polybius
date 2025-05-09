@@ -230,15 +230,14 @@ function inventoryMake(a) {
 
 function updateHealthBar(healthBarNum, notAdding = false) {
     for (let i = 0; i < healthBarNum; i++) {
-        if (a > 0) {
+        if (healthBarNum > 0) {
             healthBar += '#'
-            console.log(healthBar)
         }
     }
     if (notAdding) {
         healthBar = ''
         for (let i = 0; i < healthBarNum; i++) {
-            healthBar = '#'
+            healthBar += '#'
         }
     }
     document.getElementById('health').innerHTML = '<p>' + `-|${healthBar}|-` + '</p>'
@@ -305,10 +304,10 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('puzzles');
+    movePage('battle');
     // endGame('naope');
-    createPuzzle(3);
-    // startBattle('boss1');
+    // createPuzzle(3);
+    startBattle('boss1');
 }
 
 //clears intervals and sets new pages
@@ -646,7 +645,7 @@ async function combatSys(type, target, action) {
         }
     }
     if (type == 'attack') {
-        target2.health -= (user.damage + 200);
+        target2.health -= (user.damage);
         container.innerHTML = `<p>You have attacked ${target2.name} for ${user.damage}hp, leaving them at ${target2.health}hp</p>`;
         await sleep(timeOut);
     } else {
@@ -675,7 +674,7 @@ async function combatSys(type, target, action) {
         let subtract = target2.damage - user.defense;
         user.health -= subtract;
         container.innerHTML = `<p>You have been attacked by ${target2.name} for ${subtract}hp, leaving you at ${user.health}hp</p>`;
-        updateHealthBar((user.health / 5));
+        updateHealthBar((user.health / 5), true);
         await sleep(timeOut);
         container.innerHTML = `<p>${target2.name} is standing there, menacingly!`;
         buttons.style.display = 'unset';
