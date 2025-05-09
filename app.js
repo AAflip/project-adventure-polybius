@@ -227,7 +227,7 @@ function inventoryMake(a) {
 }
 
 function updateHealthBar(a) {
-    healthBarNum = a
+    let healthBarNum = a
     for (let i = 0; i < healthBarNum; i++) {
         healthBar += '#'
     }
@@ -296,8 +296,8 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
-    movePage('mainMenu');
-    // startBattle('boss1');
+    movePage('battle');
+    startBattle('boss1');
 }
 
 //clears intervals and sets new pages
@@ -657,9 +657,10 @@ async function combatSys(type, target, action) {
         endBattle(false);
     } else {
         if (user.defense < 0 || typeof user.defense != (typeof 1)) { user.defense = 0 }
-        let subtract = target2.damage - user.defense + 200;
+        let subtract = target2.damage - user.defense;
         user.health -= subtract;
         container.innerHTML = `<p>You have been attacked by ${target2.name} for ${subtract}hp, leaving you at ${user.health}hp</p>`;
+        updateHealthBar((user.health / 5));
         await sleep(timeOut);
         container.innerHTML = `<p>${target2.name} is standing there, menacingly!`;
         buttons.style.display = 'unset';
@@ -699,8 +700,24 @@ function endBattle(death) {
         movePage('mainView');
         summonDialog('on');
         updateDialog(storyObj.story.text[nextText[1]]);
+        getRewards();
     } else {
         endGame('deadIdiot');
+    }
+}
+
+function getRewards(){
+    let randNum = Math.trunc(Math.random*100);
+    let itemGained = '';
+    let amountGained = 0;
+    if (randNum > 92){
+        itemGained = 'TechnoBlade';
+    }
+
+    for(let userItem of user.items){
+        if(userItem.name == itemGained){
+            
+        }
     }
 }
 
