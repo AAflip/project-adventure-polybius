@@ -4,29 +4,33 @@ let storyObj = {
         text: {
             prologue: ['They say that green was as ever present as the sun on this planet only a couple of years ago. The green or nature was something seen even in the most bustling of cities. Now there is no nature, or what is left has hidden away from the eyes of humans, but humans persist without nature. We keep persisting, we make artificial habitats, desaltinate the sea, all to keep going.', 'prologueDramaticPause', '', ['', '']],
             prologueDramaticPause: ['But now as I look at this burning city I can’t help but think that there is no future left for us.', '~intro', '', ['']],
-            intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore', 'apartment_40.avif', ['']],
-            introExplore: ["I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.", 'introShower', 'apartment_40.avif', ['']],
-            introShower: ["I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.", 'introEnterance', 'apartment_40.avif', ['']],
-            introEnterance: ["I look for the thousandth time at the shabby place I call home. It’s a two room apartment that, if I stretch out my hands, can touch from end to end. Thankfully I lucked out on the government housing and at the very least have my own separate bathroom, every other poor soul has to go all the way down to the foyer.", 'introLeave', 'apartment_40.avif', ['']],
-            introLeave: ["After making sure I have everything I put on a mask so as to not irritate my lungs with the pollutants in the outside air.", 'introWTW', 'apartment_40.avif', ['']],
-            introWTW: ["I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.", 'introBuilding', 'alley-6.avif', ['']],
+            intro: ['The alarm blares waking me up, and I stare at the alarm clock a bit before I muster the will to get up.', 'introExplore', 'apartment_40.avif', ['mc-portrait.png']],
+            introExplore: ["I get up and look outside my window to see a narrow alleyway, there’s people working construction on this street again. I hate my job but in comparison to theirs it's not that bad.", 'introShower', 'apartment_40.avif', ['mc-portrait.png']],
+            introShower: ["I walk into the bathroom and have to pull out my shower as I put away the toilet as there’s not enough room to actually have a toilet and shower. I get into my shower and wash as quickly as I possibly can so I don’t have to waste precious water. As I get out, I try not to look at my face, it's better not to tell how I look. I quickly brush my teeth and get out of the shower.", 'introEnterance', 'apartment_40.avif', ['mc-portrait.png']],
+            introEnterance: ["I look for the thousandth time at the shabby place I call home. It’s a two room apartment that, if I stretch out my hands, can touch from end to end. Thankfully I lucked out on the government housing and at the very least have my own separate bathroom, every other poor soul has to go all the way down to the foyer.", 'introLeave', 'apartment_40.avif', ['mc-portrait.png']],
+            introLeave: ["After making sure I have everything I put on a mask so as to not irritate my lungs with the pollutants in the outside air.", 'introWTW', 'apartment_40.avif', ['mc-portrait.png']],
+            introWTW: ["I walk along the street breathing in what feels like 20 cigarettes at once. With no one to stop them some of the residential areas have been cleared to make way for factories leading to this cloud of smog. While I’m walking I like to imagine that I’m doing something better with my life.", 'introBuilding', 'alley-6.avif', ['mc-portrait.png']],
             introBuilding: ["I walked for another 10 minutes and I arrived at my destination, a branch of the cyberlife company.", 'introEnter', 'building-outside-15_palette.avif', ['']],
-            introEnter: ["I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.", 'introWork', 'facility-24.avif', ['']],
-            introWork: ["I place my hands on the keyboards and begin to navigate the files, searching for any files or pieces of data that are no longer needed. A few minutes after I began, I stumbled upon a report made to one of the higher ups, ‘Laboratory report on the prevention of android sentience’.", 'introReact', 'facility-31.avif', ['']],
-            introReact: ["I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt", '@1corpDecision', 'facility-31.avif', ['']],
-            corpDecision: ["Satisfaction, these things were machines, made by our own hands, why should they have a need for sentience, they just need to do what they’re programmed to do.", 'corpOutreach', 'facility-31.avif', ['']],
-            corpOutreach: ["Regardless of how I feel, I still have a job to do, so I delete the file and continue on with my work. As I’m clocking out my boss grabs my shoulder, “Hey there, you’re the one we have cleaning up our servers right? I saw that you had a look at one of our more private files and we would like to offer you a job regarding it.” I almost stumbled from surprise, “This is an opportunity!” I think, and immediately agree to his offer. “Great! Let me take you upstairs to meet your new project lead and give you your first assignment.”", 'corpMentor', 'facility-31.avif', ['']],
-            corpMentor: [`Upstairs I am met with a man who introduces himself as Daniel, and brings me to a separate room filled with weapons and gear. “Welcome to the team, your new job will be that of a field agent. You’ll go around the city and complete various missions given to you, these will often be picking up an important item or ‘taking care’ of informants. That’s what your first mission is actually, when you’re done gearing up head out to ## apartments, 3rd room.”
-`, 'corpMission', 'building-inside-16.avif', ['']],
-            corpMission: [`Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece, “A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps with your before you can get to him. You can interact with the puzzles by clicking on your screen, and use items by clicking on the item and then where you want to use it.” I nod, then kick down the door to begin my mission.`, '%1corpBackaout', 'apartment_16.avif', ['']],
-            corpBackOut: ["As I see the target’s death I can't help but still feel unsure if I still want to do this. I take a moment to gather my thoughts away from the prying eyes of this organization and decide", 'placeholder', 'apartment_16.avif', ['']],
+            introEnter: ["I entered through the door and walked over to the elevator, stopping in the carriage next to a tall bearded man. I press the 34th floor button, a floor consisting of a single work desk and miles of server racks. I walk out of the elevator when I hear the low ding, moving to my desk and booting on the main database’s computer.", 'introWork', 'facility-24.avif', ['mc-portrait.png']],
+            introWork: ["I place my hands on the keyboards and begin to navigate the files, searching for any files or pieces of data that are no longer needed. A few minutes after I began, I stumbled upon a report made to one of the higher ups, ‘Laboratory report on the prevention of android sentience’.", 'introReact', 'facility-31.avif', ['mc-portrait.png']],
+            introReact: ["I was unsure of what I was looking at, at first but as I started reading more and more about the ways they stopped androids from having free will I felt", '@1corpDecision', 'facility-31.avif', ['mc-portrait.png']],
+            corpDecision: ["Satisfaction, these things were machines, made by our own hands, why should they have a need for sentience, they just need to do what they’re programmed to do.", 'corpOutreach', 'facility-31.avif', ['mc-portrait.png']],
+            corpOutreach: ["Regardless of how I feel, I still have a job to do, so I delete the file and continue on with my work. As I’m clocking out my boss grabs my shoulder,", 'corpOutreachMentor', 'facility-31.avif', ['mc-portrait.png']],
+            corpOutreachMentor: ["“Hey there, you’re the one we have cleaning up our servers right? I saw that you had a look at one of our more private files and we would like to offer you a job regarding it.” I almost stumbled from surprise, “This is an opportunity!” I think, and immediately agree to his offer. “Great! Let me take you upstairs to meet your new project lead and give you your first assignment.”", 'corpMentor', 'facility-31.avif', ['mentor1.avif']],
+            corpMentor: [`Upstairs I am met with a man who introduces himself as Daniel, and brings me to a separate room filled with weapons and gear.`, 'corpMentorMentor', 'building-inside-16.avif', ['']],
+            corpMentorMentor: [`“Welcome to the team, your new job will be that of a field agent. You’ll go around the city and complete various missions given to you, these will often be picking up an important item or ‘taking care’ of informants. That’s what your first mission is actually, when you’re done gearing up head out to ## apartments, 3rd room.”
+`, 'corpMission', 'building-inside-16.avif', ['mentor1.avif']],
+            corpMission: [`Nearly 30 minutes later, I arrive at the apartment building. I grab my items and prepare to enter, when Daniel’s voice comes through my earpiece,`, 'corpMissionMentor', ['mc-portrait.png']],
+            corpMissionMentor: [`A little warning before you go in, he’ll probably be expecting you, so when you go in you’re going to have to disarm his traps with your before you can get to him. You can interact with the puzzles by clicking on your screen, and use items by clicking on the item and then where you want to use it.”`, 'corpBackOut' , 'building-inside-16.avif', ['mentor1.avif']],
+            corpBackOut: ["As I see the target’s death I can't help but still feel unsure if I still want to do this. I take a moment to gather my thoughts away from the prying eyes of this organization and decide", 'placeholder', 'apartment_16.avif', ['mc-portrait.png']],
             corpStay: ["that this organization isn't for me, the thought of sentient beings being treated like this changes everything", 'placeholder', 'apartment_16.avif', ['']],
-            corpProp: `You: “So what exactly is the goal of this organization Mentor: “It’s obvious isn’t it, why would I not get mad you read a document more confidential than the president’s launch codes? We want to keep these androids under our control. These things, they think they have memories, emotions, how cute. They are simply imitating humans. They are cold and unfeeling on the inside using a human appearance to disguise their intentions of rebelling”`,
-            corpAllies: `Mentor: “In order to aid you in stopping these, walking computers, the company and I have decided to allot you a partner. They will assist you in understanding the company’s goals and reasoning, as well as help you in getting to your objective. Though you’ll have to defeat any enemies on your own. Ah, here they are now!” *Ally Walks in to the room* Mentor: “This is Darryl, they will be assisting you in all of your future missions. Speaking of which, you have another mission! This one will require you to eliminate an android that our sensors have perceived as being partially sentient. The GPS locator has determined that this particular bucket of bolts is in the sewers under Main Street.”`,
-            corpMissionChoice: `Mentor: “Well, there’s that mission, or you could take this other mission. It’s a recon mission, you will need to follow members of the resistance back to one of their bases, and then get information from them, although you may have a higher chance of running into some of the resistance. You can find the person in the xxSt Diner. Either way, report back to me once you’ve completed the mission”`,
-            corpMission2: `Robot: I decided that I would rather terminate the process of that robot. I turn to my new partner and ask them about their opinion, but they just shrug in response. 20 minutes later we’re wading through the city’s main sewer system, looking for a place where a newly sentient robot would hide. Eventually we stumble upon a small raised room, with muttering and electrical buzzing coming from the open doorway. Ally: “There he is!” Darryl barrels into the room in an attempt to capture the stray android and alerting it to our presence. The android easily dodges Darryl as he dives for our objective, and runs through the door at the opposite end of the room. The slamming of the door seems to have activated a kind of security system in the room, barring me from opening the door. Ally: “According to the map that path is a deadend, so all we need to do is open that door and we can finish our mission. Looks like you’ll have to disable the security system first.”`,
-            corpAfterPuzzle1: `Ally: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Ally: “You’ve got nowhere to run now!”`,
-            corpAfterBattle1: ` Ally: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but it’s too late for that. I was watching and broadcasting the whole time! Now everyone will know of your evilness”`,
+            corpProp: [`You: “So what exactly is the goal of this organization Mentor: “It’s obvious isn’t it, why would I not get mad you read a document more confidential than the president’s launch codes? We want to keep these androids under our control. These things, they think they have memories, emotions, how cute. They are simply imitating humans. They are cold and unfeeling on the inside using a human appearance to disguise their intentions of rebelling”`, ''],
+            corpAllies: [`Mentor: “In order to aid you in stopping these, walking computers, the company and I have decided to allot you a partner. They will assist you in understanding the company’s goals and reasoning, as well as help you in getting to your objective. Though you’ll have to defeat any enemies on your own. Ah, here they are now!” *Ally Walks in to the room* Mentor: “This is Darryl, they will be assisting you in all of your future missions. Speaking of which, you have another mission! This one will require you to eliminate an android that our sensors have perceived as being partially sentient. The GPS locator has determined that this particular bucket of bolts is in the sewers under Main Street.”`,],
+            corpMissionChoice: [`Mentor: “Well, there’s that mission, or you could take this other mission. It’s a recon mission, you will need to follow members of the resistance back to one of their bases, and then get information from them, although you may have a higher chance of running into some of the resistance. You can find the person in the xxSt Diner. Either way, report back to me once you’ve completed the mission”`,],
+            corpMission2: [`Robot: I decided that I would rather terminate the process of that robot. I turn to my new partner and ask them about their opinion, but they just shrug in response. 20 minutes later we’re wading through the city’s main sewer system, looking for a place where a newly sentient robot would hide. Eventually we stumble upon a small raised room, with muttering and electrical buzzing coming from the open doorway. Darryl: “There he is!” Darryl barrels into the room in an attempt to capture the stray android and alerting it to our presence. The android easily dodges Darryl as he dives for our objective, and runs through the door at the opposite end of the room. The slamming of the door seems to have activated a kind of security system in the room, barring me from opening the door. Darryl: “According to the map that path is a deadend, so all we need to do is open that door and we can finish our mission. Looks like you’ll have to disable the security system first.”`,],
+            corpAfterPuzzle1: [`Darryl: “Okay, now that the doors open he should be right there, so be ready to fight” I nod as Darryl reaches over and opens the door, revealing the nervous android. Darryl: “You’ve got nowhere to run now!”`,],
+            corpAfterBattle1: [`Darryl: “Good job, now let’s go and report back to the boss before anyone sees-” Rebel: “Sorry, but this room has had cameras that are broadcasting right now . All I was waiting for, was for you to slip up…” He takes his last breath and all I’m left with is an uncanny feeling that I’m probably going to get the biggest dressing down of my life.”`,],
+
             placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)', '|finalBoss|theEnd', '', ['']]
         }, // Above arrays probably need to be redone
     },
@@ -42,7 +46,7 @@ let loadingInterval;
 let preload = ["./backgrounds/main.avif", "./images/brn.avif", "./backgrounds/alley-6.avif", "./backgrounds/apartment_40.avif", "./backgrounds/battleBackground.gif", "./backgrounds/facility-1.avif", "./backgrounds/building-outside-15.avif", "./backgrounds/facility-24.avif", "./backgrounds/facility-31.avif"]
 let images = [];
 let volume = 100;
-let textSpeed = 1;
+let textSpeed = 25;
 let curPuzzleSize = 0;
 let openRoom;
 let puzzleInfo = [];
@@ -199,38 +203,47 @@ function playVideo() {
 }
 
 
-function inventoryMake(a) {
-    if (a == 1) {
+function inventoryMake(interactive) {
+    let div = document.getElementById('inv')
+    div.innerHTML = ''
+    if (interactive == 1) {
         for (let i = 0; i < items.length; i++) {
-            document.getElementById('inv').insertAdjacentHTML('afterbegin',
+            div.insertAdjacentHTML('afterbegin',
                 `<p>${items[i].name}: ${items[i].type} <br> ${items[i].description}</p> `)
         }
     }
-    if (a == 2) {
+    if (interactive == 2) {
         for (let i = 0; i < items.length; i++) {
             itemUsing = items.filter(obj => {
                 return Object.values(obj).includes(items[i].name)
             })
             if (itemUsing[0].type.includes('Weapon')) {
-                document.getElementById('inv').insertAdjacentHTML('afterbegin',
+                div.insertAdjacentHTML('afterbegin',
                     `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type} Equip</button>
                      <p id="${items[i].name}1">Description: ${items[i].description}</p>`
                 )
             }
             else {
-                document.getElementById('inv').insertAdjacentHTML('afterbegin',
+                div.insertAdjacentHTML('afterbegin',
                     `<button id="${items[i].name}" onclick="getName('${items[i].name}', '${items[i].name}1')">${items[i].name}: ${items[i].type} x${items[i].value}</button>
                  <p id="${items[i].name}1">Description: ${items[i].description}</p>`)
             }
         }
     }
-    updateHealthBar((user.health / 5))
+    updateHealthBar((user.health / 5), true)
 }
 
-function updateHealthBar(a) {
-    let healthBarNum = a
+function updateHealthBar(healthBarNum, notAdding = false) {
     for (let i = 0; i < healthBarNum; i++) {
-        healthBar += '#'
+        if (healthBarNum > 0) {
+            healthBar += '#'
+        }
+    }
+    if (notAdding) {
+        healthBar = ''
+        for (let i = 0; i < healthBarNum; i++) {
+            healthBar += '#'
+        }
     }
     document.getElementById('health').innerHTML = '<p>' + `-|${healthBar}|-` + '</p>'
 }
@@ -296,6 +309,10 @@ async function loadingAnimation() {
     }, 1000);
     await preloadImage();
     killInterval();
+    movePage('mainMenu');
+    // endGame('naope');
+    // createPuzzle(3);
+    // startBattle('boss1');
 }
 
 //clears intervals and sets new pages
@@ -633,7 +650,7 @@ async function combatSys(type, target, action) {
         }
     }
     if (type == 'attack') {
-        target2.health -= (user.damage + 200);
+        target2.health -= (user.damage);
         container.innerHTML = `<p>You have attacked ${target2.name} for ${user.damage}hp, leaving them at ${target2.health}hp</p>`;
         await sleep(timeOut);
     } else {
@@ -662,7 +679,7 @@ async function combatSys(type, target, action) {
         let subtract = target2.damage - user.defense;
         user.health -= subtract;
         container.innerHTML = `<p>You have been attacked by ${target2.name} for ${subtract}hp, leaving you at ${user.health}hp</p>`;
-        updateHealthBar((user.health / 5));
+        updateHealthBar((user.health / 5), true);
         await sleep(timeOut);
         container.innerHTML = `<p>${target2.name} is standing there, menacingly!`;
         buttons.style.display = 'unset';
