@@ -12,6 +12,7 @@
 
 #introVideo{
     height: 100%;
+    max-width: 100%;
     filter: brightness(2);
     position: absolute;
     top: 50%;
@@ -26,6 +27,7 @@
     top: 0;
     z-index: -1;
     height: 99vh;
+    max-width: 100%;
     padding: 0;
 }
 
@@ -367,8 +369,8 @@ button#fullscreen {
         width: 95%;
     }
     #boxArrow{
-        right: -1em;
-        top: -67vh;
+        right: -5vw;
+        top: -80vh;
     }
     #puzzleBox div {
         width: 100%;

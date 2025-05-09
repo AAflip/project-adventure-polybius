@@ -32,7 +32,7 @@ let storyObj = {
         }, // Above arrays probably need to be redone
     },
     choices: {
-        1: ['Satisfaction', 'Disgust !DeadEnd!', 'Conflicted !DeadEnd!'],
+        1: [['Satisfaction', 3, 'corpDecision'], ['Disgust', 5, ''], ['Conflicted', 8, '']],
         2: ['Stay on Corporate Path', 'Seek out the Rebels !DeadEnd!', 'Go Solo !DeadEnd!'],
         3: ['Recon Mission', 'Other Mission']
     },
@@ -439,10 +439,13 @@ async function updateDialog(dialogData) {
 
 //
 function chooseOption(choice) {
+    choice = choice.split(',');
     document.getElementById('body').style.backdropFilter = ``;
     document.getElementById('optionsDiv').remove();
     summonDialog('on');
-    user.choicesMade.push(choice);
+    user.choicesMade.push(choice[0]);
+    chaosCount += parseInt(choice[1]);
+    updateDialog(storyObj.story.text[choice[2]]);
 }
 
 //this function creates the options for a choice
@@ -452,8 +455,8 @@ function createChoice(options) {
     optionsDiv.setAttribute('id', 'optionsDiv');
     for (let option of options) {
         let optButton = document.createElement('button');
-        optButton.innerText = `${option}`;
-        optButton.setAttribute('onclick', 'chooseOption(this.innerText)');
+        optButton.innerText = `${option[0]}`;
+        optButton.setAttribute('onclick', `chooseOption('${option}')`);
         optionsDiv.appendChild(optButton);
     }
     let optionsBox = document.getElementById('mainView');
@@ -806,7 +809,6 @@ document.addEventListener('click', () => {
         clickable = false;
         if (nextText[0][0] == '@') {
             createChoice(storyObj.choices[nextText[0][1]]);
-            updateDialog(storyObj.story.text[nextText[1]]);
         } else if (nextText[0][0] == '%') {
             createPuzzle(parseInt(nextText[0][1]));
         } else if (nextText[0][0] == '|') {
