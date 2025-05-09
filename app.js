@@ -699,58 +699,78 @@ function endBattle(death) {
         summonDialog('on');
         updateDialog(storyObj.story.text[nextText[1]]);
         getRewards();
+        inventoryMake(2);
     } else {
         endGame('deadIdiot');
     }
 }
 
 function getRewards() {
-    let randNum = Math.trunc(Math.random * 100);
+    let randNum = Math.trunc(Math.random() * 100);
     let itemGained = '';
-    let amountGained = 2;
-    if (randNum > 92) {
+    let amountGained = Math.trunc(Math.random() * 10);
+    let hasItem = false;
+    let currentItem;
+    if (randNum > 94) {
         itemGained = 'TechnoBlade';
-    } else {
+    } else if (randNum > 80) {
+        itemGained = 'Nanites';
+    }else if (randNum > 65) {
         itemGained = 'Stim-Boost';
+    }else if (randNum > 48) {
+        itemGained = 'Pistol';
+    }else if (randNum > 20) {
+        itemGained = 'Bat';
+    }else if (randNum > 10) {
+        itemGained = 'Knife';
+    }else{
+        itemGained = 'Shiv';
+        amountGained = 1;
     }
 
     for (let userItem of user.items) {
-        let hasItem = false;
         if (userItem.name == itemGained) {
             hasItem = true;
+            currentItem = userItem;
         }
+    }
 
-        if (hasItem) {
-            if (userItem.type == 'Weapon/Melee' || userItem.type == 'Weapon/Ranged') {
-                //transform into stimboost
-                for (let j = 0; j < user.items.length; j++) {
-                    if (user.items[j].name == 'Stim-Boost') {
-                        user.items[j].value += amountGained;
-                    } else {
-                        for (let k = 0; k < items2.length; k++) {
-                            if (items2[k] == 'Stim-Boost') {
-                                user.items.push(items[k]);
-                                user.items[user.items.length - 1].value == amountGained;
-                            }
-                        }
+    if (hasItem) {
+        let currentItem2;
+        if (currentItem.type == 'Weapon/Melee' || currentItem.type == 'Weapon/Ranged') {
+            //transform into stimboost
+            let hasThisItem = false;
+            for (let j = 0; j < user.items.length; j++) {
+                if (user.items[j].name == 'Stim-Boost') {
+                    hasThisItem = true;
+                    currentItem2 = user.items[j];
+                }
+            }
+            if (!hasThisItem) {
+                for (let k = 0; k < items2.length; k++) {
+                    if (items2[k] == 'Stim-Boost') {
+                        user.items.push(items[k]);
+                        user.items[user.items.length - 1].value = amountGained;
                     }
                 }
             } else {
-                userItem.value += parseInt(amountGained);
+                currentItem2.value += amountGained;
             }
         } else {
-            for (let i = 0; i < items2.length; i++) {
-                if (itemGained == items2[i]) {
-                    user.items.push(items[i]);
-                    if (userItem.type == 'Healing') {
-                        user.items[user.items.length - 1].value = amountGained;
-                    }
+            currentItem.value += parseInt(amountGained);
+        }
+    } else {
+        for (let i = 0; i < items2.length; i++) {
+            if (itemGained == items2[i]) {
+                user.items.push(items[i]);
+                if (userItem.type == 'Healing') {
+                    user.items[user.items.length - 1].value = amountGained;
                 }
             }
         }
     }
-    //this is broken and im not exactly sure why
 }
+
 
 
 async function preloadImage() {
