@@ -222,7 +222,7 @@ I get back in our car and silently drive back to the city, preparing myself for 
 let nextText = ['', '', '', ['', '']];
 let imagesLoaded = false;
 let loadingInterval;
-let preload = ['./backgrounds/alley-6.avif', './backgrounds/apartment_16.avif', './backgrounds/apartment_40.avif', './backgrounds/battleBackground.gif', './backgrounds/building-inside-6.avif', './backgrounds/building-outside-15.avif', './backgrounds/building-outside-16.avif', './backgrounds/building-outside-17.avif', './backgrounds/building-outside-18.avif', './backgrounds/cybercity_1.avif', './backgrounds/cybercity_58.avif', './backgrounds/cybercity_59.avif', './backgrounds/cybercity_62.avif', './backgrounds/cybercity_66.avif', './backgrounds/facility-1.avif', './backgrounds/facility-24.avif', './backgrounds/facility-31.avif', './backgrounds/main.avif', './backgrounds/research-lab-1.avif', './backgrounds/you-died.avif']
+let preload = ['./backgrounds/alley-6.avif', './backgrounds/apartment_16.avif', './backgrounds/apartment_40.avif', './backgrounds/battleBackground.gif', './backgrounds/building-inside-6.avif', './backgrounds/building-outside-15.avif', './backgrounds/building-outside-16.avif', './backgrounds/building-outside-17.avif', './backgrounds/building-outside-18.avif', './backgrounds/cybercity_1.avif', './backgrounds/cybercity_58.avif', './backgrounds/cybercity_59.avif', './backgrounds/cybercity_62.avif', './backgrounds/cybercity_66.avif', './backgrounds/facility-1.avif', './backgrounds/facility-24.avif', './backgrounds/facility-31.avif', './backgrounds/main.avif', './backgrounds/research-lab-1.avif', './backgrounds/you-died.avif', './images/arrow-down.gif', './images/battery.png', './images/battery2.png', './images/boss1.avif', './images/boss2.avif', './images/bot-attack.avifs', './images/bot-death.avifs', './images/bot.avifs', './images/brn.avif', './images/burn.png', './images/business.avifs', './images/businessman.avifs', './images/corner.png', './images/CyberCity_58.avif', './images/CyberCity_59.avif', './images/CyberCity_62.avif', './images/CyberCity_66.avif', './images/darryl.avif', './images/download.jpg', './images/download.png', './images/guy1-attack.avifs', './images/guy1-death.avifs', './images/guy1.avifs', './images/guy2-attack.avifs', './images/guy2-death.avifs', './images/guy2.avifs', './images/guy3-attack.avifs', './images/guy3-death.avifs', './images/guy3.avifs', './images/guy4.avifs', './images/line.png', './images/man-attack.avifs', './images/man-death.avifs', './images/mc-portrait.png', './images/mentor1.avif', './images/node.png', './images/p1.svg', './images/p2.png', './images/portraits', './images/rebelScum-death.avifs', './images/rebelScum-punch.avifs', './images/rebelScum.avifs', './images/rebelSoldier-attack.avifs', './images/rebelSoldier.avifs', './images/rebelSolider-death.avifs', './images/research-lab-1.avif', './images/rotate.gif', './images/screen_2x.webp', './images/t-shape.png']
 let images = [];
 let volume = 100;
 let textSpeed = 25;
@@ -298,22 +298,22 @@ class player {
 }
 
 const user = new player(100, 0, 5, '', '', [], items)
-const rebelScum1 = new enemy('rebelScum1', 'Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
-const rebelScum2 = new enemy('rebelScum2', 'Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
-const rebelSolider1 = new enemy('rebelSolider1', 'Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
-const rebelSoldier2 = new enemy('rebelSoldier2', 'Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
-const rebelCommander1 = new enemy('rebelCommander1', 'Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
-const rebelCommander2 = new enemy('rebelCommander2', 'Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
-const businessMan1 = new enemy('businessMan1', 'Rebel Scum 1', 50, 10, 10, '', 'Slash', '');
-const businessMan2 = new enemy('businessMan2', 'Rebel Scum 2', 50, 20, 20, '', 'Slash', '');
-const Lawyer1 = new enemy('Lawyer1', 'Rebel Soldier 1', 90, 20, 10, '', 'Slash', '');
-const Lawyer2 = new enemy('Lawyer2', 'Rebel Soldier 2', 90, 25, 20, '', 'Slash', '');
-const upperManagement1 = new enemy('upperManagement1', 'Rebel Commander 1', 130, 30, 30, '', 'Slash', '');
-const upperManagement2 = new enemy('upperManagement2', 'Rebel Commander 2', 160, 50, 40, '', 'Slash', '');
-const boss1 = new enemy('boss1', 'H', 150, 20, 40, '', 'Electric Whirl');
-const boss2 = new enemy('boss2', 'Boss 2', 200, 30, 30, '', 'QuickSilver', '');
-const boss3 = new enemy('boss3', 'Boss 3', 400, 40, 40, '', 'Electric Whirl');
-const boss4 = new enemy('boss4', 'Boss 4', 600, 40, 60, '', 'Electric Whirl');
+const rebelScum1 = new enemy('rebelScum1', 'Rebel Scum 1', 50, 10, 10, '', 'Slash', 'rebelScum.avifs');
+const rebelScum2 = new enemy('rebelScum2', 'Rebel Scum 2', 50, 20, 20, '', 'Slash', 'rebelScum.avifs');
+const rebelSolider1 = new enemy('rebelSolider1', 'Rebel Soldier 1', 90, 20, 10, '', 'Slash', 'rebelSoldier.avifs');
+const rebelSoldier2 = new enemy('rebelSoldier2', 'Rebel Soldier 2', 90, 25, 20, '', 'Slash', 'rebelSoldier.avifs');
+const rebelCommander1 = new enemy('rebelCommander1', 'Rebel Commander 1', 130, 30, 30, '', 'Slash', 'guy1.avifs');
+const rebelCommander2 = new enemy('rebelCommander2', 'Rebel Commander 2', 160, 50, 40, '', 'Slash', 'guy1.avifs');
+const businessMan1 = new enemy('businessMan1', 'Rebel Scum 1', 50, 10, 10, '', 'Slash', 'businessman.avifs');
+const businessMan2 = new enemy('businessMan2', 'Rebel Scum 2', 50, 20, 20, '', 'Slash', 'businessman.avifs');
+const Lawyer1 = new enemy('Lawyer1', 'Rebel Soldier 1', 90, 20, 10, '', 'Slash', 'guy2.avifs');
+const Lawyer2 = new enemy('Lawyer2', 'Rebel Soldier 2', 90, 25, 20, '', 'Slash', 'guy2.avifs');
+const upperManagement1 = new enemy('upperManagement1', 'Rebel Commander 1', 130, 30, 30, '', 'Slash', 'business.avifs');
+const upperManagement2 = new enemy('upperManagement2', 'Rebel Commander 2', 160, 50, 40, '', 'Slash', 'business.avifs');
+const boss1 = new enemy('boss1', 'H', 150, 20, 40, '', 'Electric Whirl', 'guy3.avifs');
+const boss2 = new enemy('boss2', 'Boss 2', 200, 30, 30, '', 'QuickSilver', 'guy4.avifs');
+const boss3 = new enemy('boss3', 'Boss 3', 400, 40, 40, '', 'Cannon Beam', 'bot.avifs');
+const boss4 = new enemy('boss4', 'Boss 4', 600, 40, 60, '', 'Vengence Slash', '');
 const finalBoss = new enemy('finalBoss', 'Final Boss', 1000, 60, 60, '', 'Electric Whirl');
 const secretBoss = new enemy('secretBoss', 'Mr.Fast', 800, 80, 60, '', 'Failing Grade', 'download.png', true)
 let enemies = [rebelScum1, rebelScum2, rebelSolider1, rebelSoldier2, rebelCommander1, rebelCommander2, boss1, boss2, boss3, boss4, finalBoss, secretBoss];
