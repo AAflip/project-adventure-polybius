@@ -209,15 +209,14 @@ I get back in our car and silently drive back to the city, preparing myself for 
             ending3p3: [`The city erupts into open warfare between humans and androids, fueled by years of oppression and mistrust. Old prejudices resurface, amplified by fear and desperation. The streets become battlegrounds, the air filled with the sounds of gunfire and explosions, the screams of the dying. The protective barrier is breached, torn asunder by the fury of the conflict, exposing the city to the harsh elements, the scorching heat, and the toxic air.`, 'ending3p4'],
             ending3p4: [`The final scene shows the city in ruins, consumed by fire and chaos. Buildings crumble, infrastructure collapses, and both humans and androids are decimated, their bodies littering the streets, their dreams reduced to ashes. You are left standing amidst the destruction, a solitary figure silhouetted against the flames, a testament to the destructive power of unchecked selfishness and hatred. The wind carries the ashes of a fallen civilization, a grim reminder of the price of your choices. The screen fades to black, leaving only the haunting echo of a world consumed by its own darkness, a symphony of destruction that you orchestrated.`],
 
-
             placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)', '|finalBoss|theEnd', '', ['']]
         }, // Above arrays probably need to be redone
     },
     choices: {
-        1: [['Satisfaction', 3, 'corpDecision'], ['Disgust', 5, ''], ['Conflicted', 8, '']],
-        2: [['Stay on Corporate Path'], ['Seek out the Rebels'], ['Go Solo']],
-        3: ['Recon Mission', 'Other Mission'],
-        4: ['Stay on Corporate Path', 'Seek out the Rebels', 'Go Solo'],
+        1: [['Satisfaction', -5, 'corpDecision'], ['Disgust', 5, 'goodDecision'], ['Conflicted', 2, '']],
+        2: [['Stay on Corporate Path', -5, 'corpStay'], ['Seek out the Rebels', 3, 'goodStay'], ['Go Solo', 1, '']],
+        3: [['Recon Mission', 0, 'corpMission2R'], ['Other Mission', 0, ]],
+        4: [['Recon Mission', 0, ], ['Other Mission', 0, ]],
     },
 }
 let nextText = ['', '', '', ['', '']];
