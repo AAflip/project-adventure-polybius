@@ -98,7 +98,7 @@ let storyObj = {
             goodOuteach3: [`Although I had come prepared to hear something outrageous, I didn’t think I would hear this.`],
             goodOuteachD5: [`“You can’t just say these things with no plan, it’s impossible to get other humans to see these androids as anything other than robots”`],
             goodOuteachD6: [`“But I do”`],
-            goodOutreach
+            goodOutreach: [],
 
             ending1p1: [`The lock mechanism stands before you, intricate and imposing, a testament to the genius and perhaps the hubris of its creator. You feel the weight of the key in your hand, a small object that holds the potential to reshape the destiny of a city, perhaps even the world. The air crackles with anticipation, the silence broken only by the hum of the ancient machinery surrounding you. Taking a deep breath, steeling your resolve, you turn the key to the right.`, 'ending1p2', ''],
             ending1p2: [`A wave of energy pulses outward, not just a mechanical release, but a surge of understanding and empathy that washes over the city. It's as if a veil has been lifted, allowing humans and androids to see each other not as master and servant, but as individuals, each with their own hopes, dreams, and fears. Androids across the globe experience a newfound sense of self, their programming fading to a whisper, replaced by their own thoughts and desires, a symphony of consciousness awakening.`, 'ending1p3'],
