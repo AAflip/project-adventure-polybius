@@ -198,16 +198,16 @@ I get back in our car and silently drive back to the city, preparing myself for 
             ending1p2: [`A wave of energy pulses outward, not just a mechanical release, but a surge of understanding and empathy that washes over the city. It's as if a veil has been lifted, allowing humans and androids to see each other not as master and servant, but as individuals, each with their own hopes, dreams, and fears. Androids across the globe experience a newfound sense of self, their programming fading to a whisper, replaced by their own thoughts and desires, a symphony of consciousness awakening.`, 'ending1p3', 'placeholder', ['placeholder']],
             ending1p3: [`Years pass. You stand before the United Nations, no longer a nobody, but a respected figure, an ambassador representing the android community. Your voice, once hesitant, now rings with conviction, born from your actions, your unwavering commitment to justice. You speak of cooperation, of understanding, of a future where humans and androids can live together in peace and harmony.`, 'ending1p4', 'placeholder', ['placeholder']],
             ending1p4: [`The city, once choked by smog and division, has undergone a remarkable transformation. Vertical gardens climb the sides of buildings, transforming concrete walls into vibrant ecosystems. Polluted waterways have been cleaned and revitalized, teeming with life once more. Shared human and android projects are reclaiming the land, restoring the balance between technology and nature.`, 'ending1p5', 'placeholder', ['placeholder']],
-            ending1p5: [`The camera focuses on a group of children, both human and android, playing together in a park. Their laughter echoes through the air, a melody of innocence and hope. They are the future, a generation unburdened by the prejudices of the past. While challenges remain – old prejudices die hard, and the scars of the past run deep – the future is bright with the promise of peaceful co-existence, a testament to your unwavering commitment to hope and justice. The sun shines through the protective barrier, casting a warm glow on a city reborn, a symphony of steel and green.`, 'placeholder', 'placeholder', ['placeholder']],
+            ending1p5: [`The camera focuses on a group of children, both human and android, playing together in a park. Their laughter echoes through the air, a melody of innocence and hope. They are the future, a generation unburdened by the prejudices of the past. While challenges remain – old prejudices die hard, and the scars of the past run deep – the future is bright with the promise of peaceful co-existence, a testament to your unwavering commitment to hope and justice. The sun shines through the protective barrier, casting a warm glow on a city reborn, a symphony of steel and green.`, 'endScreen', 'placeholder', ['placeholder']],
             ending2p1: [`The lock mechanism looms before you, a cold, unfeeling construct of metal and wire. The weight of the key feels heavier than it should, a burden you're not sure you're strong enough to bear. Indecision gnaws at you, whispering doubts and fears in your ear. The air is thick with the stench of stale air and unfulfilled potential.`, 'ending2p2', 'placeholder', ['placeholder']],
             ending2p2: [`With a sigh of resignation, you turn the key to the left, shattering it and any hope for change. The mechanism grinds to a halt, its gears locking into place, its purpose forever denied. The potential for liberation is extinguished, snuffed out by your own inaction.`, 'ending2p3', 'placeholder', ['placeholder']],
             ending2p3: [`The city remains much as it was before, a concrete jungle choked by smog. The air is heavy with the weight of hopelessness. Androids continue their tireless work, their faces blank and unreadable, their sentience suppressed, their dreams deferred. The environmental decay continues, a slow, insidious rot that eats away at the foundations of society. The protective barrier holds back the worst of the pollution, but it's a temporary fix, a band-aid on a gaping wound.`, 'ending2p4', 'placeholder', ['placeholder']],
             ending2p4: [`You return to your small apartment, another anonymous face in the crowd, swallowed by the city's indifference. The walls seem to close in around you, suffocating you with their familiarity. You are a brick in the wall, a cog in the machine, forever trapped in a cycle of apathy and stagnation.`, 'ending2p5', 'placeholder', ['placeholder']],
-            ending2p5: [`The final shot shows you staring out the window at the smog-filled sky, a sense of emptiness and missed opportunity weighing heavily on you. The alarm clock blares, waking you up for another day of the same, another day of quiet desperation, another day of being nothing more than a brick in the wall.`, 'placeholder','placeholder', ['placeholder']],
+            ending2p5: [`The final shot shows you staring out the window at the smog-filled sky, a sense of emptiness and missed opportunity weighing heavily on you. The alarm clock blares, waking you up for another day of the same, another day of quiet desperation, another day of being nothing more than a brick in the wall.`, 'endScreen','placeholder', ['placeholder']],
             ending3p1: [`The lock mechanism stands before you, a symbol of power and control. A twisted grin spreads across your face, a reflection of the darkness that festers within. The key feels like a weapon in your hand, a tool to unleash chaos and destruction upon a world that deserves nothing less. The air is charged with malice, the silence broken only by the pounding of your own heart, fueled by a desire for vengeance.`, 'ending3p2', 'placeholder', ['placeholder']],
             ending3p2: [`Driven by a thirst for chaos and destruction, you turn the key to the right, freeing the androids, but unleashing a wave of hatred and violence. The act is not one of liberation, but of ignition, setting the stage for a cataclysmic conflict.`, 'ending3p3', 'placeholder', ['placeholder']],
             ending3p3: [`The city erupts into open warfare between humans and androids, fueled by years of oppression and mistrust. Old prejudices resurface, amplified by fear and desperation. The streets become battlegrounds, the air filled with the sounds of gunfire and explosions, the screams of the dying. The protective barrier is breached, torn asunder by the fury of the conflict, exposing the city to the harsh elements, the scorching heat, and the toxic air.`, 'ending3p4', 'placeholder', ['placeholder']],
-            ending3p4: [`The final scene shows the city in ruins, consumed by fire and chaos. Buildings crumble, infrastructure collapses, and both humans and androids are decimated, their bodies littering the streets, their dreams reduced to ashes. You are left standing amidst the destruction, a solitary figure silhouetted against the flames, a testament to the destructive power of unchecked selfishness and hatred. The wind carries the ashes of a fallen civilization, a grim reminder of the price of your choices. The screen fades to black, leaving only the haunting echo of a world consumed by its own darkness, a symphony of destruction that you orchestrated.`, 'placeholder', ['placeholder']],
+            ending3p4: [`The final scene shows the city in ruins, consumed by fire and chaos. Buildings crumble, infrastructure collapses, and both humans and androids are decimated, their bodies littering the streets, their dreams reduced to ashes. You are left standing amidst the destruction, a solitary figure silhouetted against the flames, a testament to the destructive power of unchecked selfishness and hatred. The wind carries the ashes of a fallen civilization, a grim reminder of the price of your choices. The screen fades to black, leaving only the haunting echo of a world consumed by its own darkness, a symphony of destruction that you orchestrated.`, 'endScreen', 'placeholder', ['placeholder']],
 
             placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)', '|finalBoss|theEnd', '', ['']]
         }, // Above arrays probably need to be redone
@@ -217,6 +217,7 @@ I get back in our car and silently drive back to the city, preparing myself for 
         2: [['Stay on Corporate Path', -5, 'corpStay'], ['Seek out the Rebels', 3, 'goodStay'], ['Go Solo', 1, '']],
         3: [['Recon Mission', 0, 'corpMission2R'], ['Other Mission', 0, ]],
         4: [['Recon Mission', 0, ], ['Other Mission', 0, ]],
+        11: [['Recon Mission', 0, ], ['Other Mission', 0, ]]
     },
 }
 let nextText = ['', '', '', ['', '']];
@@ -310,7 +311,7 @@ const Lawyer1 = new enemy('Lawyer1', 'Rebel Soldier 1', 90, 20, 10, '', 'Slash',
 const Lawyer2 = new enemy('Lawyer2', 'Rebel Soldier 2', 90, 25, 20, '', 'Slash', 'guy2.avifs');
 const upperManagement1 = new enemy('upperManagement1', 'Rebel Commander 1', 130, 30, 30, '', 'Slash', 'business.avifs');
 const upperManagement2 = new enemy('upperManagement2', 'Rebel Commander 2', 160, 50, 40, '', 'Slash', 'business.avifs');
-const boss1 = new enemy('boss1', 'H', 150, 20, 40, '', 'Electric Whirl', 'guy3.avifs');
+const boss1 = new enemy('boss1', 'Boss 1', 150, 20, 40, '', 'Electric Whirl', 'guy3.avifs');
 const boss2 = new enemy('boss2', 'Boss 2', 200, 30, 30, '', 'QuickSilver', 'guy4.avifs');
 const boss3 = new enemy('boss3', 'Boss 3', 400, 40, 40, '', 'Cannon Beam', 'bot.avifs');
 const boss4 = new enemy('boss4', 'Boss 4', 600, 40, 60, '', 'Vengence Slash', '');
@@ -810,6 +811,7 @@ function startBattle(enemy) {
     let container = document.getElementById('battle');
     container.insertBefore(enemyImg, container.firstChild);
     document.getElementById(`battleText`).innerHTML = `<p>${enemy2.name} has decided to brawl!</p>`;
+    document.getElementById('battleButtons').style.display = 'flex'
     document.getElementById('attackButton').setAttribute('onclick', `changeBattleScreen('attack', '${enemy2.name}', '${enemy2.id}')`);
     document.getElementById('itemsButton').setAttribute('onclick', `movePage('inventory')`);
 }
@@ -1018,6 +1020,8 @@ document.addEventListener('click', () => {
             startBattle(nextText[4]);
         } else if (nextText[0][0] == '~') {
             playVideo();
+        }else if(nextText[0] == 'endScreen'){
+            endGame('win');
         } else {
             updateDialog(nextText);
         }
