@@ -209,7 +209,7 @@ I get back in our car and silently drive back to the city, preparing myself for 
             ending3p3: [`The city erupts into open warfare between humans and androids, fueled by years of oppression and mistrust. Old prejudices resurface, amplified by fear and desperation. The streets become battlegrounds, the air filled with the sounds of gunfire and explosions, the screams of the dying. The protective barrier is breached, torn asunder by the fury of the conflict, exposing the city to the harsh elements, the scorching heat, and the toxic air.`, 'ending3p4', 'placeholder', ['placeholder']],
             ending3p4: [`The final scene shows the city in ruins, consumed by fire and chaos. Buildings crumble, infrastructure collapses, and both humans and androids are decimated, their bodies littering the streets, their dreams reduced to ashes. You are left standing amidst the destruction, a solitary figure silhouetted against the flames, a testament to the destructive power of unchecked selfishness and hatred. The wind carries the ashes of a fallen civilization, a grim reminder of the price of your choices. The screen fades to black, leaving only the haunting echo of a world consumed by its own darkness, a symphony of destruction that you orchestrated.`, 'endScreen', 'placeholder', ['placeholder']],
 
-            placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)', '|finalBoss|theEnd', '', ['']]
+            placeholder: ['This text is a placeholder, we have not loaded any more of the story into the game yet, so have a battle :)', '|finalBoss|endScreen', '', ['']]
         }, // Above arrays probably need to be redone
     },
     choices: {
